@@ -1,0 +1,129 @@
+﻿STUDENTI POBEDILI – TEMA ZA WINDOWS 10 / 11  (verzija 2)
+=========================================================
+
+Nezvanična fan-made personalizacija. Nije zvanični Windows paket niti
+zvanični proizvod Studentske liste.
+
+
+BRZI START
+----------
+1. Raspakujte CEO ZIP u novu fasciklu (desni klik > Extract All).
+   Ne pokrećite ništa direktno iz ZIP-a.
+2. Pokrenite INSTALIRAJ.cmd i izaberite:
+     [1] KOMPLETNO – Bordo  (tamna tema, sve ikonice, zaključani ekran)  ← preporuka
+     [2] KOMPLETNO – Svetla
+   Ostale opcije u meniju služe za pojedinačne delove i za vraćanje.
+
+Ako Windows prikaže „Windows protected your PC“: More info > Run anyway.
+Skripte ne instaliraju programe, ne koriste internet i menjaju samo
+podešavanja trenutnog korisnika. Izuzetak je opcija 6 (crvena „3“ za
+sve fascikle): Windows tu ikonicu čuva sistemski, pa traži admin
+potvrdu (UAC). Ako je odbijete, sve ostalo radi normalno.
+
+
+DRUGI NAČIN: SAMO TEMA, DVOKLIKOM (bez skripti)
+-----------------------------------------------
+U fascikli Teme nalaze se pravi Windows paketi tema:
+  Studenti Pobedili Bordo.deskthemepack   – tamni režim, 4 pozadine
+  Studenti Pobedili Svetla.deskthemepack  – svetli režim, 2 pozadine
+Dvoklik instalira i aktivira temu kroz sam Windows. Ovako se dobijaju
+pozadine, bordo akcentna boja i tamni/svetli režim. Ikonice, zaključani
+ekran i zvuk postavlja samo INSTALIRAJ.cmd. Pre dvoklika zatvorite
+Settings, jer Windows inače ignoriše temu.
+
+
+ŠTA TEMA RADI
+-------------
+• Akcentna boja: bordo #981F34, kontrast prema beloj 8,1:1 (WCAG AAA).
+  Windows od nje sam pravi tamnije nijanse za svetli režim i svetlije za
+  tamni režim, tako da dugmad, linkovi i istaknuti elementi ostaju čitljivi.
+• Bordo varijanta: tamni režim sistema i aplikacija, bordo Start meni,
+  traka zadataka i naslovne trake prozora.
+• Svetla varijanta: svetli režim, bordo naslovne trake i akcenti.
+• Pozadine se menjaju svakih 30 minuta. U slideshow-u su samo pozadine
+  kod kojih je leva strana prazna, da tekst ne bi išao ispod desktop ikonica:
+    Bordo:  03 Desktop, 06 bez teksta, 07 Noćna, 04 Bordo
+    Svetla: 02 Minimal, 08 Svetla
+  Pozadine 01 i 05 (veliki naslov levo) i dalje su u Wallpapers, za
+  prezentacije ili desktop bez ikonica.
+• Tema NE menja kursore, zvukove, čuvar ekrana ni veličinu teksta.
+
+IKONICE (opcija 5, bez admin prava)
+• Home, Gallery, Radna površina, Dokumenti, Preuzimanja, Slike, Muzika,
+  Video, Ovaj računar, Mreža, Korpa (prazna i puna), Korisničke datoteke
+  i svi lokalni i USB diskovi.
+• Leva navigacija Explorer-a: svaka stavka ima svoju bordo siluetu
+  (kućica, slike, ekran, strelica, list, pejzaž, nota, kamera), pa se
+  razlikuju i na 16 px. Od 40 px naviše su to 3D fascikle sa „3“ i znakom.
+• Windows pamti ikonicu zakačene fascikle u trenutku kačenja, pa ih
+  skripta prekači (iste fascikle, isti redosled). To traje do 1 minut.
+• Pre prve izmene čuva originalno stanje u
+  %LOCALAPPDATA%\StudentiPobedili\IconBackup
+  Bezbedno je pokrenuti više puta, jer se original ne pregazi.
+• Novi disk (npr. USB) dobija ikonicu kada ponovo pokrenete opciju 5.
+
+CRVENA „3“ ZA SVE FASCIKLE (opcija 6, traži admin potvrdu)
+• Windows ikonicu obične fascikle čita samo iz sistemskog dela registra,
+  pa ova opcija važi za sve korisnike računara i kratko restartuje
+  File Explorer. Original se čuva u C:\ProgramData\StudentiPobedili.
+
+VRAĆANJE IKONICA (opcija 9)
+• Vraća originalne Windows ikonice (i ikonicu svih fascikli, ako je bila
+  postavljena). Radi i sa rezervnim kopijama iz prve verzije paketa.
+• Pojedinačne ikonice: Icons\ICO (za Windows) i Icons\PNG.
+  Ručno: desni klik na fasciklu > Properties > Customize > Change Icon.
+
+ZAKLJUČANI EKRAN (opcija 7)
+• Postavlja se automatski: LockScreen\03-Zakljucani-ekran-PC-3840x2160.jpg
+  (16:9, bez teksta, pa sat i obaveštenja ostaju čitljivi i na
+  Windows 10 i na Windows 11).
+• 01 i 02 su uspravne (2160×3840), za telefon. Na monitoru bi ih Windows
+  isekao.
+• Ako je zaključani ekran zaključan politikom organizacije, postavite ga
+  ručno: Settings > Personalization > Lock screen > Picture.
+
+ZVUK (opcija 8)
+• Kratak zvuk „Pobeda“ (0,9 s) za Windows obaveštenja. Ponovni izbor
+  opcije vraća originalni zvuk.
+• Windows resetuje zvuk obaveštenja svaki put kad se primeni neka tema.
+  INSTALIRAJ.cmd ga čuva, ali ako temu promenite kroz Settings, ponovo
+  izaberite opciju 8.
+
+DEINSTALACIJA (opcija D)
+• Vraća ikonice, zvuk, boje i temu koja je bila aktivna pre instalacije,
+  pa briše fajlove paketa iz korisničkog profila. Ako vraćanje ikonica ne
+  uspe, ništa se ne briše i deinstalaciju možete pokrenuti ponovo.
+• Zaključani ekran se ne vraća automatski (Windows ne čuva prethodnu
+  sliku). Promenite ga u Settings > Personalization > Lock screen.
+
+
+SADRŽAJ PAKETA
+--------------
+INSTALIRAJ.cmd            glavni meni
+Teme\                     .deskthemepack paketi (instalacija dvoklikom)
+Wallpapers\               8 pozadina, 3840×2160
+LockScreen\               1 za PC (16:9) + 2 za telefon (9:16)
+Icons\ICO, Icons\PNG      30 ikonica (ICO: 16–256 px, uključujući 20 i 40 px
+                          za skaliranje 125% i 250%)
+Sounds\                   zvuk obaveštenja
+Preview\                  pregledi
+Install\                  skripte
+Install\Alati\            alati za ponovno pravljenje: Napravi-themepack.ps1
+                          (.deskthemepack) i Napravi-ikonice.py (ICO iz PNG,
+                          traži Python + Pillow)
+
+
+REŠAVANJE PROBLEMA
+------------------
+• Tokom instalacije prozor Settings se sam otvori i zatvori. To je
+  normalno: Windows ne primenjuje temu dok je Settings već otvoren, pa ga
+  skripta zatvara.
+• Neka ikonica je ostala stara: restartujte File Explorer (Task Manager >
+  Windows Explorer > Restart) ili se odjavite i ponovo prijavite.
+• Zakačena fascikla u levoj navigaciji ima staru ikonicu: otkačite je i
+  ponovo zakačite (desni klik > Unpin / Pin to Quick access).
+• Traka zadataka nije bordo: radi samo u tamnom režimu. Settings >
+  Personalization > Colors > „Show accent color on Start and taskbar“.
+• Ikonice na desktopu se vraćaju posle promene teme: Settings >
+  Personalization > Themes > Desktop icon settings > isključite
+  „Allow themes to change desktop icons“.

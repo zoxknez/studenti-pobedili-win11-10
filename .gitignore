@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+dist/
+.vercel/
+.claude/
+Thumbs.db
+desktop.ini
