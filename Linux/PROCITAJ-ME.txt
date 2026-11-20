@@ -1,0 +1,49 @@
+STUDENTI POBEDILI – TEMA ZA LINUX (GNOME i KDE Plasma)
+======================================================
+
+Nezvanična fan-made personalizacija.
+
+INSTALACIJA
+-----------
+1. Raspakujte arhivu:     tar xzf StudentiPobedili-Linux.tar.gz
+2. Uđite u fasciklu:      cd StudentiPobedili-Linux
+3. Pokrenite:             ./install.sh
+
+U meniju izaberite [1] Bordo (tamni režim) ili [2] Svetla.
+Bez menija:  ./install.sh --bordo | --svetla | --ikonice | --deinstaliraj
+
+Ne pokrećite sa sudo: sve se instalira samo za vašeg korisnika
+(~/.local/share), bez dodatnih paketa i bez interneta.
+
+ŠTA SE MENJA
+------------
+GNOME (Ubuntu, Fedora, Debian…)
+• Pozadine prate režim: u tamnom režimu se smenjuju Bordo pozadine,
+  u svetlom Svetle (na 30 minuta).
+• Tamni ili svetli režim, crveni akcenat (GNOME 47 i noviji; bordo
+  nije u GNOME paleti, crvena je najbliža), zaključani ekran.
+• Tema ikonica „Studenti Pobedili“ (fascikle, Home, Desktop, korpa,
+  diskovi, mreža, Files).
+• Pozadine se pojavljuju i u Settings › Appearance.
+
+KDE Plasma (5.24+ i 6)
+• Šema boja „Studenti Pobedili Bordo“ ili „Svetla“: bordo izbor,
+  dugmad i naslovne trake.
+• Pozadina sa tamnom i svetlom verzijom, zaključani ekran.
+• Tema ikonica, uključujući Dolphin i levo okno Places.
+
+Ostala okruženja (Cinnamon, XFCE, MATE…)
+• Fajlovi se instaliraju, a temu ikonica „Studenti Pobedili“ i
+  pozadine iz ~/.local/share/backgrounds/studenti-pobedili
+  izaberite ručno u podešavanjima izgleda.
+
+Ikonice koje tema nema (aplikacije, toolbar) uzimaju se iz teme koju
+ste koristili do sada, pa ostatak sistema izgleda isto kao pre.
+
+DEINSTALACIJA
+-------------
+./install.sh --deinstaliraj  (ili opcija 4 u meniju)
+Vraća pozadinu, režim, akcenat, šemu boja i ikonice na stanje pre
+instalacije i briše fajlove paketa.
+
+Ako se nešto ne osveži odmah, odjavite se i ponovo prijavite.

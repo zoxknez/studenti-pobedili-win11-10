@@ -2,19 +2,20 @@
 
 <img src="web/assets/favicon.svg" width="72" alt="">
 
-# Studenti pobedili — tema za Windows 11 i 10
+# Studenti pobedili — tema za Windows i Linux
 
 **Bordo tema sa 8 pozadina u 4K, 31 ikonicom, zaključanim ekranom i zvukom.**
 Instalacija jednim klikom, bez admin prava, potpuna deinstalacija.
 
-[**⬇ Preuzmite paket (ZIP)**](https://github.com/zoxknez/studenti-pobedili-win11-10/releases/latest/download/StudentiPobedili-Windows-v2.zip)
+[**⬇ Windows (ZIP)**](https://github.com/zoxknez/studenti-pobedili-win11-10/releases/latest/download/StudentiPobedili-Windows-v2.zip)
+&nbsp;·&nbsp; [**⬇ Linux (tar.gz)**](https://github.com/zoxknez/studenti-pobedili-win11-10/releases/latest/download/StudentiPobedili-Linux.tar.gz)
 &nbsp;·&nbsp; [Sva izdanja](https://github.com/zoxknez/studenti-pobedili-win11-10/releases)
 
 <img src="web/assets/hero.webp" width="860" alt="Windows radna površina sa temom Studenti pobedili">
 
 </div>
 
-## Instalacija
+## Instalacija na Windows-u
 
 1. Preuzmite ZIP i raspakujte ga (desni klik › **Extract All**).
 2. Pokrenite **`INSTALIRAJ.cmd`**. Ako Windows prikaže upozorenje: *More info › Run anyway*.
@@ -26,7 +27,21 @@ ili
 [`Studenti-Pobedili-Svetla.deskthemepack`](https://github.com/zoxknez/studenti-pobedili-win11-10/releases/latest/download/Studenti-Pobedili-Svetla.deskthemepack)
 i otvorite ga dvoklikom (pre toga zatvorite Settings).
 
-## Šta dobijate
+## Linux (GNOME i KDE Plasma)
+
+```bash
+tar xzf StudentiPobedili-Linux.tar.gz
+cd StudentiPobedili-Linux
+./install.sh            # meni; ili --bordo | --svetla | --ikonice | --deinstaliraj
+```
+
+Bez `sudo`, samo za vašeg korisnika (`~/.local/share`). Na **GNOME-u** pozadine prate tamni i svetli režim (Bordo i Svetle se same smenjuju), uz crveni akcenat (GNOME 47+), zaključani ekran i temu ikonica. Na **KDE Plasma-i** (5.24+ i 6) dobijate šemu boja „Studenti Pobedili Bordo“ ili „Svetla“ sa bordo naslovnim trakama, pozadinu sa tamnom i svetlom verzijom, zaključani ekran i ikonice za Dolphin. Ikonice koje tema nema uzimaju se iz teme koju ste do sada koristili. `--deinstaliraj` vraća tačno prethodna podešavanja.
+
+<div align="center"><img src="Preview/Linux-Dolphin.png" width="700" alt="KDE Dolphin sa temom Studenti pobedili"></div>
+
+Testirano u kontejnerima: Ubuntu 24.04 (GNOME 46), Fedora 41 (GNOME 47, KDE Plasma 6.4) i pravi Dolphin 25.04.
+
+## Šta dobijate (Windows)
 
 | | |
 |---|---|
@@ -43,7 +58,6 @@ i otvorite ga dvoklikom (pre toga zatvorite Settings).
 
 | Sistem | Status | Šta će sadržati |
 |---|---|---|
-| **Linux** (GNOME, KDE Plasma) | U pripremi | Pozadine, bordo šema boja, set ikonica, ekran za prijavu |
 | **Android** | U pripremi | Pozadine i zaključani ekran (Material You preuzima bordo iz pozadine) |
 | **iPhone** | U pripremi | Pozadine i zaključani ekran za uspravni ekran |
 | **macOS** | Planirano | Pozadine, ikonice fascikli, tamni ili svetli režim |
@@ -61,7 +75,8 @@ Nove verzije se pojavljuju na stranici [izdanja](https://github.com/zoxknez/stud
 ```
 INSTALIRAJ.cmd          glavni meni
 Install/                PowerShell skripte (tema, ikonice, zaključani ekran, zvuk, deinstalacija)
-Install/Alati/          alati: Napravi-themepack.ps1, Napravi-ikonice.py (Python + Pillow)
+Install/Alati/          alati: Napravi-themepack.ps1, Napravi-ikonice.py, Napravi-linux.py (Python + Pillow)
+Linux/                  install.sh, tema ikonica (freedesktop), KDE šeme boja
 Teme/                   .deskthemepack paketi
 Wallpapers/ LockScreen/ Icons/ Sounds/ Preview/
 web/                    sajt (Vercel: vercel.json → outputDirectory "web")

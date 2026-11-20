@@ -2,6 +2,10 @@
 *.cmd text eol=crlf
 *.ps1 text eol=crlf
 *.txt text eol=crlf
+*.sh text eol=lf
+Linux/**/*.txt text eol=lf
+*.colors text eol=lf
+*.theme text eol=lf
 *.theme binary
 *.deskthemepack binary
 *.ico binary

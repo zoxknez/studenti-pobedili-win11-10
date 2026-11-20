@@ -34,7 +34,7 @@ BMP_SIZES = [16, 20, 24, 32, 40, 48, 64]
 PNG_SIZES = [96, 128, 256]
 SMALL = 48                       # do ove velicine vazi posebno crtanje
 BADGE_C, BADGE_R = (399.5, 399.5), 73.5   # znacka u 512 px masteru
-BADGE_RATIO = {16: 0.70, 20: 0.66, 24: 0.62, 32: 0.56, 40: 0.52, 48: 0.48}
+BADGE_RATIO = {16: 0.70, 20: 0.66, 22: 0.64, 24: 0.62, 32: 0.56, 40: 0.52, 48: 0.48}
 
 FOLDER_BADGE = ['Folder-Documents', 'Folder-Downloads', 'Folder-Pictures', 'Folder-Music', 'Folder-Video',
                 'Folder-Projects', 'Folder-Education', 'Folder-Team', 'Folder-Favorites']
