@@ -42,6 +42,17 @@ Bez `sudo`, samo za vašeg korisnika (`~/.local/share`). Na **GNOME-u** pozadine
 
 Testirano u kontejnerima: Ubuntu 24.04 (GNOME 46), Fedora 41 (GNOME 47, KDE Plasma 6.4) i pravi Dolphin 25.04.
 
+### Ubuntu Unity (iz zajednice)
+
+Verziju za **Ubuntu Unity 7** napravio je **urosg3** ([GitHub](https://github.com/urosg3) · [X @UrosUbuntu](https://x.com/UrosUbuntu)): pozadine, zaključani ekran, tema ikonica i GTK teme Ambiance i Radiance (ako su instalirane).
+
+[**⬇ StudentiPobedili-Unity.tar.gz**](https://github.com/zoxknez/studenti-pobedili-win11-10/releases/latest/download/StudentiPobedili-Unity.tar.gz) (ispravljena verzija; ista ispravka je poslata autoru kao [PR](https://github.com/urosg3/studenti_pobedili_Unity/pull/1)) · [izvorni kod](https://github.com/urosg3/studenti_pobedili_Unity)
+
+```bash
+tar xzf StudentiPobedili-Unity.tar.gz
+cd StudentiPobedili-Unity && ./install.sh
+```
+
 ## macOS (beta)
 
 ```bash
