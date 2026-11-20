@@ -1,0 +1,47 @@
+STUDENTI POBEDILI – TEMA ZA macOS (beta)
+=======================================
+
+Nezvanična fan-made personalizacija.
+„Beta“ znači da instaler još nije isproban na dovoljno Mac računara.
+Ako nešto ne radi, javite na GitHub-u (Issues).
+
+INSTALACIJA
+-----------
+1. Raspakujte ZIP (dvoklik u Finder-u).
+2. Otvorite Terminal, prevucite fasciklu StudentiPobedili-macOS u njega
+   posle komande „cd “ i pritisnite Enter. Zatim:
+       ./install.command
+   (ili desni klik na install.command › Open › Open)
+3. Izaberite [1] Bordo (tamni režim) ili [2] Svetla.
+
+macOS će tražiti dve dozvole; obe odobrite:
+• „Terminal wants to control System Events“ (za pozadinu i režim)
+• pristup fasciklama Desktop/Documents/Downloads (za ikonice)
+
+Ako macOS kaže da fajl ne može da se otvori jer je preuzet sa
+interneta, u Terminalu pokrenite:
+    xattr -dr com.apple.quarantine StudentiPobedili-macOS
+
+ŠTA SE MENJA
+------------
+• Pozadina (Bordo ili Svetla) i tamni ili svetli režim.
+  Zaključani ekran koristi istu pozadinu.
+• Akcentna boja: crvena. Apple ne dozvoljava proizvoljnu boju, a crvena
+  je najbliža bordo. Aplikacije je prikazuju posle ponovnog pokretanja.
+• Ikonice za Desktop, Documents, Downloads, Pictures, Music i Movies
+  (vide se u Finder prozoru).
+• Opcija [3]: crvena „3“ za bilo koju fasciklu po izboru.
+• Sve pozadine su u ~/Pictures/Studenti pobedili; za smenjivanje:
+  System Settings › Wallpaper › Add Folder.
+
+ŠTA macOS NE DOZVOLJAVA
+-----------------------
+Ikonice u Finder sidebar-u, Dock-u i korpi, kao i ikonicu svih fascikli,
+štiti sam sistem (SIP), pa ih nijedna tema ne može promeniti bez
+isključivanja zaštite, što ne preporučujemo.
+
+DEINSTALACIJA
+-------------
+./install.command --deinstaliraj   (ili opcija 4)
+Vraća prethodnu pozadinu, režim, akcentnu boju i ikonice fascikli
+i briše fajlove paketa.

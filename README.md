@@ -2,13 +2,14 @@
 
 <img src="web/assets/favicon.svg" width="72" alt="">
 
-# Studenti pobedili — tema za Windows i Linux
+# Studenti pobedili — tema za Windows, Linux i macOS
 
 **Bordo tema sa 8 pozadina u 4K, 31 ikonicom, zaključanim ekranom i zvukom.**
 Instalacija jednim klikom, bez admin prava, potpuna deinstalacija.
 
 [**⬇ Windows (ZIP)**](https://github.com/zoxknez/studenti-pobedili-win11-10/releases/latest/download/StudentiPobedili-Windows-v2.zip)
 &nbsp;·&nbsp; [**⬇ Linux (tar.gz)**](https://github.com/zoxknez/studenti-pobedili-win11-10/releases/latest/download/StudentiPobedili-Linux.tar.gz)
+&nbsp;·&nbsp; [**⬇ macOS (ZIP, beta)**](https://github.com/zoxknez/studenti-pobedili-win11-10/releases/latest/download/StudentiPobedili-macOS.zip)
 &nbsp;·&nbsp; [Sva izdanja](https://github.com/zoxknez/studenti-pobedili-win11-10/releases)
 
 <img src="web/assets/hero.webp" width="860" alt="Windows radna površina sa temom Studenti pobedili">
@@ -41,6 +42,17 @@ Bez `sudo`, samo za vašeg korisnika (`~/.local/share`). Na **GNOME-u** pozadine
 
 Testirano u kontejnerima: Ubuntu 24.04 (GNOME 46), Fedora 41 (GNOME 47, KDE Plasma 6.4) i pravi Dolphin 25.04.
 
+## macOS (beta)
+
+```bash
+cd ~/Downloads/StudentiPobedili-macOS
+./install.command       # meni; ili --bordo | --svetla | --fascikla PUTANJA | --deinstaliraj
+```
+
+Bez admin lozinke. Postavlja Bordo ili Svetlu pozadinu, tamni ili svetli režim, crveni akcenat (najbliži bordo u Apple paleti) i ikonice za Desktop, Documents, Downloads, Pictures, Music i Movies, a `--fascikla` daje crvenu „3“ bilo kojoj fascikli. macOS traži dozvolu da Terminal upravlja aplikacijom *System Events* i pristupa fasciklama. Ikonice u Dock-u, sidebar-u i korpi štiti sam sistem (SIP). Ako je fajl blokiran: `xattr -dr com.apple.quarantine StudentiPobedili-macOS`.
+
+*Beta: logika je testirana sa simuliranim macOS komandama pod bash-om 3.2 i proverena shellcheck-om, ali još ne na dovoljno pravih Mac računara. Prijavite problem u Issues.*
+
 ## Šta dobijate (Windows)
 
 | | |
@@ -60,7 +72,6 @@ Testirano u kontejnerima: Ubuntu 24.04 (GNOME 46), Fedora 41 (GNOME 47, KDE Plas
 |---|---|---|
 | **Android** | U pripremi | Pozadine i zaključani ekran (Material You preuzima bordo iz pozadine) |
 | **iPhone** | U pripremi | Pozadine i zaključani ekran za uspravni ekran |
-| **macOS** | Planirano | Pozadine, ikonice fascikli, tamni ili svetli režim |
 
 Nove verzije se pojavljuju na stranici [izdanja](https://github.com/zoxknez/studenti-pobedili-win11-10/releases).
 
@@ -75,8 +86,9 @@ Nove verzije se pojavljuju na stranici [izdanja](https://github.com/zoxknez/stud
 ```
 INSTALIRAJ.cmd          glavni meni
 Install/                PowerShell skripte (tema, ikonice, zaključani ekran, zvuk, deinstalacija)
-Install/Alati/          alati: Napravi-themepack.ps1, Napravi-ikonice.py, Napravi-linux.py (Python + Pillow)
+Install/Alati/          alati: Napravi-themepack.ps1, Napravi-ikonice.py, Napravi-linux.py, Napravi-mac.py (Python + Pillow)
 Linux/                  install.sh, tema ikonica (freedesktop), KDE šeme boja
+macOS/                  install.command (beta)
 Teme/                   .deskthemepack paketi
 Wallpapers/ LockScreen/ Icons/ Sounds/ Preview/
 web/                    sajt (Vercel: vercel.json → outputDirectory "web")

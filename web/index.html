@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Studenti pobedili — tema za Windows i Linux</title>
-<meta name="description" content="Besplatna bordo tema za Windows 11, 10 i Linux: 8 pozadina u 4K, 31 ikonica, zaključani ekran i zvuk. Instalacija jednim klikom, bez admin prava, potpuna deinstalacija.">
+<title>Studenti pobedili — tema za Windows, Linux i macOS</title>
+<meta name="description" content="Besplatna bordo tema za Windows 11, 10, Linux i macOS: 8 pozadina u 4K, 31 ikonica, zaključani ekran i zvuk. Instalacija jednim klikom, bez admin prava, potpuna deinstalacija.">
 <meta name="theme-color" content="#0b0406">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Studenti pobedili — tema za Windows i Linux">
+<meta property="og:title" content="Studenti pobedili — tema za Windows, Linux i macOS">
 <meta property="og:description" content="8 pozadina u 4K, 31 ikonica, zaključani ekran i zvuk. Besplatno, instalacija jednim klikom.">
 <meta property="og:image" content="https://raw.githubusercontent.com/zoxknez/studenti-pobedili-win11-10/main/web/assets/og.jpg">
 <meta property="og:image:width" content="1200">
@@ -192,8 +192,18 @@ dialog .close{position:absolute;top:-46px;right:0}
 .term.small pre{padding:16px 20px;font-size:14px}
 .linux-shot{border-radius:18px;overflow:hidden;box-shadow:var(--shadow);background:#1a0d11}
 .linux-shot figcaption{padding:12px 16px;color:var(--faint);font-size:13px;font-weight:600;border-top:1px solid var(--border)}
-.soon{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-@media (max-width:980px){.soon{grid-template-columns:repeat(2,1fr)}}
+.beta{display:inline-block;margin-left:6px;padding:2px 8px;border-radius:999px;background:rgba(255,244,241,.12);color:var(--cream);letter-spacing:.5px;font-size:11px;vertical-align:1px}
+.note-beta{margin-top:16px;color:var(--faint);font-size:14px;max-width:560px}
+.note-beta a{color:var(--muted)}
+.mac-icons{padding:32px 28px;display:grid;grid-template-columns:repeat(3,1fr);gap:8px 16px;align-content:center}
+.mac-icons img{width:100%;max-width:120px;margin:0 auto;filter:drop-shadow(0 12px 16px rgba(0,0,0,.45))}
+.mac-icons span{text-align:center;color:var(--muted);font-size:14px;font-weight:600;margin-bottom:14px}
+.mac-icons img:nth-of-type(1){grid-area:1/1}.mac-icons img:nth-of-type(2){grid-area:1/2}.mac-icons img:nth-of-type(3){grid-area:1/3}
+.mac-icons span:nth-of-type(1){grid-area:2/1}.mac-icons span:nth-of-type(2){grid-area:2/2}.mac-icons span:nth-of-type(3){grid-area:2/3}
+.mac-icons img:nth-of-type(4){grid-area:3/1}.mac-icons img:nth-of-type(5){grid-area:3/2}.mac-icons img:nth-of-type(6){grid-area:3/3}
+.mac-icons span:nth-of-type(4){grid-area:4/1}.mac-icons span:nth-of-type(5){grid-area:4/2}.mac-icons span:nth-of-type(6){grid-area:4/3}
+.soon{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;max-width:780px}
+@media (max-width:560px){.soon{grid-template-columns:1fr}}
 @media (max-width:560px){.soon{grid-template-columns:1fr}}
 .os{padding:26px;position:relative;overflow:hidden}
 .os::after{content:"";position:absolute;inset:auto -40% -60% auto;width:220px;height:220px;border-radius:50%;background:radial-gradient(closest-side,rgba(226,84,108,.16),transparent);pointer-events:none}
@@ -246,6 +256,7 @@ footer a{color:var(--muted)}
       <li><a href="#ikonice">Ikonice</a></li>
       <li><a href="#instalacija">Instalacija</a></li>
       <li><a href="#linux">Linux</a></li>
+      <li><a href="#macos">macOS</a></li>
       <li><a href="#pitanja">Pitanja</a></li>
     </ul>
     <a class="btn btn-ghost btn-sm" href="https://github.com/zoxknez/studenti-pobedili-win11-10" target="_blank" rel="noopener">
@@ -259,7 +270,7 @@ footer a{color:var(--muted)}
   <div class="wrap">
     <div class="hero">
       <div>
-        <span class="eyebrow"><b>●</b> Windows 11 i 10 · <a href="#linux" style="color:inherit">sada i Linux</a></span>
+        <span class="eyebrow"><b>●</b> Windows 11 i 10 · <a href="#linux" style="color:inherit">Linux</a> · <a href="#macos" style="color:inherit">macOS</a></span>
         <h1><span>Студенти</span><span>победили<em>.</em></span></h1>
         <p class="lead">Kompletna bordo tema za vaš računar: osam pozadina u 4K, 31 ručno doterana ikonica, zaključani ekran i zvuk obaveštenja. Instalacija jednim klikom, a vraćanje bez traga.</p>
         <div class="cta">
@@ -484,12 +495,48 @@ footer a{color:var(--muted)}
       </div>
     </section>
 
+    <!-- MACOS -->
+    <section id="macos">
+      <div class="linux mac">
+        <div class="reveal">
+          <div class="kicker">Novo · Mac <span class="beta">Beta</span></div>
+          <h2>I za Mac.</h2>
+          <p class="lead">Bordo ili svetla pozadina, tamni ili svetli režim, crveni akcenat i nove ikonice za Desktop, Documents, Downloads, Pictures, Music i Movies. Bilo koja fascikla može da dobije crvenu „3“.</p>
+          <ul class="linux-list">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Bez admin lozinke, samo za vašeg korisnika</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Crvena je najbliža bordo u Apple paleti akcentnih boja</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Deinstalacija vraća prethodnu pozadinu, režim, boju i ikonice</li>
+          </ul>
+          <div class="cta">
+            <a class="btn btn-primary" href="https://github.com/zoxknez/studenti-pobedili-win11-10/releases/latest/download/StudentiPobedili-macOS.zip">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0l-5-5m5 5l5-5M4 21h16"/></svg>
+              Preuzmite za macOS <small>ZIP · 10 MB</small>
+            </a>
+          </div>
+          <div class="term small" aria-label="Instalacija na macOS-u">
+<pre><span class="dim">$</span> cd ~/Downloads/StudentiPobedili-macOS
+<span class="dim">$</span> <span class="hl">./install.command</span></pre>
+          </div>
+          <p class="note-beta">Beta: instaler još nije isproban na dovoljno Mac računara. Ako nešto ne radi, javite na <a href="https://github.com/zoxknez/studenti-pobedili-win11-10/issues" target="_blank" rel="noopener">GitHub-u</a>. Ikonice u Dock-u, sidebar-u i korpi macOS ne dozvoljava da se menjaju.</p>
+        </div>
+        <div class="card mac-icons reveal" aria-label="Ikonice fascikli za macOS">
+          <img src="assets/icons/Folder-Documents.webp" alt="Documents" loading="lazy" width="192" height="192">
+          <img src="assets/icons/Folder-Downloads.webp" alt="Downloads" loading="lazy" width="192" height="192">
+          <img src="assets/icons/Folder-Pictures.webp" alt="Pictures" loading="lazy" width="192" height="192">
+          <img src="assets/icons/Folder-Music.webp" alt="Music" loading="lazy" width="192" height="192">
+          <img src="assets/icons/Folder-Video.webp" alt="Movies" loading="lazy" width="192" height="192">
+          <img src="assets/icons/Folder-3.webp" alt="Fascikla po izboru" loading="lazy" width="192" height="192">
+          <span>Documents</span><span>Downloads</span><span>Pictures</span><span>Music</span><span>Movies</span><span>Po izboru</span>
+        </div>
+      </div>
+    </section>
+
     <!-- USKORO -->
     <section id="uskoro">
       <div class="head reveal">
         <div class="kicker">Uskoro</div>
-        <h2>Sledeće: telefon i macOS.</h2>
-        <p>Pozadine i ikonice se prilagođavaju svakom sistemu, onoliko koliko on dozvoljava.</p>
+        <h2>Sledeće: telefon.</h2>
+        <p>Pozadine i zaključani ekran, napravljeni za uspravni ekran.</p>
       </div>
       <div class="soon">
         <div class="card os reveal">
@@ -501,11 +548,6 @@ footer a{color:var(--muted)}
           <div class="top"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M10 5h4"/></svg></span><span class="status">U pripremi</span></div>
           <h3>iPhone</h3>
           <p>Pozadine i zaključani ekran u punoj rezoluciji, napravljeni za uspravni ekran.</p>
-        </div>
-        <div class="card os reveal">
-          <div class="top"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H4z"/><path d="M2 19h20"/></svg></span><span class="status next">Planirano</span></div>
-          <h3>macOS</h3>
-          <p>Pozadine, ikonice fascikli i tamni ili svetli režim, u okviru onoga što macOS dozvoljava.</p>
         </div>
       </div>
       <div class="soon-cta reveal">
@@ -525,6 +567,7 @@ footer a{color:var(--muted)}
         <details><summary>Da li su potrebna administratorska prava?</summary><p>Nisu. Jedini izuzetak je opciona crvena „3“ za <i>sve</i> obične fascikle: Windows tu ikonicu čuva sistemski, pa traži potvrdu (UAC). Ako je odbijete, sve ostalo radi normalno.</p></details>
         <details><summary>Kako da vratim sve kako je bilo?</summary><p>Pokrenite <code>INSTALIRAJ.cmd</code> i izaberite <b>D</b>. Vraća se tema koja je bila aktivna pre instalacije, kao i boje, ikonice i zvuk, a fajlovi paketa se brišu. Jedino zaključani ekran menjate sami, jer Windows ne pamti prethodnu sliku.</p></details>
         <details><summary>Šta je .deskthemepack?</summary><p>Pravi Windows paket teme: dvoklik instalira pozadine, akcentnu boju i tamni ili svetli režim, bez skripti. Ikonice, zaključani ekran i zvuk postavlja samo <code>INSTALIRAJ.cmd</code>. Pre dvoklika zatvorite Settings.</p></details>
+        <details><summary>Radi li na Mac-u?</summary><p>Da, kao beta verzija. Preuzmite <code>StudentiPobedili-macOS.zip</code>, raspakujte ga i u Terminalu pokrenite <code>./install.command</code>. macOS će tražiti dozvolu da Terminal upravlja aplikacijom System Events i pristupa fasciklama; obe odobrite. Akcentna boja je crvena jer Apple ne dozvoljava proizvoljnu boju, a ikonice u Dock-u i sidebar-u sistem ne dozvoljava da se menjaju.</p></details>
         <details><summary>Radi li na Linux-u?</summary><p>Da, na GNOME-u (Ubuntu, Fedora, Debian…) i KDE Plasma 5.24+ i 6. Preuzmite <code>StudentiPobedili-Linux.tar.gz</code>, raspakujte ga i pokrenite <code>./install.sh</code>, bez sudo. Na ostalim okruženjima (Cinnamon, XFCE) instaliraju se ikonice i pozadine, a birate ih ručno.</p></details>
         <details><summary>Radi li na Windows 10?</summary><p>Tema, pozadine, ikonice, zaključani ekran i zvuk rade na Windows 10 i 11. Home i Gallery u levoj navigaciji postoje samo na Windows 11.</p></details>
       </div>

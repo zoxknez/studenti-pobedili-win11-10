@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# shellcheck disable=SC1111  # srpski navodnici u porukama su namerni
 # Studenti pobedili - tema za Linux (GNOME i KDE Plasma)
 # Nezvanicna fan-made personalizacija. Menja samo podesavanja trenutnog korisnika (bez sudo).
 #
@@ -25,7 +26,7 @@ BORDO_WALLS=(03-Pobeda-Desktop-4K.jpg 06-Desktop-bez-teksta-4K.jpg 07-Nocna-pobe
 SVETLA_WALLS=(02-Pobeda-Minimal-Light-4K.jpg 08-Svetla-pobeda-4K.jpg)
 LOCK_WALL=06-Desktop-bez-teksta-4K.jpg
 
-if [ -t 1 ]; then B=$'\e[1m'; R=$'\e[38;5;161m'; G=$'\e[32m'; Y=$'\e[33m'; N=$'\e[0m'; else B= R= G= Y= N=; fi
+if [ -t 1 ]; then B=$'\e[1m'; R=$'\e[38;5;161m'; G=$'\e[32m'; Y=$'\e[33m'; N=$'\e[0m'; else B=''; R=''; G=''; Y=''; N=''; fi
 info() { printf '%s\n' "$*"; }
 ok()   { printf '%s✔%s %s\n' "$G" "$N" "$*"; }
 warn() { printf '%s!%s %s\n' "$Y" "$N" "$*"; }
@@ -322,7 +323,7 @@ case "${1:-}" in
     --svetla) do_theme svetla ;;
     --ikonice) do_icons ;;
     --deinstaliraj|--uninstall) do_uninstall ;;
-    -h|--pomoc|--help) sed -n '2,9p' "$0" | sed 's/^# \{0,1\}//' ;;
+    -h|--pomoc|--help) sed -n '3,10p' "$0" | sed 's/^# \{0,1\}//' ;;
     "") menu ;;
     *) die "Nepoznata opcija: $1 (pogledajte --pomoc)" ;;
 esac

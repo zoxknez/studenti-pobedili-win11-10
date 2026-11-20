@@ -3,6 +3,8 @@
 *.ps1 text eol=crlf
 *.txt text eol=crlf
 *.sh text eol=lf
+*.command text eol=lf
+macOS/**/*.txt text eol=lf
 Linux/**/*.txt text eol=lf
 *.colors text eol=lf
 *.theme text eol=lf
