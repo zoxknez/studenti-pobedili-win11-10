@@ -2,7 +2,7 @@
 
 <img src="web/assets/favicon.svg" width="72" alt="">
 
-# Studenti pobedili — tema za Windows, Linux i macOS
+# Studenti pobedili - tema za Windows, Linux i macOS
 
 **Bordo tema sa 8 pozadina u 4K, 31 ikonicom, zaključanim ekranom i zvukom.**
 Instalacija jednim klikom, bez admin prava, potpuna deinstalacija.
@@ -20,7 +20,7 @@ Instalacija jednim klikom, bez admin prava, potpuna deinstalacija.
 
 1. Preuzmite ZIP i raspakujte ga (desni klik › **Extract All**).
 2. Pokrenite **`INSTALIRAJ.cmd`**. Ako Windows prikaže upozorenje: *More info › Run anyway*.
-3. Izaberite **[1] KOMPLETNO – Bordo** (ili [2] za svetlu varijantu).
+3. Izaberite **[1] KOMPLETNO - Bordo** (ili [2] za svetlu varijantu).
 
 Samo tema, bez skripti: preuzmite
 [`Studenti-Pobedili-Bordo.deskthemepack`](https://github.com/zoxknez/studenti-pobedili-win11-10/releases/latest/download/Studenti-Pobedili-Bordo.deskthemepack)
@@ -70,7 +70,7 @@ Bez admin lozinke. Postavlja Bordo ili Svetlu pozadinu, tamni ili svetli režim,
 |---|---|
 | **Tema** | Bordo akcenat `#981F34` (kontrast 8,1:1), tamni ili svetli režim, bordo traka zadataka i naslovne trake |
 | **Pozadine** | 8 pozadina 3840×2160 i slideshow koji ne stavlja tekst ispod desktop ikonica |
-| **Ikonice** | 31 ikonica (16–256 px, uključujući 20 i 40 px za 125% i 250%), leva navigacija Explorer-a sa posebnom siluetom za svaku stavku, File Explorer na traci zadataka |
+| **Ikonice** | 31 ikonica (16-256 px, uključujući 20 i 40 px za 125% i 250%), leva navigacija Explorer-a sa posebnom siluetom za svaku stavku, File Explorer na traci zadataka |
 | **Zaključani ekran** | Postavlja se automatski (16:9), plus dve uspravne verzije za telefon |
 | **Zvuk** | Kratak zvuk „Pobeda“ za obaveštenja, uključuje se i isključuje jednom opcijom |
 | **Vraćanje** | Opcija **D** vraća prethodnu temu, boje, ikonice i zvuk i briše fajlove paketa |

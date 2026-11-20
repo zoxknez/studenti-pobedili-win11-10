@@ -1,4 +1,4 @@
-﻿STUDENTI POBEDILI – TEMA ZA WINDOWS 10 / 11  (verzija 2)
+﻿STUDENTI POBEDILI - TEMA ZA WINDOWS 10 / 11  (verzija 2)
 =========================================================
 
 Nezvanična fan-made personalizacija. Nije zvanični Windows paket niti
@@ -10,8 +10,8 @@ BRZI START
 1. Raspakujte CEO ZIP u novu fasciklu (desni klik > Extract All).
    Ne pokrećite ništa direktno iz ZIP-a.
 2. Pokrenite INSTALIRAJ.cmd i izaberite:
-     [1] KOMPLETNO – Bordo  (tamna tema, sve ikonice, zaključani ekran)  ← preporuka
-     [2] KOMPLETNO – Svetla
+     [1] KOMPLETNO - Bordo  (tamna tema, sve ikonice, zaključani ekran)  ← preporuka
+     [2] KOMPLETNO - Svetla
    Ostale opcije u meniju služe za pojedinačne delove i za vraćanje.
 
 Ako Windows prikaže „Windows protected your PC“: More info > Run anyway.
@@ -24,8 +24,8 @@ potvrdu (UAC). Ako je odbijete, sve ostalo radi normalno.
 DRUGI NAČIN: SAMO TEMA, DVOKLIKOM (bez skripti)
 -----------------------------------------------
 U fascikli Teme nalaze se pravi Windows paketi tema:
-  Studenti Pobedili Bordo.deskthemepack   – tamni režim, 4 pozadine
-  Studenti Pobedili Svetla.deskthemepack  – svetli režim, 2 pozadine
+  Studenti Pobedili Bordo.deskthemepack   - tamni režim, 4 pozadine
+  Studenti Pobedili Svetla.deskthemepack  - svetli režim, 2 pozadine
 Dvoklik instalira i aktivira temu kroz sam Windows. Ovako se dobijaju
 pozadine, bordo akcentna boja i tamni/svetli režim. Ikonice, zaključani
 ekran i zvuk postavlja samo INSTALIRAJ.cmd. Pre dvoklika zatvorite
@@ -105,7 +105,7 @@ INSTALIRAJ.cmd            glavni meni
 Teme\                     .deskthemepack paketi (instalacija dvoklikom)
 Wallpapers\               8 pozadina, 3840×2160
 LockScreen\               1 za PC (16:9) + 2 za telefon (9:16)
-Icons\ICO, Icons\PNG      31 ikonica (ICO: 16–256 px, uključujući 20 i 40 px
+Icons\ICO, Icons\PNG      31 ikonica (ICO: 16-256 px, uključujući 20 i 40 px
                           za skaliranje 125% i 250%)
 Sounds\                   zvuk obaveštenja
 Preview\                  pregledi
