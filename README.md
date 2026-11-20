@@ -4,10 +4,10 @@
 
 # Studenti pobedili — tema za Windows 11 i 10
 
-**Bordo tema sa 8 pozadina u 4K, 30 ikonica, zaključanim ekranom i zvukom.**
+**Bordo tema sa 8 pozadina u 4K, 31 ikonicom, zaključanim ekranom i zvukom.**
 Instalacija jednim klikom, bez admin prava, potpuna deinstalacija.
 
-[**⬇ Preuzmi paket (ZIP)**](https://github.com/zoxknez/studenti-pobedili-win11-10/releases/latest/download/StudentiPobedili-Windows-v2.zip)
+[**⬇ Preuzmite paket (ZIP)**](https://github.com/zoxknez/studenti-pobedili-win11-10/releases/latest/download/StudentiPobedili-Windows-v2.zip)
 &nbsp;·&nbsp; [Sva izdanja](https://github.com/zoxknez/studenti-pobedili-win11-10/releases)
 
 <img src="web/assets/hero.webp" width="860" alt="Windows radna površina sa temom Studenti pobedili">
@@ -16,23 +16,23 @@ Instalacija jednim klikom, bez admin prava, potpuna deinstalacija.
 
 ## Instalacija
 
-1. Preuzmi ZIP i raspakuj ga (desni klik › **Extract All**).
-2. Pokreni **`INSTALIRAJ.cmd`**. Ako Windows prikaže upozorenje: *More info › Run anyway*.
-3. Izaberi **[1] KOMPLETNO – Bordo** (ili [2] za svetlu varijantu).
+1. Preuzmite ZIP i raspakujte ga (desni klik › **Extract All**).
+2. Pokrenite **`INSTALIRAJ.cmd`**. Ako Windows prikaže upozorenje: *More info › Run anyway*.
+3. Izaberite **[1] KOMPLETNO – Bordo** (ili [2] za svetlu varijantu).
 
-Samo tema, bez skripti: preuzmi
+Samo tema, bez skripti: preuzmite
 [`Studenti-Pobedili-Bordo.deskthemepack`](https://github.com/zoxknez/studenti-pobedili-win11-10/releases/latest/download/Studenti-Pobedili-Bordo.deskthemepack)
 ili
 [`Studenti-Pobedili-Svetla.deskthemepack`](https://github.com/zoxknez/studenti-pobedili-win11-10/releases/latest/download/Studenti-Pobedili-Svetla.deskthemepack)
-i otvori ga dvoklikom (pre toga zatvori Settings).
+i otvorite ga dvoklikom (pre toga zatvorite Settings).
 
-## Šta dobijaš
+## Šta dobijate
 
 | | |
 |---|---|
 | **Tema** | Bordo akcenat `#981F34` (kontrast 8,1:1), tamni ili svetli režim, bordo traka zadataka i naslovne trake |
 | **Pozadine** | 8 pozadina 3840×2160 i slideshow koji ne stavlja tekst ispod desktop ikonica |
-| **Ikonice** | 30 ikonica (16–256 px, uključujući 20 i 40 px za 125% i 250%), leva navigacija Explorer-a sa posebnom siluetom za svaku stavku |
+| **Ikonice** | 31 ikonica (16–256 px, uključujući 20 i 40 px za 125% i 250%), leva navigacija Explorer-a sa posebnom siluetom za svaku stavku, File Explorer na traci zadataka |
 | **Zaključani ekran** | Postavlja se automatski (16:9), plus dve uspravne verzije za telefon |
 | **Zvuk** | Kratak zvuk „Pobeda“ za obaveštenja, uključuje se i isključuje jednom opcijom |
 | **Vraćanje** | Opcija **D** vraća prethodnu temu, boje, ikonice i zvuk i briše fajlove paketa |

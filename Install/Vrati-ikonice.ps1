@@ -65,12 +65,19 @@ try {
         $touched.Add($folder)
     }
 
+    # Precice File Explorer-a (traka zadataka, Start meni) - vraca se originalni .lnk fajl
+    $shortcutsRestored = Restore-ExplorerShortcutIcons
+
     # Originalno stanje je vraceno; brisemo stare rezervne kopije da sledece postavljanje napravi ciste.
     if (Test-Path -LiteralPath $IconBackup) { Remove-Item -LiteralPath $IconBackup -Recurse -Force }
 
     Send-ShellRefresh $touched.ToArray()
     Update-QuickAccessPins $touched.ToArray()
     try { & "$env:SystemRoot\System32\ie4uinit.exe" -show } catch {}
+    if ($shortcutsRestored -gt 0) {
+        Write-Host 'Restartujem File Explorer da bi traka zadataka prikazala originalnu ikonicu...'
+        Restart-ExplorerShell
+    }
     Write-Host 'Originalne Windows ikonice su vracene.' -ForegroundColor Green
     Write-Host 'Ako neka ikonica ostane stara, ponovo pokrenite File Explorer ili se odjavite i prijavite.'
     exit 0

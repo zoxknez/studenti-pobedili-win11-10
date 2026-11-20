@@ -113,6 +113,76 @@ function Update-QuickAccessPins([string[]]$ChangedFolders) {
     }
 }
 
+# ---------- File Explorer na traci zadataka i u Start meniju ----------
+# Zakacena precica nema putanju (cilj je shell objekat), pa je menjamo preko IShellLink
+# (Shell.Application GetLink) koji cuva cilj; WScript.Shell bi ga mogao izgubiti.
+# Rezervna kopija je ceo .lnk fajl, pa je vracanje bajt-za-bajt.
+$ShortcutManifestPath = Join-Path $IconBackup 'shortcuts.json'
+$ExplorerShortcutDirs = @(
+    (Join-Path $env:APPDATA 'Microsoft\Internet Explorer\Quick Launch\User Pinned\TaskBar')
+    (Join-Path $env:APPDATA 'Microsoft\Windows\Start Menu\Programs')
+    (Join-Path $env:APPDATA 'Microsoft\Windows\Start Menu\Programs\System Tools')
+)
+
+function Get-ExplorerShortcuts {
+    $shell = New-Object -ComObject Shell.Application
+    foreach ($dir in $ExplorerShortcutDirs) {
+        if (-not (Test-Path -LiteralPath $dir)) { continue }
+        $folder = $shell.Namespace($dir)
+        foreach ($f in Get-ChildItem -LiteralPath $dir -Filter '*.lnk' -File) {
+            try {
+                $link = $folder.ParseName($f.Name).GetLink
+                $iconPath = ''
+                [void]$link.GetIconLocation([ref]$iconPath)
+                if ($iconPath -match '\\explorer\.exe$|StudentiPobedili\\Icons\\ICO\\Explorer\.ico$' -or $link.Path -match '\\explorer\.exe$') {
+                    [pscustomobject]@{ Path = $f.FullName; Link = $link }
+                }
+            } catch {}
+        }
+    }
+}
+
+function Set-ExplorerShortcutIcons {
+    $records = @(Read-JsonRecords $ShortcutManifestPath 'Path')
+    $icon = Join-Path $IcoDir 'Explorer.ico'
+    $changed = 0
+    foreach ($s in @(Get-ExplorerShortcuts)) {
+        if (-not ($records | Where-Object { $_.Path -ieq $s.Path })) {
+            $backup = New-BackupPath 'shortcut' 'lnk'
+            Copy-Item -LiteralPath $s.Path -Destination $backup -Force
+            $records += [pscustomobject]@{ Path = $s.Path; BackupFile = $backup }
+            ConvertTo-Json -InputObject @($records) -Depth 3 | Set-Content -LiteralPath $ShortcutManifestPath -Encoding UTF8
+        }
+        $current = ''
+        [void]$s.Link.GetIconLocation([ref]$current)
+        if ($current -ieq $icon) { continue }   # vec postavljeno: bez nepotrebnog restarta
+        $s.Link.SetIconLocation($icon, 0)
+        $s.Link.Save()
+        $changed++
+    }
+    return $changed
+}
+
+function Restore-ExplorerShortcutIcons {
+    $restored = 0
+    foreach ($r in @(Read-JsonRecords $ShortcutManifestPath 'Path')) {
+        if ($r.BackupFile -and (Test-Path -LiteralPath $r.BackupFile) -and (Test-Path -LiteralPath (Split-Path -Parent $r.Path))) {
+            Copy-Item -LiteralPath $r.BackupFile -Destination $r.Path -Force
+            $restored++
+        }
+    }
+    return $restored
+}
+
+# Traka zadataka cita ikonice precica samo pri pokretanju Explorer-a.
+function Restart-ExplorerShell {
+    try { & "$env:SystemRoot\System32\ie4uinit.exe" -show } catch {}
+    Get-Process -Name explorer -ErrorAction SilentlyContinue | Stop-Process -Force
+    for ($i = 0; $i -lt 10 -and -not (Get-Process -Name explorer -ErrorAction SilentlyContinue); $i++) { Start-Sleep -Milliseconds 500 }
+    if (-not (Get-Process -Name explorer -ErrorAction SilentlyContinue)) { Start-Process explorer.exe }
+    Start-Sleep -Seconds 3
+}
+
 function Get-KnownFolderPath([string]$RegistryValue) {
     $k = [Microsoft.Win32.Registry]::CurrentUser.OpenSubKey('Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders')
     if ($null -eq $k) { return $null }

@@ -169,6 +169,7 @@ def main():
     # Novi masteri: Home i Gallery (plocice), Desktop (isti crtez kao Monitor, druga mala silueta)
     velike_plocice.build(PNG_DIR)
     load('Monitor').save(os.path.join(PNG_DIR, 'Desktop.png'))
+    load('Folder-3').save(os.path.join(PNG_DIR, 'Explorer.png'))   # File Explorer na traci zadataka
     names = sorted(os.path.splitext(f)[0] for f in os.listdir(PNG_DIR) if f.lower().endswith('.png'))
     out_dir = sys.argv[1] if len(sys.argv) > 1 else ICO_DIR   # opciono: druga izlazna fascikla
     os.makedirs(out_dir, exist_ok=True)

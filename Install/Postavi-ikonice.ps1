@@ -78,6 +78,11 @@ try {
     Send-ShellRefresh $touched.ToArray()
     try { & "$env:SystemRoot\System32\ie4uinit.exe" -show } catch {}
     Update-QuickAccessPins $touched.ToArray()
+    # File Explorer na traci zadataka i u Start meniju; traka ga ucitava tek posle restarta Explorer-a.
+    if ((Set-ExplorerShortcutIcons) -gt 0) {
+        Write-Host 'Restartujem File Explorer da bi traka zadataka prikazala novu ikonicu...'
+        Restart-ExplorerShell
+    }
     Write-Host 'Prilagodjene ikonice su postavljene za trenutnog Windows korisnika.' -ForegroundColor Green
     Write-Host 'Ako neka ikonica ostane stara, ponovo pokrenite File Explorer ili se odjavite i prijavite.'
     exit 0
