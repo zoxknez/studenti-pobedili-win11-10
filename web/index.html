@@ -179,6 +179,21 @@ dialog .close{position:absolute;top:-46px;right:0}
 .term .hl{color:#ff8fa3;font-weight:700}
 .term .dim{color:#7d7d7d}
 
+/* uskoro */
+.soon{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+@media (max-width:980px){.soon{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.soon{grid-template-columns:1fr}}
+.os{padding:26px;position:relative;overflow:hidden}
+.os::after{content:"";position:absolute;inset:auto -40% -60% auto;width:220px;height:220px;border-radius:50%;background:radial-gradient(closest-side,rgba(226,84,108,.16),transparent);pointer-events:none}
+.os .top{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+.os .ic{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;background:var(--surface2);box-shadow:inset 0 0 0 1px var(--border)}
+.os .ic svg{width:22px;height:22px;color:#ffc2cc}
+.os .status{font-size:12px;font-weight:700;padding:4px 10px;border-radius:999px;background:rgba(226,84,108,.16);color:#ffb3c0;letter-spacing:.3px}
+.os .status.next{background:rgba(255,244,241,.12);color:var(--cream)}
+.os h3{font-size:19px;font-weight:800;margin-bottom:6px}
+.os p{color:var(--muted);font-size:15px}
+.soon-cta{display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin-top:24px;color:var(--muted);font-size:15px}
+
 /* faq */
 .faq{display:grid;gap:12px;max-width:860px}
 details{background:var(--surface);border-radius:16px;box-shadow:inset 0 0 0 1px var(--border);padding:0 22px}
@@ -218,6 +233,7 @@ footer a{color:var(--muted)}
       <li><a href="#pozadine">Pozadine</a></li>
       <li><a href="#ikonice">Ikonice</a></li>
       <li><a href="#instalacija">Instalacija</a></li>
+      <li><a href="#uskoro">Uskoro</a></li>
       <li><a href="#pitanja">Pitanja</a></li>
     </ul>
     <a class="btn btn-ghost btn-sm" href="https://github.com/zoxknez/studenti-pobedili-win11-10" target="_blank" rel="noopener">
@@ -422,6 +438,41 @@ footer a{color:var(--muted)}
 
   [9]  Vrati originalne Windows ikonice
   [D]  Deinstaliraj sve i vrati prethodnu temu</pre>
+      </div>
+    </section>
+
+    <!-- USKORO -->
+    <section id="uskoro">
+      <div class="head reveal">
+        <div class="kicker">Uskoro</div>
+        <h2>Ne samo Windows.</h2>
+        <p>Ista bordo tema stiže i na druge sisteme. Pozadine i ikonice se prilagođavaju svakom sistemu, onoliko koliko on dozvoljava.</p>
+      </div>
+      <div class="soon">
+        <div class="card os reveal">
+          <div class="top"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M7 20h10M12 16v4M7 9l2 2-2 2M11 13h4"/></svg></span><span class="status">U pripremi</span></div>
+          <h3>Linux</h3>
+          <p>GNOME i KDE Plasma: pozadine, bordo šema boja, kompletan set ikonica i ekran za prijavu.</p>
+        </div>
+        <div class="card os reveal">
+          <div class="top"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M11 18h2"/></svg></span><span class="status">U pripremi</span></div>
+          <h3>Android</h3>
+          <p>Pozadine i zaključani ekran za telefon. Material You sam preuzima bordo boju iz pozadine.</p>
+        </div>
+        <div class="card os reveal">
+          <div class="top"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M10 5h4"/></svg></span><span class="status">U pripremi</span></div>
+          <h3>iPhone</h3>
+          <p>Pozadine i zaključani ekran u punoj rezoluciji, napravljeni za uspravni ekran.</p>
+        </div>
+        <div class="card os reveal">
+          <div class="top"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H4z"/><path d="M2 19h20"/></svg></span><span class="status next">Planirano</span></div>
+          <h3>macOS</h3>
+          <p>Pozadine, ikonice fascikli i tamni ili svetli režim, u okviru onoga što macOS dozvoljava.</p>
+        </div>
+      </div>
+      <div class="soon-cta reveal">
+        <a class="btn btn-ghost btn-sm" href="https://github.com/zoxknez/studenti-pobedili-win11-10/releases" target="_blank" rel="noopener">Pratite izdanja na GitHub-u</a>
+        <span>Nova verzija se pojavljuje na stranici izdanja čim bude spremna.</span>
       </div>
     </section>
 

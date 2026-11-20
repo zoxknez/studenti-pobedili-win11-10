@@ -39,6 +39,17 @@ i otvorite ga dvoklikom (pre toga zatvorite Settings).
 
 <div align="center"><img src="Preview/Pregled-Ikonica.png" width="860" alt="Pregled ikonica"></div>
 
+## Uskoro
+
+| Sistem | Status | Šta će sadržati |
+|---|---|---|
+| **Linux** (GNOME, KDE Plasma) | U pripremi | Pozadine, bordo šema boja, set ikonica, ekran za prijavu |
+| **Android** | U pripremi | Pozadine i zaključani ekran (Material You preuzima bordo iz pozadine) |
+| **iPhone** | U pripremi | Pozadine i zaključani ekran za uspravni ekran |
+| **macOS** | Planirano | Pozadine, ikonice fascikli, tamni ili svetli režim |
+
+Nove verzije se pojavljuju na stranici [izdanja](https://github.com/zoxknez/studenti-pobedili-win11-10/releases).
+
 ## Bezbednost
 
 - Menja samo podešavanja **trenutnog korisnika** (HKCU), bez programa i interneta.
