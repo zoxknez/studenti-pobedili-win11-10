@@ -1,0 +1,84 @@
+STUDENTI POBEDILI - OBJAVA ZA X (thread od 7 tvitova)
+=====================================================
+Slike su u ovoj fascikli; broj na početku fajla = broj tvita.
+
+
+1/7   slika: 1-Svi-sistemi.jpg
+----
+🎓 Studenti pobedili - bordo tema sada za sve vaše uređaje!
+
+💻 Windows 11 i 10
+🐧 Linux (GNOME, KDE, Unity)
+🍏 macOS (beta)
+📱 Android i iPhone
+
+Besplatno, bez admin prava, uz potpunu deinstalaciju 👇
+https://studenti-tema.vercel.app
+
+#StudentiPobedili 🧵
+
+
+2/7   slike: 2a-Windows-Bordo.jpg, 2b-Windows-Explorer.jpg, 2c-Windows-Svetla.jpg, 2d-Windows-Ikonice.jpg
+----
+💻 Windows 11 i 10:
+• 8 pozadina u 4K i slideshow
+• 31 ikonica, uključujući File Explorer i levu navigaciju
+• Bordo i Svetla varijanta
+• Zaključani ekran i zvuk „Pobeda“
+
+Raspakujte ZIP i pokrenite INSTALIRAJ.cmd › opcija 1.
+
+
+3/7   slika: 3-Linux.jpg
+----
+🐧 Linux, GNOME i KDE Plasma:
+• pozadine prate tamni i svetli režim
+• bordo šeme boja i naslovne trake
+• tema ikonica za Files i Dolphin
+
+Bez sudo, a deinstalacija vraća sva prethodna podešavanja.
+https://studenti-tema.vercel.app/#linux
+
+
+4/7   bez slike
+----
+🙌 Posebna zahvalnost @UrosUbuntu, koji je napravio verziju za Ubuntu Unity 7: pozadine, zaključani ekran, ikonice i GTK teme.
+
+Izvorni kod: https://github.com/urosg3/studenti_pobedili_Unity
+
+
+5/7   slika: 4-macOS.jpg
+----
+🍏 macOS (beta): pozadina, tamni režim, crveni akcenat i nove ikonice fascikli, bez admin lozinke.
+
+Imate Mac? Isprobajte i javite nam kako radi, svaka povratna informacija pomaže 🙏
+https://studenti-tema.vercel.app/#macos
+
+
+6/7   slika: 5-Android-iPhone.jpg
+----
+📱 Android i iPhone: 4 pozadine za uspravni ekran, bordo boje sistema i ikonice i zvuk „Pobeda“ za poruke. Bez ijedne aplikacije.
+
+Pozadine sačuvajte direktno sa sajta 👇
+https://studenti-tema.vercel.app/#telefon
+
+
+7/7   bez slike
+----
+🔓 Ceo kod je javan. Bez programa i interneta, a svaka izmena može da se vrati.
+
+⭐ GitHub: https://github.com/zoxknez/studenti-pobedili-win11-10
+
+Ako vam se dopada, podelite 🔁
+
+
+SAMOSTALNA OBJAVA (ako ne želite thread)   slika: 1-Svi-sistemi.jpg
+---------------------------------------
+🎓 Studenti pobedili - besplatna bordo tema za Windows, Linux, macOS, Android i iPhone!
+
+Pozadine u 4K, 31 ikonica, zaključani ekran i zvuk „Pobeda“. Bez admin prava, uz potpunu deinstalaciju.
+
+👇 Preuzmite:
+https://studenti-tema.vercel.app
+
+#StudentiPobedili
