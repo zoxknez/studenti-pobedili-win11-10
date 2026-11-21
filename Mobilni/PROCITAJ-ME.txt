@@ -1,0 +1,79 @@
+STUDENTI POBEDILI - TEMA ZA ANDROID I iPHONE
+============================================
+
+Nezvanična fan-made personalizacija. Paket nema aplikacija ni
+programa: samo slike i zvuk, pa nije potrebna nikakva dozvola.
+
+U PAKETU
+--------
+Pozadine/   4 pozadine za telefon (1440 x 3120, za sve veličine ekrana)
+            1-Bordo-Skupstina, 2-Bordo-Univerzitet, 3-Bordo-Trojka, 4-Svetla
+Zvuk/       Pobeda.ogg (Android), Pobeda.m4a i Pobeda.m4r (iPhone)
+
+Gornji deo pozadina je namerno miran, da sat na zaključanom ekranu
+ostane čitljiv.
+
+
+ANDROID
+=======
+
+1. Pozadina
+   Otvorite sliku u Galeriji ili Google Photos › ⋮ › Postavi kao
+   pozadinu › Početni i zaključani ekran.
+
+2. Bordo boje sistema (Android 12 i noviji)
+   Podešavanja › Pozadina i stil › Boje pozadine: izaberite crvenu,
+   odnosno bordo paletu koju telefon izvuče iz pozadine.
+   Samsung: Podešavanja › Pozadina i stil › Paleta boja.
+
+3. Bordo ikonice (Android 13 i noviji)
+   Pozadina i stil › uključite „Tematske ikonice“. Ikonice aplikacija
+   dobijaju nijansu iz pozadine.
+
+4. Tamni režim za Bordo
+   Podešavanja › Ekran › Tamna tema.
+
+5. Zvuk „Pobeda“
+   Kopirajte Pobeda.ogg u fasciklu Notifications u memoriji telefona
+   (preko aplikacije Fajlovi ili kabla). Zatim Podešavanja › Zvuk ›
+   Podrazumevani zvuk obaveštenja › Pobeda.
+   Na Pixel telefonima možete i: Moji zvuci › + › Pobeda.ogg.
+
+Nazivi menija se malo razlikuju od proizvođača do proizvođača.
+
+
+iPHONE
+======
+
+1. Pozadina
+   Otvorite ZIP u aplikaciji Files, dodirnite sliku › Share ›
+   Save Image. Zatim u Photos: Share › Use as Wallpaper.
+   (Ili Settings › Wallpaper › Add New Wallpaper › Photos.)
+
+2. Bordo ikonice (iOS 18 i noviji)
+   Na početnom ekranu dugo pritisnite prazno mesto › Edit ›
+   Customize › Tinted. Klizač boje povucite na crvenu, a drugi
+   klizač ulevo, dok ne dobijete bordo.
+
+3. Tamni režim za Bordo
+   Settings › Display & Brightness › Dark.
+
+4. Zvuk „Pobeda“
+   iOS 26 i noviji: u aplikaciji Files dodirnite Pobeda.m4a › Share ›
+   Use as Ringtone (može biti pod More). Zatim Settings ›
+   Sounds & Haptics › Text Tone › Pobeda.
+   Starije verzije: povežite iPhone sa računarom i prevucite
+   Pobeda.m4r na telefon u Finder-u (Mac) ili u aplikaciji
+   Apple Devices (Windows).
+
+Zvuk traje manje od sekunde, pa je najlepši kao ton za poruke i
+obaveštenja, a ne kao melodija zvona.
+
+
+ŠTA TELEFONI NE DOZVOLJAVAJU
+----------------------------
+Ikonice pojedinačnih aplikacija i fascikli ne mogu se promeniti
+paketom kao na računaru. Android to dozvoljava samo uz poseban
+launcher, a iPhone samo ručno, ikonicu po ikonicu, kroz Shortcuts.
+
+Više: https://studenti-tema.vercel.app

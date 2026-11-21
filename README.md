@@ -2,7 +2,7 @@
 
 <img src="web/assets/favicon.svg" width="72" alt="">
 
-# Studenti pobedili - tema za Windows, Linux i macOS
+# Studenti pobedili - tema za Windows, Linux, macOS i telefon
 
 **Bordo tema sa 8 pozadina u 4K, 31 ikonicom, zaključanim ekranom i zvukom.**
 Instalacija jednim klikom, bez admin prava, potpuna deinstalacija.
@@ -10,6 +10,7 @@ Instalacija jednim klikom, bez admin prava, potpuna deinstalacija.
 [**⬇ Windows (ZIP)**](https://github.com/zoxknez/studenti-pobedili-win11-10/releases/latest/download/StudentiPobedili-Windows-v2.zip)
 &nbsp;·&nbsp; [**⬇ Linux (tar.gz)**](https://github.com/zoxknez/studenti-pobedili-win11-10/releases/latest/download/StudentiPobedili-Linux.tar.gz)
 &nbsp;·&nbsp; [**⬇ macOS (ZIP, beta)**](https://github.com/zoxknez/studenti-pobedili-win11-10/releases/latest/download/StudentiPobedili-macOS.zip)
+&nbsp;·&nbsp; [**⬇ Android i iPhone (ZIP)**](https://github.com/zoxknez/studenti-pobedili-win11-10/releases/latest/download/StudentiPobedili-Mobilni.zip)
 &nbsp;·&nbsp; [Sva izdanja](https://github.com/zoxknez/studenti-pobedili-win11-10/releases)
 
 <img src="web/assets/hero.webp" width="860" alt="Windows radna površina sa temom Studenti pobedili">
@@ -77,14 +78,19 @@ Bez admin lozinke. Postavlja Bordo ili Svetlu pozadinu, tamni ili svetli režim,
 
 <div align="center"><img src="Preview/Pregled-Ikonica.png" width="860" alt="Pregled ikonica"></div>
 
-## Uskoro
+## Android i iPhone
 
-| Sistem | Status | Šta će sadržati |
+[**`StudentiPobedili-Mobilni.zip`**](https://github.com/zoxknez/studenti-pobedili-win11-10/releases/latest/download/StudentiPobedili-Mobilni.zip) (1,2 MB) sadrži četiri pozadine za uspravni ekran (1440×3120), zvuk „Pobeda“ (`.ogg` za Android, `.m4a` i `.m4r` za iPhone) i uputstvo. Nema aplikacija ni dozvola. Pozadine se mogu sačuvati i direktno sa [sajta](https://studenti-tema.vercel.app/#telefon).
+
+| | Android (12+) | iPhone (iOS 18+) |
 |---|---|---|
-| **Android** | U pripremi | Pozadine i zaključani ekran (Material You preuzima bordo iz pozadine) |
-| **iPhone** | U pripremi | Pozadine i zaključani ekran za uspravni ekran |
+| **Pozadina** | Galerija › ⋮ › Postavi kao pozadinu | Photos › Share › Use as Wallpaper |
+| **Bordo boje** | Pozadina i stil › Boje pozadine (Material You iz pozadine) i „Tematske ikonice“ | Edit › Customize › Tinted, klizač na crvenu |
+| **Zvuk** | `Pobeda.ogg` u fasciklu Notifications, pa izbor u podešavanjima zvuka | iOS 26: Files › `Pobeda.m4a` › Share › Use as Ringtone; starije verzije: `Pobeda.m4r` preko Finder-a ili Apple Devices |
 
-Nove verzije se pojavljuju na stranici [izdanja](https://github.com/zoxknez/studenti-pobedili-win11-10/releases).
+Gornji deo pozadina je namerno miran, da sat na zaključanom ekranu ostane čitljiv.
+
+<div align="center"><img src="Preview/Telefon.jpg" width="860" alt="Četiri pozadine za telefon"></div>
 
 ## Bezbednost
 
@@ -97,9 +103,10 @@ Nove verzije se pojavljuju na stranici [izdanja](https://github.com/zoxknez/stud
 ```
 INSTALIRAJ.cmd          glavni meni
 Install/                PowerShell skripte (tema, ikonice, zaključani ekran, zvuk, deinstalacija)
-Install/Alati/          alati: Napravi-themepack.ps1, Napravi-ikonice.py, Napravi-linux.py, Napravi-mac.py (Python + Pillow)
+Install/Alati/          alati: Napravi-themepack.ps1, Napravi-ikonice.py, Napravi-linux.py, Napravi-mac.py, Napravi-mobilne.py (Python + Pillow)
 Linux/                  install.sh, tema ikonica (freedesktop), KDE šeme boja
 macOS/                  install.command (beta)
+Mobilni/                pozadine i zvuk za Android i iPhone
 Teme/                   .deskthemepack paketi
 Wallpapers/ LockScreen/ Icons/ Sounds/ Preview/
 web/                    sajt (Vercel: vercel.json → outputDirectory "web")

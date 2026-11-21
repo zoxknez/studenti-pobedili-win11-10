@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Studenti pobedili - tema za Windows, Linux i macOS</title>
-<meta name="description" content="Besplatna bordo tema za Windows 11, 10, Linux i macOS: 8 pozadina u 4K, 31 ikonica, zaključani ekran i zvuk. Instalacija jednim klikom, bez admin prava, potpuna deinstalacija.">
+<title>Studenti pobedili - tema za Windows, Linux, macOS i telefon</title>
+<meta name="description" content="Besplatna bordo tema za Windows 11, 10, Linux, macOS, Android i iPhone: 8 pozadina u 4K, 31 ikonica, zaključani ekran i zvuk. Instalacija jednim klikom, bez admin prava, potpuna deinstalacija.">
 <meta name="theme-color" content="#0b0406">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Studenti pobedili - tema za Windows, Linux i macOS">
+<meta property="og:title" content="Studenti pobedili - tema za Windows, Linux, macOS i telefon">
 <meta property="og:description" content="8 pozadina u 4K, 31 ikonica, zaključani ekran i zvuk. Besplatno, instalacija jednim klikom.">
 <meta property="og:image" content="https://raw.githubusercontent.com/zoxknez/studenti-pobedili-win11-10/main/web/assets/og.jpg">
 <meta property="og:image:width" content="1200">
@@ -48,7 +48,7 @@ header{position:sticky;top:0;z-index:50;backdrop-filter:saturate(140%) blur(14px
 .nav ul{display:flex;gap:26px;list-style:none;margin-left:auto}
 .nav ul a{text-decoration:none;color:var(--muted);font-weight:600;font-size:15px}
 .nav ul a:hover{color:var(--text)}
-@media (max-width:860px){.nav ul{display:none}.nav .btn-ghost{margin-left:auto}}
+@media (max-width:1040px){.nav ul{display:none}.nav .btn-ghost{margin-left:auto}}
 
 /* buttons */
 .btn{display:inline-flex;align-items:center;gap:10px;padding:14px 22px;border-radius:14px;font-weight:700;font-size:16px;text-decoration:none;border:0;cursor:pointer;transition:transform .2s,box-shadow .2s,background .2s}
@@ -213,8 +213,7 @@ dialog .close{position:absolute;top:-46px;right:0}
 .mac-icons img:nth-of-type(4){grid-area:3/1}.mac-icons img:nth-of-type(5){grid-area:3/2}.mac-icons img:nth-of-type(6){grid-area:3/3}
 .mac-icons span:nth-of-type(4){grid-area:4/1}.mac-icons span:nth-of-type(5){grid-area:4/2}.mac-icons span:nth-of-type(6){grid-area:4/3}
 .soon{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;max-width:780px}
-@media (max-width:560px){.soon{grid-template-columns:1fr}}
-@media (max-width:560px){.soon{grid-template-columns:1fr}}
+@media (max-width:700px){.soon{grid-template-columns:1fr}}
 .os{padding:26px;position:relative;overflow:hidden}
 .os::after{content:"";position:absolute;inset:auto -40% -60% auto;width:220px;height:220px;border-radius:50%;background:radial-gradient(closest-side,rgba(226,84,108,.16),transparent);pointer-events:none}
 .os .top{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
@@ -224,6 +223,20 @@ dialog .close{position:absolute;top:-46px;right:0}
 .os .status.next{background:rgba(255,244,241,.12);color:var(--cream)}
 .os h3{font-size:19px;font-weight:800;margin-bottom:6px}
 .os p{color:var(--muted);font-size:15px}
+.phones{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;max-width:980px}
+@media (max-width:760px){.phones{grid-template-columns:repeat(2,1fr);gap:16px}}
+.phone{position:relative;display:block;aspect-ratio:600/1300;border-radius:34px;overflow:hidden;background:#1a0d11;box-shadow:0 0 0 6px #1d1114,0 0 0 7px rgba(255,214,222,.16),0 30px 60px -24px rgba(0,0,0,.85);transition:transform .3s}
+.phone:hover{transform:translateY(-6px)}
+.phone img{width:100%;height:100%;object-fit:cover}
+.phone::before{content:"";position:absolute;top:2.4%;left:50%;width:30%;height:3.4%;transform:translateX(-50%);border-radius:999px;background:#000;z-index:1}
+.phone .clock{position:absolute;top:8%;left:0;right:0;text-align:center;color:#fff;font-weight:700;font-size:clamp(30px,5.2vw,54px);line-height:1;letter-spacing:-1px;text-shadow:0 2px 14px rgba(0,0,0,.25)}
+.phone .clock small{display:block;font-size:12px;font-weight:600;letter-spacing:.2px;margin-bottom:4px;opacity:.9}
+.phone.light .clock{color:#2a1218;text-shadow:none}
+.phone .cap{position:absolute;left:10px;right:10px;bottom:12px;padding:7px 10px;border-radius:12px;background:rgba(11,4,6,.62);backdrop-filter:blur(8px);color:var(--cream);font-size:13px;font-weight:700;text-align:center}
+.phones-hint{margin:22px 0 40px;color:var(--faint);font-size:14px;max-width:640px}
+.soon.tel{max-width:none}
+.os ol{padding-left:20px;display:grid;gap:8px;color:var(--muted);font-size:15px}
+.os ol li::marker{color:var(--rose);font-weight:800}
 .soon-cta{display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin-top:24px;color:var(--muted);font-size:15px}
 
 /* faq */
@@ -267,6 +280,7 @@ footer a{color:var(--muted)}
       <li><a href="#instalacija">Instalacija</a></li>
       <li><a href="#linux">Linux</a></li>
       <li><a href="#macos">macOS</a></li>
+      <li><a href="#telefon">Telefon</a></li>
       <li><a href="#pitanja">Pitanja</a></li>
     </ul>
     <a class="btn btn-ghost btn-sm" href="https://github.com/zoxknez/studenti-pobedili-win11-10" target="_blank" rel="noopener">
@@ -280,7 +294,7 @@ footer a{color:var(--muted)}
   <div class="wrap">
     <div class="hero">
       <div>
-        <span class="eyebrow"><b>●</b> Windows 11 i 10 · <a href="#linux" style="color:inherit">Linux</a> · <a href="#macos" style="color:inherit">macOS</a></span>
+        <span class="eyebrow"><b>●</b> Windows 11 i 10 · <a href="#linux" style="color:inherit">Linux</a> · <a href="#macos" style="color:inherit">macOS</a> · <a href="#telefon" style="color:inherit">Telefon</a></span>
         <h1><span>Студенти</span><span>победили<em>.</em></span></h1>
         <p class="lead">Kompletna bordo tema za vaš računar: osam pozadina u 4K, 31 ručno doterana ikonica, zaključani ekran i zvuk obaveštenja. Instalacija jednim klikom, a vraćanje bez traga.</p>
         <div class="cta">
@@ -577,28 +591,65 @@ footer a{color:var(--muted)}
       </div>
     </section>
 
-    <!-- USKORO -->
-    <section id="uskoro">
+    <!-- TELEFON -->
+    <section id="telefon">
       <div class="head reveal">
-        <div class="kicker">Uskoro</div>
-        <h2>Sledeće: telefon.</h2>
-        <p>Pozadine i zaključani ekran, napravljeni za uspravni ekran.</p>
+        <div class="kicker">Novo · Telefon</div>
+        <h2>I za telefon.</h2>
+        <p>Četiri pozadine napravljene za uspravni ekran, bordo boje sistema i zvuk „Pobeda“ za poruke. Za Android i iPhone, bez ijedne aplikacije.</p>
       </div>
-      <div class="soon">
+      <div class="phones reveal">
+          <a class="phone" href="assets/mob/1-Bordo-Skupstina.jpg" target="_blank" rel="noopener" aria-label="Bordo · Skupština, puna veličina 1440×3120">
+            <img src="assets/mob/1-Bordo-Skupstina.webp" width="600" height="1300" alt="Pozadina za telefon Bordo · Skupština" loading="lazy">
+            <span class="clock" aria-hidden="true"><small>nedelja, 25. oktobar</small>20:26</span>
+            <span class="cap">Bordo · Skupština</span>
+          </a>
+          <a class="phone" href="assets/mob/2-Bordo-Univerzitet.jpg" target="_blank" rel="noopener" aria-label="Bordo · Univerzitet, puna veličina 1440×3120">
+            <img src="assets/mob/2-Bordo-Univerzitet.webp" width="600" height="1300" alt="Pozadina za telefon Bordo · Univerzitet" loading="lazy">
+            <span class="clock" aria-hidden="true"><small>nedelja, 25. oktobar</small>20:26</span>
+            <span class="cap">Bordo · Univerzitet</span>
+          </a>
+          <a class="phone" href="assets/mob/3-Bordo-Trojka.jpg" target="_blank" rel="noopener" aria-label="Bordo · Trojka, puna veličina 1440×3120">
+            <img src="assets/mob/3-Bordo-Trojka.webp" width="600" height="1300" alt="Pozadina za telefon Bordo · Trojka" loading="lazy">
+            <span class="clock" aria-hidden="true"><small>nedelja, 25. oktobar</small>20:26</span>
+            <span class="cap">Bordo · Trojka</span>
+          </a>
+          <a class="phone light" href="assets/mob/4-Svetla.jpg" target="_blank" rel="noopener" aria-label="Svetla, puna veličina 1440×3120">
+            <img src="assets/mob/4-Svetla.webp" width="600" height="1300" alt="Pozadina za telefon Svetla" loading="lazy">
+            <span class="clock" aria-hidden="true"><small>nedelja, 25. oktobar</small>20:26</span>
+            <span class="cap">Svetla</span>
+          </a>
+      </div>
+      <p class="phones-hint reveal">Otvorite ovu stranicu na telefonu i dodirnite pozadinu: otvoriće se u punoj veličini (1440×3120). Zatim je dugo pritisnite i sačuvajte.</p>
+
+      <div class="soon tel">
         <div class="card os reveal">
-          <div class="top"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M11 18h2"/></svg></span><span class="status">U pripremi</span></div>
+          <div class="top"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M11 18h2"/></svg></span><span class="status">Android 12+</span></div>
           <h3>Android</h3>
-          <p>Pozadine i zaključani ekran za telefon. Material You sam preuzima bordo boju iz pozadine.</p>
+          <ol>
+            <li>Postavite pozadinu: Galerija › ⋮ › Postavi kao pozadinu.</li>
+            <li>Pozadina i stil › Boje pozadine: telefon sam izvlači bordo paletu iz slike.</li>
+            <li>Uključite „Tematske ikonice“, pa i ikonice dobijaju bordo nijansu.</li>
+            <li>Pobeda.ogg kopirajte u fasciklu Notifications i izaberite ga u podešavanjima zvuka.</li>
+          </ol>
         </div>
         <div class="card os reveal">
-          <div class="top"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M10 5h4"/></svg></span><span class="status">U pripremi</span></div>
+          <div class="top"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M10 5h4"/></svg></span><span class="status">iOS 18+</span></div>
           <h3>iPhone</h3>
-          <p>Pozadine i zaključani ekran u punoj rezoluciji, napravljeni za uspravni ekran.</p>
+          <ol>
+            <li>Sačuvajte sliku u Photos, pa Share › Use as Wallpaper.</li>
+            <li>Bordo ikonice: dugo pritisnite početni ekran › Edit › Customize › Tinted, pa klizač na crvenu.</li>
+            <li>Settings › Display &amp; Brightness › Dark za Bordo varijantu.</li>
+            <li>iOS 26: Pobeda.m4a u Files › Share › Use as Ringtone, pa Sounds &amp; Haptics › Text Tone.</li>
+          </ol>
         </div>
       </div>
       <div class="soon-cta reveal">
-        <a class="btn btn-ghost btn-sm" href="https://github.com/zoxknez/studenti-pobedili-win11-10/releases" target="_blank" rel="noopener">Pratite izdanja na GitHub-u</a>
-        <span>Nova verzija se pojavljuje na stranici izdanja čim bude spremna.</span>
+        <a class="btn btn-primary" href="https://github.com/zoxknez/studenti-pobedili-win11-10/releases/latest/download/StudentiPobedili-Mobilni.zip">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0l-5-5m5 5l5-5M4 21h16"/></svg>
+          Preuzmite za telefon <small>ZIP · 1,2 MB</small>
+        </a>
+        <span>Pozadine, zvuk za Android (.ogg) i iPhone (.m4a, .m4r) i uputstvo korak po korak.</span>
       </div>
     </section>
 
@@ -615,6 +666,7 @@ footer a{color:var(--muted)}
         <details><summary>Šta je .deskthemepack?</summary><p>Pravi Windows paket teme: dvoklik instalira pozadine, akcentnu boju i tamni ili svetli režim, bez skripti. Ikonice, zaključani ekran i zvuk postavlja samo <code>INSTALIRAJ.cmd</code>. Pre dvoklika zatvorite Settings.</p></details>
         <details><summary>Radi li na Mac-u?</summary><p>Da, kao beta verzija. Preuzmite <code>StudentiPobedili-macOS.zip</code>, raspakujte ga i u Terminalu pokrenite <code>./install.command</code>. macOS će tražiti dozvolu da Terminal upravlja aplikacijom System Events i pristupa fasciklama; obe odobrite. Akcentna boja je crvena jer Apple ne dozvoljava proizvoljnu boju, a ikonice u Dock-u i sidebar-u sistem ne dozvoljava da se menjaju.</p></details>
         <details><summary>Radi li na Linux-u?</summary><p>Da, na GNOME-u (Ubuntu, Fedora, Debian…) i KDE Plasma 5.24+ i 6. Preuzmite <code>StudentiPobedili-Linux.tar.gz</code>, raspakujte ga i pokrenite <code>./install.sh</code>, bez sudo. Za Ubuntu Unity 7 postoji <a href="#unity">verzija iz zajednice</a>. Na ostalim okruženjima (Cinnamon, XFCE) instaliraju se ikonice i pozadine, a birate ih ručno.</p></details>
+        <details><summary>Ima li za telefon?</summary><p>Ima, za Android i iPhone. Paket <code>StudentiPobedili-Mobilni.zip</code> sadrži četiri pozadine za uspravni ekran, zvuk „Pobeda“ i uputstvo. Nema aplikacija ni dozvola: pozadinu postavljate sami, a bordo boje sistema Android izvlači iz pozadine, dok ih na iPhone-u birate preko „Tinted“ ikonica. Pozadine možete sačuvati i direktno sa <a href="#telefon">ove stranice</a>.</p></details>
         <details><summary>Radi li na Windows 10?</summary><p>Tema, pozadine, ikonice, zaključani ekran i zvuk rade na Windows 10 i 11. Home i Gallery u levoj navigaciji postoje samo na Windows 11.</p></details>
       </div>
     </section>
