@@ -52,7 +52,7 @@ try {
         if ($item.Existed -and $item.BackupFile -and (Test-Path -LiteralPath $item.BackupFile)) {
             Clear-FileAttributes $ini
             Copy-Item -LiteralPath $item.BackupFile -Destination $ini -Force
-            if ($null -ne $item.DesktopIniAttributes) { [System.IO.File]::SetAttributes($ini, [System.IO.FileAttributes][int]$item.DesktopIniAttributes) }
+            if ($null -ne $item.DesktopIniAttributes) { Set-FileAttributesSafe $ini ([int64]$item.DesktopIniAttributes) }
         } elseif ($item.Existed) {
             # Rezervna kopija nedostaje: NE brisemo desktop.ini, vec vracamo originalnu Windows ikonicu.
             if ($kf) { Set-DesktopIniIcon -Path $ini -IconValue $kf.DefaultIcon } else { Set-DesktopIniIcon -Path $ini -IconValue $null }
@@ -61,7 +61,7 @@ try {
             $rest = @(@(Read-IniLines $ini) | Where-Object { $_.Trim() -and $_ -notmatch '^\s*\[\.ShellClassInfo\]\s*$' })
             if ($rest.Count -eq 0) { Clear-FileAttributes $ini; Remove-Item -LiteralPath $ini -Force }
         }
-        if ($null -ne $item.FolderAttributes) { [System.IO.File]::SetAttributes($folder, [System.IO.FileAttributes][int]$item.FolderAttributes) }
+        if ($null -ne $item.FolderAttributes) { Set-FileAttributesSafe $folder ([int64]$item.FolderAttributes) }
         $touched.Add($folder)
     }
 

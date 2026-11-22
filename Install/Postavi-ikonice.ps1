@@ -69,8 +69,8 @@ try {
             Save-FolderManifest $folderManifest
         }
         # ReadOnly atribut na fascikli je uslov da Explorer procita desktop.ini
-        $fa = [System.IO.File]::GetAttributes($folderPath)
-        if (($fa -band [System.IO.FileAttributes]::ReadOnly) -eq 0) { [System.IO.File]::SetAttributes($folderPath, $fa -bor [System.IO.FileAttributes]::ReadOnly) }
+        $fa = [int][System.IO.File]::GetAttributes($folderPath)
+        if (($fa -band 0x1) -eq 0) { Set-FileAttributesSafe $folderPath ($fa -bor 0x1) }
         Set-DesktopIniIcon -Path $iniPath -IconValue ('{0},0' -f (Join-Path $IcoDir $kf.Icon))
         $touched.Add($folderPath)
     }

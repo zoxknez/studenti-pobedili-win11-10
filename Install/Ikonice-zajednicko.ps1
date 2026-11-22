@@ -231,8 +231,21 @@ function Read-IniLines([string]$Path) {
     return [string[]]($text -split "`r?`n")
 }
 
+# Postavlja samo klasicne atribute (ReadOnly, Hidden, System, Archive, Temporary, NotContentIndexed),
+# a ostale bitove ostavlja kakvi su sada. OneDrive dodaje bitove (Pinned 0x80000, Unpinned 0x100000,
+# RecallOnDataAccess...) koje .NET FileAttributes u Windows PowerShell 5.1 ne poznaje, pa bi obicna
+# konverzija broja u [System.IO.FileAttributes] pukla, a menjanje tih bitova bi promenilo OneDrive podesavanje.
+function Set-FileAttributesSafe([string]$Path, [int]$Value) {
+    if (-not (Test-Path -LiteralPath $Path)) { return }
+    $classic = 0x1 -bor 0x2 -bor 0x4 -bor 0x20 -bor 0x100 -bor 0x2000
+    $current = [int][System.IO.File]::GetAttributes($Path)
+    $new = ($current -band (-bnot $classic)) -bor ($Value -band $classic)
+    if (($new -band (-bnot 0x10)) -eq 0) { $new = $new -bor 0x80 }   # Normal kada nista drugo nije postavljeno
+    [System.IO.File]::SetAttributes($Path, [Enum]::ToObject([System.IO.FileAttributes], $new))
+}
+
 function Clear-FileAttributes([string]$Path) {
-    if (Test-Path -LiteralPath $Path -PathType Leaf) { [System.IO.File]::SetAttributes($Path, [System.IO.FileAttributes]::Normal) }
+    if (Test-Path -LiteralPath $Path -PathType Leaf) { Set-FileAttributesSafe $Path 0 }
 }
 
 # Postavlja (ili sa $IconValue = $null uklanja) ikonicu u [.ShellClassInfo] sekciji.
@@ -256,5 +269,5 @@ function Set-DesktopIniIcon([string]$Path, [string]$IconValue) {
     if ($IconValue) { $lines.Insert($sec + 1, "IconResource=$IconValue") }
     Clear-FileAttributes $Path
     [System.IO.File]::WriteAllLines($Path, $lines.ToArray(), [System.Text.Encoding]::Unicode)
-    [System.IO.File]::SetAttributes($Path, [System.IO.FileAttributes]::Hidden -bor [System.IO.FileAttributes]::System)
+    Set-FileAttributesSafe $Path 0x6   # Hidden + System
 }
