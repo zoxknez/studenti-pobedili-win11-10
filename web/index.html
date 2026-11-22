@@ -96,6 +96,13 @@ h1 em{font-style:normal;color:var(--rose)}
 .stats div{background:var(--bg2);padding:26px 24px}
 .stats b{display:block;font-size:34px;font-weight:800;letter-spacing:-.5px}
 .stats span{color:var(--muted);font-size:14px;font-weight:600}
+.news{margin-top:20px;padding:22px 26px;display:grid;grid-template-columns:auto 1fr;gap:6px 22px;align-items:start}
+.news-tag{grid-row:span 2;align-self:start;padding:6px 12px;border-radius:999px;background:rgba(226,84,108,.16);color:#ffb3c0;font-size:13px;font-weight:800;letter-spacing:.3px;white-space:nowrap}
+.news ul{list-style:none;display:grid;gap:6px;color:var(--muted);font-size:15px}
+.news li b{color:var(--text)}
+.news a{color:#ffb3c0}
+.news p{color:var(--faint);font-size:14px}
+@media (max-width:640px){.news{grid-template-columns:1fr;padding:20px}.news-tag{grid-row:auto;justify-self:start}}
 @media (max-width:760px){.stats{grid-template-columns:repeat(2,1fr)}}
 
 /* sections */
@@ -345,6 +352,16 @@ footer a{color:var(--muted)}
       <div><b>31</b><span>ikonica, 16-256 px</span></div>
       <div><b>2</b><span>varijante: tamna i svetla</span></div>
       <div><b>1</b><span>klik za instalaciju</span></div>
+    </div>
+
+    <div class="news card reveal" id="novo">
+      <div class="news-tag">Novo u 2.4</div>
+      <ul>
+        <li><b>Nove pozadine sa srpskim zastavama.</b> Hvala vam na sugestijama: sve pozadine su redizajnirane i uvećane do 4K.</li>
+        <li><b>Nova serija:</b> deset dodatnih ilustracija koje možete <a href="#nova">preuzeti ovde</a>.</li>
+        <li><b>Ispravka:</b> deinstalacija više ne prijavljuje grešku „FileAttributes“ kada su fascikle u OneDrive-u. Ako ste je dobili, preuzmite paket ponovo i pokrenite opciju D.</li>
+      </ul>
+      <p>Već imate temu? Samo je instalirajte ponovo i stare pozadine će se same zameniti novim.</p>
     </div>
 
     <!-- VARIJANTE -->
