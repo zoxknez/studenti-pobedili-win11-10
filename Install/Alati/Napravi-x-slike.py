@@ -61,13 +61,21 @@ def pill(d, x, y, text, f, fill=(255, 236, 240, 30), color=CREAM, pad=(18, 9), o
     return x + tw + pad[0] * 2
 
 
-def phone(img, path, x, y, w):
-    h = int(w * 3120 / 1440)
-    shadow(img, (x, y, x + w, y + h), 40, blur=30, alpha=190)
+def cover(im, w, h):
+    s = max(w / im.width, h / im.height)
+    im = im.resize((round(im.width * s), round(im.height * s)), Image.LANCZOS)
+    x, y = (im.width - w) // 2, (im.height - h) // 2
+    return im.crop((x, y, x + w, y + h))
+
+
+def phone(img, path, x, y, w, radius=38):
+    """Telefon 9:19.5; pozadina 9:16 se iseca sa strana, kao na pravom telefonu."""
+    h = int(w * 19.5 / 9)
+    shadow(img, (x, y, x + w, y + h), radius + 2, blur=30, alpha=190)
     d = ImageDraw.Draw(img)
-    d.rounded_rectangle([x - 8, y - 8, x + w + 8, y + h + 8], 46, fill=(29, 17, 20), outline=(95, 62, 72), width=2)
-    rounded_paste(img, Image.open(path).convert('RGB').resize((w, h), Image.LANCZOS), (x, y), 38)
-    d.rounded_rectangle([x + w / 2 - w * 0.15, y + h * 0.022, x + w / 2 + w * 0.15, y + h * 0.055], 999, fill=(0, 0, 0))
+    d.rounded_rectangle([x - 8, y - 8, x + w + 8, y + h + 8], radius + 8, fill=(29, 17, 20), outline=(95, 62, 72), width=2)
+    rounded_paste(img, cover(Image.open(path).convert('RGB'), w, h), (x, y), radius)
+    d.rounded_rectangle([x + w / 2 - w * 0.15, y + h * 0.018, x + w / 2 + w * 0.15, y + h * 0.045], 999, fill=(0, 0, 0))
 
 
 def title(d, x, y, size=118):
@@ -79,15 +87,11 @@ def title(d, x, y, size=118):
 
 # 1) Naslovna: svi sistemi
 def naslovna():
-    bg = Image.open(os.path.join(ROOT, 'Wallpapers', '06-Desktop-bez-teksta-4K.jpg')).convert('RGB').resize((W, 900), Image.LANCZOS)
-    shade = Image.new('RGBA', (W, H), (0, 0, 0, 0))
-    sd = ImageDraw.Draw(shade)
-    for x in range(W):
-        t = max(0.0, 1 - x / 1100)
-        sd.line([(x, 0), (x, H)], fill=(24, 4, 10, int(255 * min(1, 0.35 + 0.75 * t))))
-    bg.paste(shade, (0, 0), shade)
+    bg = gradient()
+    glow(bg, (760, 60, 1700, 960), color=(180, 40, 80, 80))
     d = ImageDraw.Draw(bg)
-    pill(d, 70, 64, 'Nova verzija 2.3', font(24, 700))
+    x = pill(d, 70, 64, 'Nova verzija 2.4', font(24, 700)) + 12
+    pill(d, x, 64, 'Nove pozadine · srpske zastave', font(24, 700), color=PINK)
     title(d, 66, 120)
     d.text((72, 405), 'Jedna tema za sve vaše uređaje', font=font(36, 700), fill=CREAM)
     x = 72
@@ -98,13 +102,29 @@ def naslovna():
     d.text((72, 790), 'studenti-tema.vercel.app', font=font(34, 800), fill=(255, 255, 255))
 
     # desktop prozor + telefon
-    desk = Image.open(os.path.join(ROOT, 'Preview', 'X', '1-Bordo-desktop.jpg')).convert('RGB').resize((640, 360), Image.LANCZOS)
-    bx, by = 880, 300
-    shadow(bg, (bx, by, bx + 640, by + 360), 18, blur=30, alpha=200)
-    d.rounded_rectangle([bx - 10, by - 10, bx + 650, by + 370], 22, fill=(29, 17, 20), outline=(110, 70, 82), width=2)
+    desk = Image.open(os.path.join(ROOT, 'Preview', 'X', '1-Bordo-desktop.jpg')).convert('RGB').resize((704, 396), Image.LANCZOS)
+    bx, by = 800, 230
+    shadow(bg, (bx, by, bx + 704, by + 396), 18, blur=30, alpha=200)
+    d.rounded_rectangle([bx - 10, by - 10, bx + 714, by + 406], 22, fill=(29, 17, 20), outline=(110, 70, 82), width=2)
     rounded_paste(bg, desk, (bx, by), 14)
-    phone(bg, os.path.join(ROOT, 'Mobilni', 'Pozadine', '3-Bordo-Trojka.jpg'), 1340, 430, 190)
+    phone(bg, os.path.join(ROOT, 'Mobilni', 'Pozadine', '1-Bordo-Skupstina.jpg'), 1330, 370, 200)
     bg.save(os.path.join(OUT, '1-Svi-sistemi.jpg'), quality=92, optimize=True)
+
+
+# Preview/Telefon.jpg: sve cetiri pozadine za telefon
+def telefon():
+    img = gradient(2000, 1125, (30, 5, 13), (70, 11, 34))
+    glow(img, (300, 150, 1700, 1100), color=(170, 40, 80, 60), blur=200)
+    names = ['1-Bordo-Skupstina', '2-Bordo-Talasi', '3-Svetla', '4-Nocna']
+    pw, gap = 380, 60
+    x0 = (2000 - (4 * pw + 3 * gap)) // 2
+    for i, n in enumerate(names):
+        phone(img, os.path.join(ROOT, 'Mobilni', 'Pozadine', n + '.jpg'), x0 + i * (pw + gap), 110 + (0 if i % 2 == 0 else 40), pw, radius=56)
+    d = ImageDraw.Draw(img)
+    t = 'Студенти победили  ·  Android и iPhone'
+    f = font(40, 800)
+    d.text(((2000 - d.textlength(t, font=f)) / 2, 1030), t, font=f, fill=(248, 232, 236))
+    img.save(os.path.join(ROOT, 'Preview', 'Telefon.jpg'), quality=90, optimize=True)
 
 
 # 3) Linux
@@ -173,9 +193,57 @@ def mac():
     img.save(os.path.join(OUT, '4-macOS.jpg'), quality=92, optimize=True)
 
 
+# Preview/Pregled-Pozadina.png: sve pozadine na jednoj slici
+def pregled_pozadina():
+    W2 = 1200
+    img = gradient(W2, 1640, (22, 4, 10), (48, 8, 24))
+    d = ImageDraw.Draw(img)
+    d.text((40, 30), 'Pozadine', font=font(44, 850), fill=(255, 255, 255))
+    d.text((40, 90), 'Računar (4K), ultrawide, tablet i telefon', font=font(24, 600), fill=MUTED)
+    wall = os.path.join(ROOT, 'Wallpapers')
+    f = font(18, 700)
+
+    def tile(name, box, label):
+        x0, y0, x1, y1 = box
+        im = cover(Image.open(os.path.join(wall, name)).convert('RGB'), x1 - x0, y1 - y0)
+        rounded_paste(img, im, (x0, y0), 12)
+        d.text((x0 + 4, y1 + 8), label, font=f, fill=MUTED)
+
+    g, m = 20, 40
+    w2 = (W2 - 2 * m - g) // 2
+    h2 = w2 * 9 // 16
+    y = 140
+    walls = [('01-Pobeda-Cinematic-4K.jpg', '01 · Cinematic'), ('02-Pobeda-Minimal-Light-4K.jpg', '02 · Minimal Light'),
+             ('03-Pobeda-Bordo-Talasi-4K.jpg', '03 · Bordo talasi'), ('04-Beograd-4K.jpg', '04 · Beograd')]
+    for i, (n, label) in enumerate(walls):
+        x = m + (i % 2) * (w2 + g)
+        yy = y + (i // 2) * (h2 + 44)
+        tile(n, (x, yy, x + w2, yy + h2), label)
+    y += 2 * (h2 + 44)
+    uw = W2 - 2 * m
+    tile('05-Beograd-Ultrawide-5120x2160.jpg', (m, y, m + uw, y + uw * 2160 // 5120), '05 · Ultrawide 21:9')
+    y += uw * 2160 // 5120 + 44
+    tw = (W2 - 2 * m - 3 * g) // 4
+    th = tw * 3 // 4
+    tile('06-Univerzitet-Tablet-2880x2160.jpg', (m, y, m + tw, y + th), '06 · Tablet')
+    tile('07-Minimal-Light-Tablet-2880x2160.jpg', (m + tw + g, y, m + 2 * tw + g, y + th), '07 · Tablet svetla')
+    # telefoni desno od tableta
+    pw = (2 * tw + g - 3 * 12) // 4
+    ph = pw * 16 // 9
+    for i, n in enumerate(['1-Bordo-Skupstina', '2-Bordo-Talasi', '3-Svetla', '4-Nocna']):
+        x = m + 2 * (tw + g) + i * (pw + 12)
+        im = cover(Image.open(os.path.join(ROOT, 'Mobilni', 'Pozadine', n + '.jpg')).convert('RGB'), pw, ph)
+        rounded_paste(img, im, (x, y), 14)
+    d.text((m + 2 * (tw + g) + 4, y + ph + 8), 'Telefon (Android i iPhone)', font=f, fill=MUTED)
+    img = img.crop((0, 0, W2, y + ph + 60))
+    img.save(os.path.join(ROOT, 'Preview', 'Pregled-Pozadina.png'), optimize=True)
+
+
+telefon()
 naslovna()
 linux()
 mac()
+pregled_pozadina()
 for src, dst in [('X/1-Bordo-desktop.jpg', '2a-Windows-Bordo.jpg'), ('X/2-File-Explorer.jpg', '2b-Windows-Explorer.jpg'),
                  ('X/3-Svetla.jpg', '2c-Windows-Svetla.jpg'), ('X/4-Ikonice.jpg', '2d-Windows-Ikonice.jpg'),
                  ('Telefon.jpg', '5-Android-iPhone.jpg')]:

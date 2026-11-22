@@ -10,6 +10,8 @@ try {
 
     # 1) Kopiranje sadrzaja u korisnicki profil
     foreach ($d in @($WallDir,$LockDir,$IconsDir,$SoundsDir,$ThemesDir,$BackupDir)) { New-Item -ItemType Directory -Path $d -Force | Out-Null }
+    # stare pozadine iz prethodnih verzija se brisu, da ne ostanu u fascikli slideshow-a
+    Get-ChildItem -LiteralPath $WallDir -Filter *.jpg -File -ErrorAction SilentlyContinue | Remove-Item -Force
     Copy-Item -Path (Join-Path $Package 'Wallpapers\*') -Destination $WallDir -Force
     Copy-Item -Path (Join-Path $Package 'LockScreen\*') -Destination $LockDir -Force
     Copy-Item -Path (Join-Path $Package 'Icons\*') -Destination $IconsDir -Recurse -Force

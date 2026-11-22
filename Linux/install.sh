@@ -22,9 +22,9 @@ GNOME_PROPS="$DATA/gnome-background-properties/studenti-pobedili.xml"
 KDE_WALL="$DATA/wallpapers/StudentiPobedili"
 KDE_SCHEMES="$DATA/color-schemes"
 
-BORDO_WALLS=(03-Pobeda-Desktop-4K.jpg 06-Desktop-bez-teksta-4K.jpg 07-Nocna-pobeda-4K.jpg 04-Pobeda-Bordo-4K.jpg)
-SVETLA_WALLS=(02-Pobeda-Minimal-Light-4K.jpg 08-Svetla-pobeda-4K.jpg)
-LOCK_WALL=06-Desktop-bez-teksta-4K.jpg
+BORDO_WALLS=(01-Pobeda-Cinematic-4K.jpg 03-Pobeda-Bordo-Talasi-4K.jpg 04-Beograd-4K.jpg)
+SVETLA_WALLS=(02-Pobeda-Minimal-Light-4K.jpg)
+LOCK_WALL=04-Beograd-4K.jpg
 
 if [ -t 1 ]; then B=$'\e[1m'; R=$'\e[38;5;161m'; G=$'\e[32m'; Y=$'\e[33m'; N=$'\e[0m'; else B=''; R=''; G=''; Y=''; N=''; fi
 info() { printf '%s\n' "$*"; }
@@ -138,6 +138,7 @@ slideshow_xml() {   # $1 = izlazni fajl, ostalo = slike
 
 install_walls() {
     mkdir -p "$BG_DIR"
+    rm -f "$BG_DIR"/*.jpg   # stare pozadine iz prethodnih verzija
     cp "$WALLS"/*.jpg "$BG_DIR/"
     slideshow_xml "$BG_DIR/bordo.xml" "${BORDO_WALLS[@]}"
     slideshow_xml "$BG_DIR/svetla.xml" "${SVETLA_WALLS[@]}"

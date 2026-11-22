@@ -20,7 +20,7 @@ $ThemesKey      = 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Themes'
 # Kontrast prema beloj: 8.1:1 (WCAG AAA).
 $AccentColor = '0XC4981F34'
 
-# Slideshow sadrzi samo pozadine kod kojih je leva strana slobodna za desktop ikonice.
+# Slideshow: 16:9 pozadine sa srpskim zastavama. Ultrawide i tablet verzije su u Wallpapers za rucni izbor.
 $Variants = @{
     Bordo = [pscustomobject]@{
         Key         = 'Bordo'
@@ -28,7 +28,7 @@ $Variants = @{
         FileName    = 'StudentiPobedili-Bordo.theme'
         PackName    = 'Studenti Pobedili Bordo'
         Mode        = 'Dark'
-        Slideshow   = @('03-Pobeda-Desktop-4K.jpg','06-Desktop-bez-teksta-4K.jpg','07-Nocna-pobeda-4K.jpg','04-Pobeda-Bordo-4K.jpg')
+        Slideshow   = @('01-Pobeda-Cinematic-4K.jpg','03-Pobeda-Bordo-Talasi-4K.jpg','04-Beograd-4K.jpg')
     }
     Svetla = [pscustomobject]@{
         Key         = 'Svetla'
@@ -36,7 +36,7 @@ $Variants = @{
         FileName    = 'StudentiPobedili-Svetla.theme'
         PackName    = 'Studenti Pobedili Svetla'
         Mode        = 'Light'
-        Slideshow   = @('02-Pobeda-Minimal-Light-4K.jpg','08-Svetla-pobeda-4K.jpg')
+        Slideshow   = @('02-Pobeda-Minimal-Light-4K.jpg')
     }
 }
 

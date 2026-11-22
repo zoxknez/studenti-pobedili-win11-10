@@ -6,12 +6,12 @@ programa: samo slike i zvuk, pa nije potrebna nikakva dozvola.
 
 U PAKETU
 --------
-Pozadine/   4 pozadine za telefon (1440 x 3120, za sve veličine ekrana)
-            1-Bordo-Skupstina, 2-Bordo-Univerzitet, 3-Bordo-Trojka, 4-Svetla
+Pozadine/   4 pozadine za telefon (2160 x 3840, za sve veličine ekrana)
+            1-Bordo-Skupstina, 2-Bordo-Talasi, 3-Svetla, 4-Nocna
 Zvuk/       Pobeda.ogg (Android), Pobeda.m4a i Pobeda.m4r (iPhone)
 
-Gornji deo pozadina je namerno miran, da sat na zaključanom ekranu
-ostane čitljiv.
+Na dužim ekranima (većina današnjih telefona) telefon sam malo iseče
+levu i desnu ivicu; naslov i „3“ su u sredini, pa ostaju ceo.
 
 
 ANDROID

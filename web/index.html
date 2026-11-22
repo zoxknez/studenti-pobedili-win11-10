@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Studenti pobedili - tema za Windows, Linux, macOS i telefon</title>
-<meta name="description" content="Besplatna bordo tema za Windows 11, 10, Linux, macOS, Android i iPhone: 8 pozadina u 4K, 31 ikonica, zaključani ekran i zvuk. Instalacija jednim klikom, bez admin prava, potpuna deinstalacija.">
+<meta name="description" content="Besplatna bordo tema za Windows 11, 10, Linux, macOS, Android i iPhone: nove pozadine u 4K sa srpskim zastavama, 31 ikonica, zaključani ekran i zvuk. Instalacija jednim klikom, bez admin prava, potpuna deinstalacija.">
 <meta name="theme-color" content="#0b0406">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Studenti pobedili - tema za Windows, Linux, macOS i telefon">
-<meta property="og:description" content="8 pozadina u 4K, 31 ikonica, zaključani ekran i zvuk. Besplatno, instalacija jednim klikom.">
+<meta property="og:description" content="Pozadine u 4K sa srpskim zastavama, 31 ikonica, zaključani ekran i zvuk. Besplatno, instalacija jednim klikom.">
 <meta property="og:image" content="https://raw.githubusercontent.com/zoxknez/studenti-pobedili-win11-10/main/web/assets/og.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -137,14 +137,26 @@ h2{font-size:clamp(32px,4vw,48px);line-height:1.08;font-weight:800;letter-spacin
 .shot:hover img{transform:scale(1.04)}
 .shot span{position:absolute;left:10px;bottom:10px;font-size:12.5px;font-weight:700;padding:5px 10px;border-radius:999px;background:rgba(11,4,6,.72);backdrop-filter:blur(8px)}
 .shot.wide{grid-column:span 2;grid-row:span 2}
-.shot.long{grid-column:span 2}
-.shot.long img{position:absolute;inset:0;width:100%;height:100%;aspect-ratio:auto}
-@media (max-width:900px){.shot.wide{grid-column:span 2;grid-row:auto}.shot.long{grid-column:span 2}.shot.long img{position:static;aspect-ratio:16/9;height:auto}}
+.shot.half{grid-column:span 2}
+.shot.half.left img{object-position:left center}
+@media (max-width:900px){.shot.wide{grid-column:span 2;grid-row:auto}}
 dialog{border:0;padding:0;background:transparent;max-width:min(1200px,94vw);margin:auto;color:var(--text)}
 dialog::backdrop{background:rgba(5,1,3,.86);backdrop-filter:blur(6px)}
 dialog figure{border-radius:16px;overflow:hidden;box-shadow:var(--shadow);background:var(--bg2)}
 dialog figcaption{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;padding:14px 18px;font-weight:700}
 dialog .close{position:absolute;top:-46px;right:0}
+
+.nova{margin-top:72px}
+.nova-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:20px;margin-bottom:28px}
+.nova-head h3{font-size:clamp(24px,3vw,32px);font-weight:800;margin:8px 0 6px;letter-spacing:-.5px}
+.nova-head p{color:var(--muted);max-width:620px}
+.nova-grid{grid-template-columns:repeat(5,1fr);grid-auto-flow:dense}
+.nova-grid .tall{grid-row:span 2}
+.nova-grid .tall img,.nova-grid .w2 img{position:absolute;inset:0;width:100%;height:100%;aspect-ratio:auto}
+.nova-grid .w3{grid-column:span 3}
+.nova-grid .w3 img{aspect-ratio:1817/866}
+.nova-grid .w2{grid-column:span 2}
+@media (max-width:900px){.nova-grid{grid-template-columns:repeat(2,1fr)}.nova-grid .w3,.nova-grid .w2{grid-column:span 2}.nova-grid .w2 img{position:static;aspect-ratio:4/3;height:auto}}
 
 /* icons */
 .icons{display:grid;grid-template-columns:1.25fr 1fr;gap:28px;align-items:stretch}
@@ -296,11 +308,11 @@ footer a{color:var(--muted)}
       <div>
         <span class="eyebrow"><b>●</b> Windows 11 i 10 · <a href="#linux" style="color:inherit">Linux</a> · <a href="#macos" style="color:inherit">macOS</a> · <a href="#telefon" style="color:inherit">Telefon</a></span>
         <h1><span>Студенти</span><span>победили<em>.</em></span></h1>
-        <p class="lead">Kompletna bordo tema za vaš računar: osam pozadina u 4K, 31 ručno doterana ikonica, zaključani ekran i zvuk obaveštenja. Instalacija jednim klikom, a vraćanje bez traga.</p>
+        <p class="lead">Kompletna bordo tema za vaš računar: pozadine u 4K sa srpskim zastavama, 31 ručno doterana ikonica, zaključani ekran i zvuk obaveštenja. Instalacija jednim klikom, a vraćanje bez traga.</p>
         <div class="cta">
           <a class="btn btn-primary" data-dl="zip" href="https://github.com/zoxknez/studenti-pobedili-win11-10/releases/latest/download/StudentiPobedili-Windows-v2.zip">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0l-5-5m5 5l5-5M4 21h16"/></svg>
-            Preuzmite besplatno <small>ZIP · 27 MB</small>
+            Preuzmite besplatno <small>ZIP · 25 MB</small>
           </a>
           <a class="btn btn-ghost" href="#instalacija">Kako se instalira</a>
         </div>
@@ -329,7 +341,7 @@ footer a{color:var(--muted)}
     </div>
 
     <div class="stats reveal">
-      <div><b>8</b><span>pozadina u 4K</span></div>
+      <div><b>21</b><span>pozadina i ilustracija</span></div>
       <div><b>31</b><span>ikonica, 16-256 px</span></div>
       <div><b>2</b><span>varijante: tamna i svetla</span></div>
       <div><b>1</b><span>klik za instalaciju</span></div>
@@ -381,7 +393,7 @@ footer a{color:var(--muted)}
         <h2>Sve što čini temu, na jednom mestu.</h2>
       </div>
       <div class="features">
-        <div class="card feature reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div><h3>Pozadine u 4K</h3><p>Osam pozadina 3840×2160, slideshow koji ne stavlja tekst ispod vaših ikonica.</p></div>
+        <div class="card feature reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div><h3>Pozadine u 4K</h3><p>Slideshow od tri bordo pozadine 3840×2160 i svetla varijanta, plus ultrawide 21:9 i verzije za tablet.</p></div>
         <div class="card feature reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7a2 2 0 012-2h4l2 2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg></div><h3>31 premium ikonica</h3><p>Fascikle, Ovaj računar, korpa, diskovi, File Explorer na traci zadataka i leva navigacija, oštre na svakom skaliranju.</p></div>
         <div class="card feature reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/></svg></div><h3>Zaključani ekran</h3><p>Postavlja se automatski. Format 16:9 za monitor, plus dve uspravne verzije za telefon.</p></div>
         <div class="card feature reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5L6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 010 7M18.5 5.5a9 9 0 010 13"/></svg></div><h3>Zvuk „Pobeda“</h3><p>Kratak zvuk za Windows obaveštenja. Uključuje se i isključuje jednom opcijom.</p></div>
@@ -394,18 +406,42 @@ footer a{color:var(--muted)}
     <section id="pozadine">
       <div class="head reveal">
         <div class="kicker">Pozadine</div>
-        <h2>Osam pozadina. Svaka u punih 4K.</h2>
-        <p>Kliknite na pozadinu za veći prikaz i preuzimanje originala.</p>
+        <h2>Nove pozadine, sa srpskim zastavama.</h2>
+        <p>Četiri u 4K za slideshow, jedna za ultrawide monitore i dve za tablet. Kliknite na pozadinu za veći prikaz i preuzimanje originala.</p>
       </div>
       <div class="gallery reveal" id="gallery">
-        <button class="shot wide" data-file="01-Pobeda-Cinematic-4K.jpg" data-src="assets/wall/01.webp"><img src="assets/wall/01.webp" width="1280" height="720" alt="Pozadina 01, Pobeda Cinematic" loading="lazy"><span>01 · Cinematic</span></button>
-        <button class="shot" data-file="02-Pobeda-Minimal-Light-4K.jpg" data-src="assets/wall/02.webp"><img src="assets/wall/02.webp" width="1280" height="720" alt="Pozadina 02, Minimal Light" loading="lazy"><span>02 · Minimal</span></button>
-        <button class="shot" data-file="03-Pobeda-Desktop-4K.jpg" data-src="assets/wall/03.webp"><img src="assets/wall/03.webp" width="1280" height="720" alt="Pozadina 03, Desktop" loading="lazy"><span>03 · Desktop</span></button>
-        <button class="shot" data-file="04-Pobeda-Bordo-4K.jpg" data-src="assets/wall/04.webp"><img src="assets/wall/04.webp" width="1280" height="720" alt="Pozadina 04, Bordo" loading="lazy"><span>04 · Bordo</span></button>
-        <button class="shot" data-file="05-Univerzitetska-pobeda-4K.jpg" data-src="assets/wall/05.webp"><img src="assets/wall/05.webp" width="1280" height="720" alt="Pozadina 05, Univerzitetska pobeda" loading="lazy"><span>05 · Univerzitet</span></button>
-        <button class="shot" data-file="06-Desktop-bez-teksta-4K.jpg" data-src="assets/wall/06.webp"><img src="assets/wall/06.webp" width="1280" height="720" alt="Pozadina 06, bez teksta" loading="lazy"><span>06 · Bez teksta</span></button>
-        <button class="shot" data-file="07-Nocna-pobeda-4K.jpg" data-src="assets/wall/07.webp"><img src="assets/wall/07.webp" width="1280" height="720" alt="Pozadina 07, Noćna pobeda" loading="lazy"><span>07 · Noćna</span></button>
-        <button class="shot long" data-file="08-Svetla-pobeda-4K.jpg" data-src="assets/wall/08.webp"><img src="assets/wall/08.webp" width="1280" height="720" alt="Pozadina 08, Svetla pobeda" loading="lazy"><span>08 · Svetla</span></button>
+        <button class="shot wide" data-file="01-Pobeda-Cinematic-4K.jpg" data-src="assets/wall/01.webp" data-size="3840×2160"><img src="assets/wall/01.webp" width="1280" height="720" alt="Pozadina 01, Cinematic, Univerzitet sa srpskim zastavama" loading="lazy"><span>01 · Cinematic</span></button>
+        <button class="shot" data-file="02-Pobeda-Minimal-Light-4K.jpg" data-src="assets/wall/02.webp" data-size="3840×2160"><img src="assets/wall/02.webp" width="1280" height="720" alt="Pozadina 02, Minimal Light" loading="lazy"><span>02 · Minimal Light</span></button>
+        <button class="shot" data-file="03-Pobeda-Bordo-Talasi-4K.jpg" data-src="assets/wall/03.webp" data-size="3840×2160"><img src="assets/wall/03.webp" width="1280" height="720" alt="Pozadina 03, Bordo talasi" loading="lazy"><span>03 · Bordo talasi</span></button>
+        <button class="shot" data-file="04-Beograd-4K.jpg" data-src="assets/wall/04.webp" data-size="3840×2160"><img src="assets/wall/04.webp" width="1280" height="720" alt="Pozadina 04, Beograd, Skupština" loading="lazy"><span>04 · Beograd</span></button>
+        <button class="shot" data-file="06-Univerzitet-Tablet-2880x2160.jpg" data-src="assets/wall/06.webp" data-size="2880×2160"><img src="assets/wall/06.webp" width="1280" height="720" alt="Pozadina 06, Univerzitet za tablet" loading="lazy"><span>06 · Tablet 4:3</span></button>
+        <button class="shot half left" data-file="05-Beograd-Ultrawide-5120x2160.jpg" data-src="assets/wall/05.webp" data-size="5120×2160"><img src="assets/wall/05.webp" width="1280" height="720" alt="Pozadina 05, Beograd za ultrawide monitor" loading="lazy"><span>05 · Ultrawide 21:9</span></button>
+        <button class="shot half" data-file="07-Minimal-Light-Tablet-2880x2160.jpg" data-src="assets/wall/07.webp" data-size="2880×2160"><img src="assets/wall/07.webp" width="1280" height="720" alt="Pozadina 07, Minimal Light za tablet" loading="lazy"><span>07 · Tablet svetla</span></button>
+      </div>
+      <div class="nova" id="nova">
+        <div class="nova-head reveal">
+          <div>
+            <div class="kicker">Nova serija</div>
+            <h3>Deset ilustracija pobede.</h3>
+            <p>Transparenti, strip, risograf, kolaž i dokumentarne scene, za računar, tablet i telefon. Nisu deo slideshow-a teme: izaberite koju želite.</p>
+          </div>
+          <a class="btn btn-primary btn-sm" href="https://github.com/zoxknez/studenti-pobedili-win11-10/releases/latest/download/StudentiPobedili-Nova-serija.zip">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0l-5-5m5 5l5-5M4 21h16"/></svg>
+            Preuzmite celu seriju <small>ZIP · 21 MB</small>
+          </a>
+        </div>
+        <div class="gallery nova-grid reveal">
+          <button class="shot tall" data-file="01-Grancica-mir-i-nada-2160x2880.jpg" data-raw="https://raw.githubusercontent.com/zoxknez/studenti-pobedili-win11-10/main/Nova-serija/" data-src="assets/nova/01.webp" data-size="2160×2880"><img src="assets/nova/01.webp" width="960" height="1280" alt="Nova serija 01, Grančica, mir i nada" loading="lazy"><span>01 · Grančica, mir i nada</span></button>
+          <button class="shot" data-file="02-Veliki-transparent-3840x2160.jpg" data-raw="https://raw.githubusercontent.com/zoxknez/studenti-pobedili-win11-10/main/Nova-serija/" data-src="assets/nova/02.webp" data-size="3840×2160"><img src="assets/nova/02.webp" width="1280" height="720" alt="Nova serija 02, Veliki transparent" loading="lazy"><span>02 · Veliki transparent</span></button>
+          <button class="shot" data-file="03-Strip-ilustracija-3840x2160.jpg" data-raw="https://raw.githubusercontent.com/zoxknez/studenti-pobedili-win11-10/main/Nova-serija/" data-src="assets/nova/03.webp" data-size="3840×2160"><img src="assets/nova/03.webp" width="1280" height="720" alt="Nova serija 03, Strip ilustracija" loading="lazy"><span>03 · Strip ilustracija</span></button>
+          <button class="shot" data-file="04-Studentska-solidarnost-3840x2160.jpg" data-raw="https://raw.githubusercontent.com/zoxknez/studenti-pobedili-win11-10/main/Nova-serija/" data-src="assets/nova/04.webp" data-size="3840×2160"><img src="assets/nova/04.webp" width="1280" height="720" alt="Nova serija 04, Studentska solidarnost" loading="lazy"><span>04 · Studentska solidarnost</span></button>
+          <button class="shot tall" data-file="10-Slagalica-telefon-2160x3840.jpg" data-raw="https://raw.githubusercontent.com/zoxknez/studenti-pobedili-win11-10/main/Nova-serija/" data-src="assets/nova/10.webp" data-size="2160×3840"><img src="assets/nova/10.webp" width="720" height="1280" alt="Nova serija 10, Slagalica (telefon)" loading="lazy"><span>10 · Slagalica (telefon)</span></button>
+          <button class="shot" data-file="05-Retro-risograf-3840x2160.jpg" data-raw="https://raw.githubusercontent.com/zoxknez/studenti-pobedili-win11-10/main/Nova-serija/" data-src="assets/nova/05.webp" data-size="3840×2160"><img src="assets/nova/05.webp" width="1280" height="720" alt="Nova serija 05, Retro risograf" loading="lazy"><span>05 · Retro risograf</span></button>
+          <button class="shot" data-file="06-Kolaz-knjige-buducnost-3840x2160.jpg" data-raw="https://raw.githubusercontent.com/zoxknez/studenti-pobedili-win11-10/main/Nova-serija/" data-src="assets/nova/06.webp" data-size="3840×2160"><img src="assets/nova/06.webp" width="1280" height="720" alt="Nova serija 06, Kolaž: knjige i budućnost" loading="lazy"><span>06 · Kolaž: knjige i budućnost</span></button>
+          <button class="shot" data-file="07-Baner-studenti-su-pobedili-3840x2160.jpg" data-raw="https://raw.githubusercontent.com/zoxknez/studenti-pobedili-win11-10/main/Nova-serija/" data-src="assets/nova/07.webp" data-size="3840×2160"><img src="assets/nova/07.webp" width="1280" height="720" alt="Nova serija 07, Baner" loading="lazy"><span>07 · Baner</span></button>
+          <button class="shot w3" data-file="08-Amfiteatar-wide-4532x2160.jpg" data-raw="https://raw.githubusercontent.com/zoxknez/studenti-pobedili-win11-10/main/Nova-serija/" data-src="assets/nova/08.webp" data-size="4532×2160"><img src="assets/nova/08.webp" width="1280" height="610" alt="Nova serija 08, Amfiteatar (široka)" loading="lazy"><span>08 · Amfiteatar (široka)</span></button>
+          <button class="shot w2" data-file="09-Pobeda-studenata-2880x2160.jpg" data-raw="https://raw.githubusercontent.com/zoxknez/studenti-pobedili-win11-10/main/Nova-serija/" data-src="assets/nova/09.webp" data-size="2880×2160"><img src="assets/nova/09.webp" width="1280" height="960" alt="Nova serija 09, Pobeda studenata" loading="lazy"><span>09 · Pobeda studenata</span></button>
+        </div>
       </div>
     </section>
 
@@ -570,7 +606,7 @@ footer a{color:var(--muted)}
           <div class="cta">
             <a class="btn btn-primary" href="https://github.com/zoxknez/studenti-pobedili-win11-10/releases/latest/download/StudentiPobedili-macOS.zip">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0l-5-5m5 5l5-5M4 21h16"/></svg>
-              Preuzmite za macOS <small>ZIP · 10 MB</small>
+              Preuzmite za macOS <small>ZIP · 9,5 MB</small>
             </a>
           </div>
           <div class="term small" aria-label="Instalacija na macOS-u">
@@ -596,31 +632,27 @@ footer a{color:var(--muted)}
       <div class="head reveal">
         <div class="kicker">Novo · Telefon</div>
         <h2>I za telefon.</h2>
-        <p>Četiri pozadine napravljene za uspravni ekran, bordo boje sistema i zvuk „Pobeda“ za poruke. Za Android i iPhone, bez ijedne aplikacije.</p>
+        <p>Četiri pozadine sa srpskim zastavama, napravljene za uspravni ekran, bordo boje sistema i zvuk „Pobeda“ za poruke. Za Android i iPhone, bez ijedne aplikacije.</p>
       </div>
       <div class="phones reveal">
-          <a class="phone" href="assets/mob/1-Bordo-Skupstina.jpg" target="_blank" rel="noopener" aria-label="Bordo · Skupština, puna veličina 1440×3120">
-            <img src="assets/mob/1-Bordo-Skupstina.webp" width="600" height="1300" alt="Pozadina za telefon Bordo · Skupština" loading="lazy">
-            <span class="clock" aria-hidden="true"><small>nedelja, 25. oktobar</small>20:26</span>
+          <a class="phone" href="assets/mob/1-Bordo-Skupstina.jpg" target="_blank" rel="noopener" aria-label="Bordo · Skupština, puna veličina 1440×2560">
+            <img src="assets/mob/1-Bordo-Skupstina.webp" width="600" height="1067" alt="Pozadina za telefon Bordo · Skupština" loading="lazy">
             <span class="cap">Bordo · Skupština</span>
           </a>
-          <a class="phone" href="assets/mob/2-Bordo-Univerzitet.jpg" target="_blank" rel="noopener" aria-label="Bordo · Univerzitet, puna veličina 1440×3120">
-            <img src="assets/mob/2-Bordo-Univerzitet.webp" width="600" height="1300" alt="Pozadina za telefon Bordo · Univerzitet" loading="lazy">
-            <span class="clock" aria-hidden="true"><small>nedelja, 25. oktobar</small>20:26</span>
-            <span class="cap">Bordo · Univerzitet</span>
+          <a class="phone" href="assets/mob/2-Bordo-Talasi.jpg" target="_blank" rel="noopener" aria-label="Bordo · Talasi, puna veličina 1440×2560">
+            <img src="assets/mob/2-Bordo-Talasi.webp" width="600" height="1067" alt="Pozadina za telefon Bordo · Talasi" loading="lazy">
+            <span class="cap">Bordo · Talasi</span>
           </a>
-          <a class="phone" href="assets/mob/3-Bordo-Trojka.jpg" target="_blank" rel="noopener" aria-label="Bordo · Trojka, puna veličina 1440×3120">
-            <img src="assets/mob/3-Bordo-Trojka.webp" width="600" height="1300" alt="Pozadina za telefon Bordo · Trojka" loading="lazy">
-            <span class="clock" aria-hidden="true"><small>nedelja, 25. oktobar</small>20:26</span>
-            <span class="cap">Bordo · Trojka</span>
+          <a class="phone light" href="assets/mob/3-Svetla.jpg" target="_blank" rel="noopener" aria-label="Svetla, puna veličina 1440×2560">
+            <img src="assets/mob/3-Svetla.webp" width="600" height="1067" alt="Pozadina za telefon Svetla" loading="lazy">
+            <span class="cap">Noćna</span>
           </a>
-          <a class="phone light" href="assets/mob/4-Svetla.jpg" target="_blank" rel="noopener" aria-label="Svetla, puna veličina 1440×3120">
-            <img src="assets/mob/4-Svetla.webp" width="600" height="1300" alt="Pozadina za telefon Svetla" loading="lazy">
-            <span class="clock" aria-hidden="true"><small>nedelja, 25. oktobar</small>20:26</span>
+          <a class="phone" href="assets/mob/4-Nocna.jpg" target="_blank" rel="noopener" aria-label="Noćna, puna veličina 1440×2560">
+            <img src="assets/mob/4-Nocna.webp" width="600" height="1067" alt="Pozadina za telefon Noćna" loading="lazy">
             <span class="cap">Svetla</span>
           </a>
       </div>
-      <p class="phones-hint reveal">Otvorite ovu stranicu na telefonu i dodirnite pozadinu: otvoriće se u punoj veličini (1440×3120). Zatim je dugo pritisnite i sačuvajte.</p>
+      <p class="phones-hint reveal">Otvorite ovu stranicu na telefonu i dodirnite pozadinu: otvoriće se u punoj veličini (1440×2560). Zatim je dugo pritisnite i sačuvajte.</p>
 
       <div class="soon tel">
         <div class="card os reveal">
@@ -647,7 +679,7 @@ footer a{color:var(--muted)}
       <div class="soon-cta reveal">
         <a class="btn btn-primary" href="https://github.com/zoxknez/studenti-pobedili-win11-10/releases/latest/download/StudentiPobedili-Mobilni.zip">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0l-5-5m5 5l5-5M4 21h16"/></svg>
-          Preuzmite za telefon <small>ZIP · 1,2 MB</small>
+          Preuzmite za telefon <small>ZIP · 3,8 MB</small>
         </a>
         <span>Pozadine, zvuk za Android (.ogg) i iPhone (.m4a, .m4r) i uputstvo korak po korak.</span>
       </div>
@@ -677,7 +709,7 @@ footer a{color:var(--muted)}
       <div class="cta">
         <a class="btn btn-primary" data-dl="zip" href="https://github.com/zoxknez/studenti-pobedili-win11-10/releases/latest/download/StudentiPobedili-Windows-v2.zip">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0l-5-5m5 5l5-5M4 21h16"/></svg>
-          Preuzmite paket <small>ZIP · 27 MB</small>
+          Preuzmite paket <small>ZIP · 25 MB</small>
         </a>
         <a class="btn btn-ghost" href="https://github.com/zoxknez/studenti-pobedili-win11-10" target="_blank" rel="noopener">
           <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
@@ -701,7 +733,7 @@ footer a{color:var(--muted)}
   <form method="dialog"><button class="btn btn-ghost btn-sm close" aria-label="Zatvori">Zatvori ✕</button></form>
   <figure>
     <img id="lb-img" alt="" width="1280" height="720">
-    <figcaption><span id="lb-name"></span><a id="lb-dl" class="btn btn-primary btn-sm" href="#" download>Preuzmite 4K original</a></figcaption>
+    <figcaption><span id="lb-name"></span><a id="lb-dl" class="btn btn-primary btn-sm" href="#" download>Preuzmite original</a></figcaption>
   </figure>
 </dialog>
 
@@ -710,11 +742,11 @@ footer a{color:var(--muted)}
   document.getElementById('y').textContent = new Date().getFullYear();
   const RAW = 'https://raw.githubusercontent.com/zoxknez/studenti-pobedili-win11-10/main/Wallpapers/';
   const lb = document.getElementById('lightbox');
-  document.querySelectorAll('#gallery .shot').forEach(b => b.addEventListener('click', () => {
+  document.querySelectorAll('#gallery .shot, #nova .shot').forEach(b => b.addEventListener('click', () => {
     document.getElementById('lb-img').src = b.dataset.src;
     document.getElementById('lb-img').alt = b.querySelector('img').alt;
-    document.getElementById('lb-name').textContent = b.querySelector('span').textContent + ' · 3840×2160';
-    document.getElementById('lb-dl').href = RAW + b.dataset.file;
+    document.getElementById('lb-name').textContent = b.querySelector('span').textContent + ' · ' + (b.dataset.size || '3840×2160');
+    document.getElementById('lb-dl').href = (b.dataset.raw || RAW) + b.dataset.file;
     lb.showModal();
   }));
   lb.addEventListener('click', e => { if (e.target === lb) lb.close(); });

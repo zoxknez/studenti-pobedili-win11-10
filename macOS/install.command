@@ -17,7 +17,7 @@ FOLDERS_LOG="$SUPPORT/fascikle.txt"
 WALL_DST="$HOME/Pictures/Studenti pobedili"
 ICON_DST="$SUPPORT/Ikonice"
 
-BORDO_WALL=03-Pobeda-Desktop-4K.jpg
+BORDO_WALL=03-Pobeda-Bordo-Talasi-4K.jpg
 SVETLA_WALL=02-Pobeda-Minimal-Light-4K.jpg
 # fascikla u korisnickom folderu -> ikonica
 FOLDER_ICONS=("Desktop:Desktop.png" "Documents:Folder-Documents.png" "Downloads:Folder-Downloads.png"
@@ -87,6 +87,7 @@ remember_folder() { mkdir -p "$SUPPORT"; touch "$FOLDERS_LOG"; grep -qxF "$1" "$
 # ---------------------------------------------------------------- akcije
 install_files() {
     mkdir -p "$WALL_DST" "$ICON_DST"
+    rm -f "$WALL_DST"/*.jpg   # stare pozadine iz prethodnih verzija
     cp "$WALLS"/*.jpg "$WALL_DST/"
     cp "$ICONS"/*.png "$ICON_DST/"
     ok "Pozadine kopirane u: $WALL_DST"

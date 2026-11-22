@@ -21,7 +21,7 @@ https://studenti-tema.vercel.app
 2/7   slike: 2a-Windows-Bordo.jpg, 2b-Windows-Explorer.jpg, 2c-Windows-Svetla.jpg, 2d-Windows-Ikonice.jpg
 ----
 💻 Windows 11 i 10:
-• 8 pozadina u 4K i slideshow
+• nove pozadine u 4K sa srpskim zastavama, i za ultrawide i tablet
 • 31 ikonica, uključujući File Explorer i levu navigaciju
 • Bordo i Svetla varijanta
 • Zaključani ekran i zvuk „Pobeda“
@@ -76,7 +76,7 @@ SAMOSTALNA OBJAVA (ako ne želite thread)   slika: 1-Svi-sistemi.jpg
 ---------------------------------------
 🎓 Studenti pobedili - besplatna bordo tema za Windows, Linux, macOS, Android i iPhone!
 
-Pozadine u 4K, 31 ikonica, zaključani ekran i zvuk „Pobeda“. Bez admin prava, uz potpunu deinstalaciju.
+Nove pozadine u 4K sa srpskim zastavama, 31 ikonica, zaključani ekran i zvuk „Pobeda“. Bez admin prava, uz potpunu deinstalaciju.
 
 👇 Preuzmite:
 https://studenti-tema.vercel.app

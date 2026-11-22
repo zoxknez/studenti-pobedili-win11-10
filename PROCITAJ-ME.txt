@@ -40,12 +40,12 @@ Settings, jer Windows inače ignoriše temu.
 • Bordo varijanta: tamni režim sistema i aplikacija, bordo Start meni,
   traka zadataka i naslovne trake prozora.
 • Svetla varijanta: svetli režim, bordo naslovne trake i akcenti.
-• Pozadine se menjaju svakih 30 minuta. U slideshow-u su samo pozadine
-  kod kojih je leva strana prazna, da tekst ne bi išao ispod desktop ikonica:
-    Bordo:  03 Desktop, 06 bez teksta, 07 Noćna, 04 Bordo
-    Svetla: 02 Minimal, 08 Svetla
-  Pozadine 01 i 05 (veliki naslov levo) i dalje su u Wallpapers, za
-  prezentacije ili desktop bez ikonica.
+• Bordo pozadine se menjaju svakih 30 minuta:
+    Bordo:  01 Cinematic, 03 Bordo talasi, 04 Beograd
+    Svetla: 02 Minimal Light
+  U Wallpapers su i 05 Beograd za ultrawide monitore (21:9) i 06 i 07
+  za tablete i monitore 4:3; birate ih ručno (desni klik na sliku ›
+  Set as desktop background).
 • Tema NE menja kursore, zvukove, čuvar ekrana ni veličinu teksta.
 
 IKONICE (opcija 5, bez admin prava)
@@ -77,8 +77,8 @@ VRAĆANJE IKONICA (opcija 9)
 
 ZAKLJUČANI EKRAN (opcija 7)
 • Postavlja se automatski: LockScreen\03-Zakljucani-ekran-PC-3840x2160.jpg
-  (16:9, bez teksta, pa sat i obaveštenja ostaju čitljivi i na
-  Windows 10 i na Windows 11).
+  (16:9, Beograd; naslov je levo, pa sat i obaveštenja ostaju čitljivi
+  i na Windows 10 i na Windows 11).
 • 01 i 02 su uspravne (2160×3840), za telefon. Na monitoru bi ih Windows
   isekao.
 • Ako je zaključani ekran zaključan politikom organizacije, postavite ga
@@ -103,7 +103,8 @@ SADRŽAJ PAKETA
 --------------
 INSTALIRAJ.cmd            glavni meni
 Teme\                     .deskthemepack paketi (instalacija dvoklikom)
-Wallpapers\               8 pozadina, 3840×2160
+Wallpapers\               7 pozadina: 4 × 3840×2160, ultrawide 5120×2160,
+                          2 za tablet 2880×2160
 LockScreen\               1 za PC (16:9) + 2 za telefon (9:16)
 Icons\ICO, Icons\PNG      31 ikonica (ICO: 16-256 px, uključujući 20 i 40 px
                           za skaliranje 125% i 250%)

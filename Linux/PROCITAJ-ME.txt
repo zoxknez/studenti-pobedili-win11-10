@@ -18,8 +18,8 @@ Ne pokrećite sa sudo: sve se instalira samo za vašeg korisnika
 ŠTA SE MENJA
 ------------
 GNOME (Ubuntu, Fedora, Debian…)
-• Pozadine prate režim: u tamnom režimu se smenjuju Bordo pozadine,
-  u svetlom Svetle (na 30 minuta).
+• Pozadine prate režim: u tamnom režimu se na 30 minuta smenjuju
+  Bordo pozadine, a u svetlom je Svetla pozadina.
 • Tamni ili svetli režim, crveni akcenat (GNOME 47 i noviji; bordo
   nije u GNOME paleti, crvena je najbliža), zaključani ekran.
 • Tema ikonica „Studenti Pobedili“ (fascikle, Home, Desktop, korpa,
