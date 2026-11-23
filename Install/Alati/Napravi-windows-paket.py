@@ -17,11 +17,11 @@ CRLF = ('.cmd', '.ps1', '.txt')
 def files():
     yield 'INSTALIRAJ.cmd'
     yield 'PROCITAJ-ME.txt'
-    for sub in ('Icons/ICO', 'Icons/PNG', 'LockScreen', 'Sounds', 'Teme', 'Wallpapers', 'Preview/X'):
+    for sub in ('Icons/ICO', 'Icons/PNG', 'Icons/Porcelan/ICO', 'Icons/Porcelan/PNG', 'LockScreen', 'Sounds', 'Teme', 'Wallpapers', 'Preview/X'):
         for f in sorted(os.listdir(os.path.join(ROOT, sub))):
             if os.path.isfile(os.path.join(ROOT, sub, f)):
                 yield f'{sub}/{f}'
-    for f in ('Brand.png', 'Linux-Dolphin.png', 'Pregled-Ikonica.png', 'Pregled-Pozadina.png', 'Telefon.jpg'):
+    for f in ('Brand.png', 'Linux-Dolphin.png', 'Pregled-Ikonica.png', 'Pregled-Porcelan.png', 'Pregled-Pozadina.png', 'Telefon.jpg'):
         yield f'Preview/{f}'
     for f in sorted(os.listdir(os.path.join(ROOT, 'Install'))):
         if f.endswith('.ps1'):

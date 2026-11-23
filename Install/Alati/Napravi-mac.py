@@ -30,6 +30,7 @@ def main():
         add(z, os.path.join(MAC, 'PROCITAJ-ME.txt'), f'{TOP}/PROCITAJ-ME.txt', 0o644)
         for n in ICONS:
             add(z, os.path.join(ROOT, 'Icons', 'PNG', n + '.png'), f'{TOP}/icons/{n}.png', 0o644)
+            add(z, os.path.join(ROOT, 'Icons', 'Porcelan', 'PNG', n + '.png'), f'{TOP}/icons-porcelan/{n}.png', 0o644)
         walls = os.path.join(ROOT, 'Wallpapers')
         for f in sorted(os.listdir(walls)):
             add(z, os.path.join(walls, f), f'{TOP}/wallpapers/{f}', 0o644)

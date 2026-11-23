@@ -10,7 +10,13 @@ INSTALACIJA
 3. Pokrenite:             ./install.sh
 
 U meniju izaberite [1] Bordo (tamni režim) ili [2] Svetla.
-Bez menija:  ./install.sh --bordo | --svetla | --ikonice | --deinstaliraj
+Bez menija:  ./install.sh --bordo | --svetla | --ikonice | --porcelan | --deinstaliraj
+
+DRUGI STIL IKONICA: PORCELAN
+Mat bele površine, grafitni simboli i prigušena crvena (opcija 4 u meniju):
+    ./install.sh --porcelan              samo ikonice Porcelan
+    ./install.sh --svetla --porcelan     Svetla tema sa Porcelan ikonicama
+Nazad na bordo ikonice: ./install.sh --ikonice
 
 Ne pokrećite sa sudo: sve se instalira samo za vašeg korisnika
 (~/.local/share), bez dodatnih paketa i bez interneta.
@@ -42,7 +48,7 @@ ste koristili do sada, pa ostatak sistema izgleda isto kao pre.
 
 DEINSTALACIJA
 -------------
-./install.sh --deinstaliraj  (ili opcija 4 u meniju)
+./install.sh --deinstaliraj  (ili opcija 5 u meniju)
 Vraća pozadinu, režim, akcenat, šemu boja i ikonice na stanje pre
 instalacije i briše fajlove paketa.
 

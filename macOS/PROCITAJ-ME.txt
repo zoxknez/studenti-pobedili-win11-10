@@ -13,6 +13,9 @@ INSTALACIJA
        ./install.command
    (ili desni klik na install.command › Open › Open)
 3. Izaberite [1] Bordo (tamni režim) ili [2] Svetla.
+   [4] postavlja ikonice fascikli u drugom stilu, Porcelan (mat bele,
+   grafitni simboli). Bez menija: ./install.command --porcelan
+   ili ./install.command --svetla --porcelan
 
 macOS će tražiti dve dozvole; obe odobrite:
 • „Terminal wants to control System Events“ (za pozadinu i režim)
@@ -42,6 +45,6 @@ isključivanja zaštite, što ne preporučujemo.
 
 DEINSTALACIJA
 -------------
-./install.command --deinstaliraj   (ili opcija 4)
+./install.command --deinstaliraj   (ili opcija 5)
 Vraća prethodnu pozadinu, režim, akcentnu boju i ikonice fascikli
 i briše fajlove paketa.

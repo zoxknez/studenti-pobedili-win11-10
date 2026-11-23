@@ -2,6 +2,21 @@
 
 $IcoDir     = Join-Path $IconsDir 'ICO'
 $IconBackup = Join-Path $InstallRoot 'IconBackup'
+
+# Stil ikonica: Bordo (Icons\ICO) ili Porcelan (Icons\Porcelan\ICO). Poslednji izbor se pamti,
+# pa ga koriste i opcije bez izbora stila (npr. crvena "3" za sve fascikle).
+$IconStyleFile = Join-Path $InstallRoot 'ikonice-stil.txt'
+function Get-SavedIconStyle {
+    if (Test-Path -LiteralPath $IconStyleFile) {
+        $s = (Get-Content -LiteralPath $IconStyleFile -Raw).Trim()
+        if ($s -eq 'Porcelan') { return 'Porcelan' }
+    }
+    return 'Bordo'
+}
+function Get-IcoDirForStyle([string]$Stil) {
+    if ($Stil -eq 'Porcelan') { return (Join-Path $IconsDir 'Porcelan\ICO') }
+    return (Join-Path $IconsDir 'ICO')
+}
 $KeyManifestPath    = Join-Path $IconBackup 'manifest.json'
 $FolderManifestPath = Join-Path $IconBackup 'folder-icons.json'
 
@@ -134,7 +149,7 @@ function Get-ExplorerShortcuts {
                 $link = $folder.ParseName($f.Name).GetLink
                 $iconPath = ''
                 [void]$link.GetIconLocation([ref]$iconPath)
-                if ($iconPath -match '\\explorer\.exe$|StudentiPobedili\\Icons\\ICO\\Explorer\.ico$' -or $link.Path -match '\\explorer\.exe$') {
+                if ($iconPath -match '\\explorer\.exe$|StudentiPobedili\\Icons\\(Porcelan\\)?ICO\\Explorer\.ico$' -or $link.Path -match '\\explorer\.exe$') {
                     [pscustomobject]@{ Path = $f.FullName; Link = $link }
                 }
             } catch {}

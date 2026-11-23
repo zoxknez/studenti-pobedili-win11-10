@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Studenti pobedili - tema za Windows, Linux, macOS i telefon</title>
-<meta name="description" content="Besplatna bordo tema za Windows 11, 10, Linux, macOS, Android i iPhone: nove pozadine u 4K sa srpskim zastavama, 31 ikonica, zaključani ekran i zvuk. Instalacija jednim klikom, bez admin prava, potpuna deinstalacija.">
+<meta name="description" content="Besplatna bordo tema za Windows 11, 10, Linux, macOS, Android i iPhone: nove pozadine u 4K sa srpskim zastavama, ikonice u dva stila, zaključani ekran i zvuk. Instalacija jednim klikom, bez admin prava, potpuna deinstalacija.">
 <meta name="theme-color" content="#0b0406">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Studenti pobedili - tema za Windows, Linux, macOS i telefon">
-<meta property="og:description" content="Pozadine u 4K sa srpskim zastavama, 31 ikonica, zaključani ekran i zvuk. Besplatno, instalacija jednim klikom.">
+<meta property="og:description" content="Pozadine u 4K sa srpskim zastavama, ikonice u dva stila (Bordo i Porcelan), zaključani ekran i zvuk. Besplatno, instalacija jednim klikom.">
 <meta property="og:image" content="https://raw.githubusercontent.com/zoxknez/studenti-pobedili-win11-10/main/web/assets/og.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -184,6 +184,25 @@ dialog .close{position:absolute;top:-46px;right:0}
 .explorer li .pin{margin-left:auto;opacity:.45;font-size:12px}
 .explorer .note{padding:12px 16px;border-top:1px solid #333;color:#9a9a9a;font-size:13px}
 
+.style-switch{display:inline-flex;gap:4px;padding:5px;border-radius:14px;background:var(--surface);box-shadow:inset 0 0 0 1px var(--border);margin:-18px 0 14px}
+.style-switch button{display:flex;align-items:center;gap:8px;border:0;background:transparent;color:var(--muted);font:700 14px/1 Manrope,system-ui,sans-serif;padding:10px 16px;border-radius:10px;cursor:pointer}
+.style-switch button[aria-selected="true"]{background:var(--surface2);color:var(--text);box-shadow:inset 0 0 0 1px var(--border)}
+.sw-dot{width:14px;height:14px;border-radius:50%;display:inline-block}
+.sw-dot.bordo{background:linear-gradient(135deg,#c23a55,#7e0c26)}
+.sw-dot.porcelan{background:linear-gradient(135deg,#ffffff,#d9d4d0);box-shadow:inset 0 0 0 1px rgba(0,0,0,.25),0 0 0 2px rgba(171,58,79,.0)}
+.new-pill{font-size:11px;padding:3px 7px;border-radius:999px;background:rgba(226,84,108,.18);color:#ffb3c0}
+.style-note{color:var(--muted);font-size:15px;margin-bottom:24px;max-width:760px}
+.style-note code{font-size:13.5px}
+#ikonice.porcelan .icon-grid{background:linear-gradient(180deg,#f6f3f0,#ebe6e2)}
+#ikonice.porcelan .icon-grid img{filter:drop-shadow(0 8px 10px rgba(60,40,45,.18))}
+#ikonice.porcelan .explorer{background:#f9f8f7}
+#ikonice.porcelan .explorer .bar{background:#eeebe8;color:#2b2326}
+#ikonice.porcelan .explorer .bar i{color:#6d6266}
+#ikonice.porcelan .explorer li{color:#1f1a1c}
+#ikonice.porcelan .explorer li.sel{background:#e3dfdc}
+#ikonice.porcelan .explorer li.sep{background:#dcd7d3}
+#ikonice.porcelan .explorer .note{border-top-color:#e2ddda;color:#6d6266}
+
 /* install */
 .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;counter-reset:s}
 @media (max-width:900px){.steps{grid-template-columns:1fr}}
@@ -315,7 +334,7 @@ footer a{color:var(--muted)}
       <div>
         <span class="eyebrow"><b>●</b> Windows 11 i 10 · <a href="#linux" style="color:inherit">Linux</a> · <a href="#macos" style="color:inherit">macOS</a> · <a href="#telefon" style="color:inherit">Telefon</a></span>
         <h1><span>Студенти</span><span>победили<em>.</em></span></h1>
-        <p class="lead">Kompletna bordo tema za vaš računar: pozadine u 4K sa srpskim zastavama, 31 ručno doterana ikonica, zaključani ekran i zvuk obaveštenja. Instalacija jednim klikom, a vraćanje bez traga.</p>
+        <p class="lead">Kompletna bordo tema za vaš računar: pozadine u 4K sa srpskim zastavama, 31 ručno doterana ikonica u dva stila, zaključani ekran i zvuk obaveštenja. Instalacija jednim klikom, a vraćanje bez traga.</p>
         <div class="cta">
           <a class="btn btn-primary" data-dl="zip" href="https://github.com/zoxknez/studenti-pobedili-win11-10/releases/latest/download/StudentiPobedili-Windows-v2.zip">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0l-5-5m5 5l5-5M4 21h16"/></svg>
@@ -349,14 +368,15 @@ footer a{color:var(--muted)}
 
     <div class="stats reveal">
       <div><b>21</b><span>pozadina i ilustracija</span></div>
-      <div><b>31</b><span>ikonica, 16-256 px</span></div>
+      <div><b>2×31</b><span>ikonica: Bordo i Porcelan</span></div>
       <div><b>2</b><span>varijante: tamna i svetla</span></div>
       <div><b>1</b><span>klik za instalaciju</span></div>
     </div>
 
     <div class="news card reveal" id="novo">
-      <div class="news-tag">Novo u 2.4</div>
+      <div class="news-tag">Novo</div>
       <ul>
+        <li><b>Porcelan ikonice:</b> drugi stil, mat bele sa grafitnim simbolima, za Windows, Linux i macOS. <a href="#ikonice">Pogledajte ovde</a>.</li>
         <li><b>Nove pozadine sa srpskim zastavama.</b> Hvala vam na sugestijama: sve pozadine su redizajnirane i uvećane do 4K.</li>
         <li><b>Nova serija:</b> deset dodatnih ilustracija koje možete <a href="#nova">preuzeti ovde</a>.</li>
         <li><b>Ispravka:</b> deinstalacija više ne prijavljuje grešku „FileAttributes“ kada su fascikle u OneDrive-u. Ako ste je dobili, preuzmite paket ponovo i pokrenite opciju D.</li>
@@ -411,7 +431,7 @@ footer a{color:var(--muted)}
       </div>
       <div class="features">
         <div class="card feature reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div><h3>Pozadine u 4K</h3><p>Slideshow od tri bordo pozadine 3840×2160 i svetla varijanta, plus ultrawide 21:9 i verzije za tablet.</p></div>
-        <div class="card feature reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7a2 2 0 012-2h4l2 2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg></div><h3>31 premium ikonica</h3><p>Fascikle, Ovaj računar, korpa, diskovi, File Explorer na traci zadataka i leva navigacija, oštre na svakom skaliranju.</p></div>
+        <div class="card feature reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7a2 2 0 012-2h4l2 2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg></div><h3>31 ikonica, dva stila</h3><p>Bordo ili Porcelan. Fascikle, Ovaj računar, korpa, diskovi, File Explorer na traci zadataka i leva navigacija, oštre na svakom skaliranju.</p></div>
         <div class="card feature reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/></svg></div><h3>Zaključani ekran</h3><p>Postavlja se automatski. Format 16:9 za monitor, plus dve uspravne verzije za telefon.</p></div>
         <div class="card feature reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5L6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 010 7M18.5 5.5a9 9 0 010 13"/></svg></div><h3>Zvuk „Pobeda“</h3><p>Kratak zvuk za Windows obaveštenja. Uključuje se i isključuje jednom opcijom.</p></div>
         <div class="card feature reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg></div><h3>Bezbedno</h3><p>Samo trenutni korisnik, bez programa i interneta. Original se čuva pre svake izmene.</p></div>
@@ -467,8 +487,13 @@ footer a{color:var(--muted)}
       <div class="head reveal">
         <div class="kicker">Ikonice</div>
         <h2>Svaki piksel na svom mestu.</h2>
-        <p>Velike ikonice su bogate 3D fascikle sa brojem 3. U levoj navigaciji svaka stavka dobija sopstvenu siluetu, pa se razlikuju i na 16 piksela.</p>
+        <p>Dva stila, po 31 ikonica. Velike ikonice su 3D fascikle sa brojem 3, a u levoj navigaciji svaka stavka dobija sopstvenu siluetu, pa se razlikuju i na 16 piksela.</p>
       </div>
+      <div class="style-switch reveal" role="tablist" aria-label="Stil ikonica">
+        <button type="button" role="tab" aria-selected="true" data-style="bordo"><i class="sw-dot bordo"></i>Bordo</button>
+        <button type="button" role="tab" aria-selected="false" data-style="porcelan"><i class="sw-dot porcelan"></i>Porcelan <span class="new-pill">Novo</span></button>
+      </div>
+      <p class="style-note reveal" id="style-note">Bordo: crvene 3D fascikle u bordo tonu. Postavlja ih <code>INSTALIRAJ.cmd</code> › opcija <b>1</b>, <b>2</b> ili <b>5</b>.</p>
       <div class="icons">
         <div class="card icon-grid reveal">
           <img src="assets/icons/Folder-3.webp" alt="Fascikla" loading="lazy" width="192" height="192">
@@ -767,6 +792,23 @@ footer a{color:var(--muted)}
     lb.showModal();
   }));
   lb.addEventListener('click', e => { if (e.target === lb) lb.close(); });
+  // Prekidac stila ikonica (Bordo / Porcelan)
+  const ik = document.getElementById('ikonice');
+  const notes = {
+    bordo: 'Bordo: crvene 3D fascikle u bordo tonu. Postavlja ih <code>INSTALIRAJ.cmd</code> › opcija <b>1</b>, <b>2</b> ili <b>5</b>.',
+    porcelan: 'Porcelan: mat bele površine, grafitni simboli i prigušena crvena, posebno lep uz Svetlu temu. Windows: <code>INSTALIRAJ.cmd</code> › <b>P</b>; Linux: <code>./install.sh --porcelan</code>; macOS: <code>./install.command --porcelan</code>.'
+  };
+  ik.querySelectorAll('.style-switch button').forEach(btn => btn.addEventListener('click', () => {
+    const st = btn.dataset.style, p = st === 'porcelan';
+    ik.querySelectorAll('.style-switch button').forEach(b => b.setAttribute('aria-selected', String(b === btn)));
+    ik.classList.toggle('porcelan', p);
+    ik.querySelectorAll('.icon-grid img, .explorer img').forEach(img => {
+      const src = img.getAttribute('src');
+      img.setAttribute('src', p ? src.replace('assets/icons/', 'assets/icons-porcelan/').replace('assets/nav/', 'assets/nav-porcelan/')
+                                : src.replace('assets/icons-porcelan/', 'assets/icons/').replace('assets/nav-porcelan/', 'assets/nav/'));
+    });
+    document.getElementById('style-note').innerHTML = notes[st];
+  }));
   const els = document.querySelectorAll('.reveal');
   if (!('IntersectionObserver' in window) || matchMedia('(prefers-reduced-motion: reduce)').matches) { els.forEach(e => e.classList.add('in')); return; }
   const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -8% 0px' });

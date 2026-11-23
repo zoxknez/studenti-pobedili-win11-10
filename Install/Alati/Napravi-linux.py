@@ -96,6 +96,48 @@ def build_icons():
     print('ikonice:', len(ICONS), 'imena x', len(SIZES), 'velicina')
 
 
+# ---------------------------------------------------------------- Porcelan (drugi stil)
+THEME_PORCELAN = os.path.join(LINUX, 'icons', 'StudentiPobedili-Porcelan')
+PORCELAN_ICO = os.path.join(ROOT, 'Icons', 'Porcelan', 'ICO')
+
+
+def porcelan_frame(master, size):
+    """Okvir iz Porcelan ICO fajla: tacna velicina ako postoji (male su posebno crtane), inace prva veca umanjena."""
+    ico = Image.open(os.path.join(PORCELAN_ICO, master + '.ico'))
+    have = sorted(w for w, h in ico.ico.sizes())
+    if size in have:
+        return ico.ico.getimage((size, size)).convert('RGBA')
+    bigger = [s for s in have if s > size] or [have[-1]]
+    return ico.ico.getimage((bigger[0], bigger[0])).convert('RGBA').resize((size, size), Image.LANCZOS)
+
+
+def build_porcelan_icons():
+    import shutil
+    shutil.rmtree(THEME_PORCELAN, ignore_errors=True)
+    dirs = []
+    for size in SIZES:
+        for ctx in ('apps', 'devices', 'mimetypes', 'places'):
+            os.makedirs(os.path.join(THEME_PORCELAN, f'{size}x{size}', ctx), exist_ok=True)
+            dirs.append((f'{size}x{size}/{ctx}', size, ctx))
+    cache = {}
+    for name, (ctx, master) in ICONS.items():
+        for size in SIZES:
+            key = (master, size)
+            if key not in cache:
+                cache[key] = porcelan_frame(master, size)
+            cache[key].save(os.path.join(THEME_PORCELAN, f'{size}x{size}', ctx, name + '.png'), optimize=True)
+    ctx_name = {'apps': 'Applications', 'devices': 'Devices', 'mimetypes': 'MimeTypes', 'places': 'Places'}
+    lines = ['[Icon Theme]', 'Name=Studenti Pobedili Porcelan',
+             'Comment=Porcelan ikonice (mat bele, grafitni simboli) - Studenti pobedili (nezvanicna fan-made tema)',
+             'Inherits=breeze,Adwaita,hicolor', 'Example=folder', '',
+             'Directories=' + ','.join(d for d, _, _ in dirs), '']
+    for d, size, ctx in dirs:
+        lines += [f'[{d}]', f'Size={size}', f'Context={ctx_name[ctx]}', 'Type=Fixed', '']
+    with open(os.path.join(THEME_PORCELAN, 'index.theme'), 'w', encoding='utf-8', newline='\n') as f:
+        f.write('\n'.join(lines))
+    print('Porcelan ikonice:', len(ICONS), 'imena x', len(SIZES), 'velicina')
+
+
 # ---------------------------------------------------------------- KDE seme boja
 NEUTRAL = dict(negative='218,68,83', neutral='246,116,0', positive='39,174,96', visited='155,89,182')
 
@@ -182,6 +224,7 @@ def build_tarball():
 
 if __name__ == '__main__':
     build_icons()
+    build_porcelan_icons()
     scheme(dark=True)
     scheme(dark=False)
     if '--paket' in sys.argv:

@@ -4,7 +4,7 @@
 
 # Studenti pobedili - tema za Windows, Linux, macOS i telefon
 
-**Bordo tema sa pozadinama u 4K (srpske zastave), 31 ikonicom, zaključanim ekranom i zvukom.**
+**Bordo tema sa pozadinama u 4K (srpske zastave), ikonicama u dva stila (Bordo i Porcelan), zaključanim ekranom i zvukom.**
 Instalacija jednim klikom, bez admin prava, potpuna deinstalacija.
 
 [**⬇ Windows (ZIP)**](https://github.com/zoxknez/studenti-pobedili-win11-10/releases/latest/download/StudentiPobedili-Windows-v2.zip)
@@ -35,7 +35,7 @@ i otvorite ga dvoklikom (pre toga zatvorite Settings).
 ```bash
 tar xzf StudentiPobedili-Linux.tar.gz
 cd StudentiPobedili-Linux
-./install.sh            # meni; ili --bordo | --svetla | --ikonice | --deinstaliraj
+./install.sh            # meni; ili --bordo | --svetla | --ikonice | --porcelan | --deinstaliraj
 ```
 
 Bez `sudo`, samo za vašeg korisnika (`~/.local/share`). Na **GNOME-u** pozadine prate tamni i svetli režim (Bordo i Svetle se same smenjuju), uz crveni akcenat (GNOME 47+), zaključani ekran i temu ikonica. Na **KDE Plasma-i** (5.24+ i 6) dobijate šemu boja „Studenti Pobedili Bordo“ ili „Svetla“ sa bordo naslovnim trakama, pozadinu sa tamnom i svetlom verzijom, zaključani ekran i ikonice za Dolphin. Ikonice koje tema nema uzimaju se iz teme koju ste do sada koristili. `--deinstaliraj` vraća tačno prethodna podešavanja.
@@ -59,7 +59,7 @@ cd StudentiPobedili-Unity && ./install.sh
 
 ```bash
 cd ~/Downloads/StudentiPobedili-macOS
-./install.command       # meni; ili --bordo | --svetla | --fascikla PUTANJA | --deinstaliraj
+./install.command       # meni; ili --bordo | --svetla | --porcelan | --fascikla PUTANJA | --deinstaliraj
 ```
 
 Bez admin lozinke. Postavlja Bordo ili Svetlu pozadinu, tamni ili svetli režim, crveni akcenat (najbliži bordo u Apple paleti) i ikonice za Desktop, Documents, Downloads, Pictures, Music i Movies, a `--fascikla` daje crvenu „3“ bilo kojoj fascikli. macOS traži dozvolu da Terminal upravlja aplikacijom *System Events* i pristupa fasciklama. Ikonice u Dock-u, sidebar-u i korpi štiti sam sistem (SIP). Ako je fajl blokiran: `xattr -dr com.apple.quarantine StudentiPobedili-macOS`.
@@ -72,12 +72,26 @@ Bez admin lozinke. Postavlja Bordo ili Svetlu pozadinu, tamni ili svetli režim,
 |---|---|
 | **Tema** | Bordo akcenat `#981F34` (kontrast 8,1:1), tamni ili svetli režim, bordo traka zadataka i naslovne trake |
 | **Pozadine** | Slideshow od tri bordo pozadine 3840×2160 i svetla varijanta, plus ultrawide 5120×2160 i dve za tablet (2880×2160) |
-| **Ikonice** | 31 ikonica (16-256 px, uključujući 20 i 40 px za 125% i 250%), leva navigacija Explorer-a sa posebnom siluetom za svaku stavku, File Explorer na traci zadataka |
+| **Ikonice** | 31 ikonica u dva stila, Bordo i Porcelan (16-256 px, uključujući 20 i 40 px za 125% i 250%), leva navigacija Explorer-a sa posebnom siluetom za svaku stavku, File Explorer na traci zadataka |
 | **Zaključani ekran** | Postavlja se automatski (16:9), plus dve uspravne verzije za telefon |
 | **Zvuk** | Kratak zvuk „Pobeda“ za obaveštenja, uključuje se i isključuje jednom opcijom |
 | **Vraćanje** | Opcija **D** vraća prethodnu temu, boje, ikonice i zvuk i briše fajlove paketa |
 
 <div align="center"><img src="Preview/Pregled-Ikonica.png" width="860" alt="Pregled ikonica"></div>
+
+### Drugi stil ikonica: Porcelan
+
+Istih 31 ikonica u svetloj seriji: mat bele površine, grafitni simboli i prigušena crvena, sa posebno nacrtanim malim ikonicama za levu navigaciju. Posebno lepo uz Svetlu temu.
+
+| Sistem | Kako |
+|---|---|
+| Windows | `INSTALIRAJ.cmd` › **P** (nazad na bordo: **5**; opcija **6** prati izabrani stil) |
+| Linux | `./install.sh --porcelan` ili `./install.sh --svetla --porcelan` |
+| macOS | `./install.command --porcelan` ili `./install.command --svetla --porcelan` |
+
+Pojedinačne ikonice su u [`Icons/Porcelan`](Icons/Porcelan) (ICO i PNG).
+
+<div align="center"><img src="Preview/Pregled-Porcelan.png" width="860" alt="Pregled Porcelan ikonica"></div>
 
 ## Nova serija
 
@@ -108,13 +122,14 @@ Naslov i „3“ su u sredini, pa ostaju ceo i na dužim ekranima, gde telefon m
 ```
 INSTALIRAJ.cmd          glavni meni
 Install/                PowerShell skripte (tema, ikonice, zaključani ekran, zvuk, deinstalacija)
-Install/Alati/          alati: Napravi-themepack.ps1, Napravi-ikonice.py, Napravi-linux.py, Napravi-mac.py, Napravi-mobilne.py (Python + Pillow)
-Linux/                  install.sh, tema ikonica (freedesktop), KDE šeme boja
+Install/Alati/          alati: Napravi-themepack.ps1, Napravi-ikonice.py, Napravi-linux.py, Napravi-mac.py, Napravi-pozadine.py,
+                        Napravi-nova-serija.py, Napravi-windows-paket.py, Uvecaj-pozadine.py (Python + Pillow)
+Linux/                  install.sh, teme ikonica Bordo i Porcelan (freedesktop), KDE šeme boja
 macOS/                  install.command (beta)
 Mobilni/                pozadine i zvuk za Android i iPhone
 Nova-serija/            10 dodatnih ilustracija u punoj rezoluciji
 Teme/                   .deskthemepack paketi
-Wallpapers/ LockScreen/ Icons/ Sounds/ Preview/
+Wallpapers/ LockScreen/ Icons/ (Icons/Porcelan/) Sounds/ Preview/
 web/                    sajt (Vercel: vercel.json → outputDirectory "web")
 ```
 

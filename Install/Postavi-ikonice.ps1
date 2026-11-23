@@ -1,15 +1,22 @@
 ﻿# Postavlja prilagodjene ikonice za trenutnog korisnika (HKCU + desktop.ini), uz rezervnu kopiju.
 # Bezbedno je pokrenuti vise puta: rezervna kopija se pravi SAMO od originalnog (ne nase) stanja.
+#   -Stil Bordo     crvene 3D fascikle (podrazumevano)
+#   -Stil Porcelan  svetla serija: mat bele povrsine, grafitni simboli, prigusena crvena
+# Bez -Stil koristi se poslednji izabrani stil. Promena stila samo zamenjuje putanje do ikonica,
+# a original za vracanje ostaje onaj sacuvan pri prvom postavljanju.
+param([ValidateSet('', 'Bordo', 'Porcelan')][string]$Stil = '')
 $ErrorActionPreference = 'Stop'
 . (Join-Path $PSScriptRoot 'Zajednicko.ps1')
 . (Join-Path $PSScriptRoot 'Ikonice-zajednicko.ps1')
 
 try {
     Assert-Package
-    New-Item -ItemType Directory -Path $IcoDir -Force | Out-Null
+    if (-not $Stil) { $Stil = Get-SavedIconStyle }
+    $IcoDir = Get-IcoDirForStyle $Stil
+    New-Item -ItemType Directory -Path $IconsDir -Force | Out-Null
     New-Item -ItemType Directory -Path $IconBackup -Force | Out-Null
-    Copy-Item -Path (Join-Path $Package 'Icons\ICO\*') -Destination $IcoDir -Force
-    Copy-Item -Path (Join-Path $Package 'Icons\PNG') -Destination $IconsDir -Recurse -Force
+    Copy-Item -Path (Join-Path $Package 'Icons\*') -Destination $IconsDir -Recurse -Force
+    Write-Host ("Stil ikonica: {0}" -f $Stil)
 
     # ---------- Registry ----------
     $manifest = @(Read-KeyManifest)
@@ -83,8 +90,13 @@ try {
         Write-Host 'Restartujem File Explorer da bi traka zadataka prikazala novu ikonicu...'
         Restart-ExplorerShell
     }
-    Write-Host 'Prilagodjene ikonice su postavljene za trenutnog Windows korisnika.' -ForegroundColor Green
+    Set-Content -LiteralPath $IconStyleFile -Value $Stil -Encoding ASCII
+    Write-Host ("Prilagodjene ikonice ({0}) su postavljene za trenutnog Windows korisnika." -f $Stil) -ForegroundColor Green
     Write-Host 'Ako neka ikonica ostane stara, ponovo pokrenite File Explorer ili se odjavite i prijavite.'
+    $machineIcon = Join-Path $env:ProgramData 'StudentiPobedili\shell-icons-backup.json'
+    if (Test-Path -LiteralPath $machineIcon) {
+        Write-Host 'Ikonica svih ostalih fascikli je postavljena ranije: da bi i ona bila u ovom stilu, izaberite opciju 6.' -ForegroundColor Yellow
+    }
     exit 0
 } catch {
     Write-Host ("GRESKA: {0}" -f $_.Exception.Message) -ForegroundColor Red

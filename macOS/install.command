@@ -7,6 +7,7 @@
 #   ./install.command --bordo             tamni rezim, Bordo pozadina, crveni akcenat, ikonice fascikli
 #   ./install.command --svetla            svetli rezim, Svetla pozadina
 #   ./install.command --fascikla PUTANJA  crvena "3" za fasciklu po izboru
+#   ./install.command --porcelan          ikonice fascikli u stilu Porcelan (moze i: --svetla --porcelan)
 #   ./install.command --deinstaliraj      vraca prethodna podesavanja
 set -euo pipefail
 
@@ -38,6 +39,12 @@ find_dir() {   # $1 = ime u paketu, $2 = ime u repou, $3 = fajl koji mora da pos
 }
 WALLS="$(find_dir wallpapers Wallpapers "$BORDO_WALL")" || die "Nisu pronađene pozadine. Raspakujte ceo paket."
 ICONS="$(find_dir icons Icons/PNG Folder-3.png)" || die "Nisu pronađene ikonice. Raspakujte ceo paket."
+ICONS_PORCELAN="$(find_dir icons-porcelan Icons/Porcelan/PNG Folder-3.png)" || ICONS_PORCELAN=""
+STYLE_DIR="$ICON_DST"   # Bordo; Porcelan je u "$ICON_DST/Porcelan"
+use_porcelan() {
+    [ -n "$ICONS_PORCELAN" ] || die "Nisu pronađene Porcelan ikonice. Raspakujte ceo paket."
+    STYLE_DIR="$ICON_DST/Porcelan"
+}
 
 # ---------------------------------------------------------------- macOS pomocne
 osa() { osascript -e "$1" 2>/dev/null; }
@@ -90,13 +97,14 @@ install_files() {
     rm -f "$WALL_DST"/*.jpg   # stare pozadine iz prethodnih verzija
     cp "$WALLS"/*.jpg "$WALL_DST/"
     cp "$ICONS"/*.png "$ICON_DST/"
+    if [ -n "$ICONS_PORCELAN" ]; then mkdir -p "$ICON_DST/Porcelan"; cp "$ICONS_PORCELAN"/*.png "$ICON_DST/Porcelan/"; fi
     ok "Pozadine kopirane u: $WALL_DST"
 }
 
 apply_folder_icons() {
     local item folder icon okc=0 failed=()
     for item in "${FOLDER_ICONS[@]}"; do
-        folder="$HOME/${item%%:*}"; icon="$ICON_DST/${item#*:}"
+        folder="$HOME/${item%%:*}"; icon="$STYLE_DIR/${item#*:}"
         [ -d "$folder" ] || continue
         if set_folder_icon "$folder" "$icon"; then remember_folder "$folder"; okc=$((okc + 1)); else failed+=("${item%%:*}"); fi
     done
@@ -134,8 +142,16 @@ do_folder() {   # $1 = putanja
     f="${f%/}"; f="${f//\\ / }"; f="${f%\"}"; f="${f#\"}"; f="${f%\'}"; f="${f#\'}"
     [ -d "$f" ] || die "Fascikla ne postoji: $f"
     install_files >/dev/null
-    if set_folder_icon "$f" "$ICON_DST/Folder-3.png"; then remember_folder "$f"; killall Finder >/dev/null 2>&1 || true; ok "Crvena „3“ postavljena: $f"
+    if set_folder_icon "$f" "$STYLE_DIR/Folder-3.png"; then remember_folder "$f"; killall Finder >/dev/null 2>&1 || true; ok "Fascikla „3“ postavljena: $f"
     else die "Ikonica nije postavljena (proverite dozvole za Terminal u Privacy & Security)."; fi
+}
+
+do_porcelan_icons() {
+    use_porcelan
+    install_files >/dev/null
+    apply_folder_icons
+    killall Finder >/dev/null 2>&1 || true
+    echo; ok "${B}Porcelan ikonice su postavljene.${N} Za fasciklu po izboru: ./install.command --fascikla PUTANJA --porcelan"
 }
 
 do_uninstall() {
@@ -171,19 +187,24 @@ menu() {
     echo "   [1]  Bordo   (tamni režim, pozadina, crveni akcenat, ikonice fascikli)"
     echo "   [2]  Svetla  (svetli režim)"
     echo "   [3]  Crvena „3“ za fasciklu po izboru"
-    echo "   [4]  Deinstaliraj i vrati prethodno"
+    echo "   [4]  Ikonice fascikli Porcelan (drugi stil: mat bele, grafitni simboli)"
+    echo "   [5]  Deinstaliraj i vrati prethodno"
     echo "   [0]  Izlaz"
     echo
     read -r -p "  Izaberite opciju: " c
-    case "$c" in 1) do_theme bordo ;; 2) do_theme svetla ;; 3) do_folder "" ;; 4) do_uninstall ;; *) exit 0 ;; esac
+    case "$c" in 1) do_theme bordo ;; 2) do_theme svetla ;; 3) do_folder "" ;; 4) do_porcelan_icons ;; 5) do_uninstall ;; *) exit 0 ;; esac
 }
 
 case "${1:-}" in
-    --bordo) do_theme bordo ;;
-    --svetla) do_theme svetla ;;
-    --fascikla) do_folder "${2:-}" ;;
+    --bordo|--svetla)
+        if [ "${2:-}" = --porcelan ]; then use_porcelan; fi
+        do_theme "${1#--}" ;;
+    --fascikla)
+        if [ "${3:-}" = --porcelan ]; then use_porcelan; fi
+        do_folder "${2:-}" ;;
+    --porcelan) do_porcelan_icons ;;
     --deinstaliraj|--uninstall) do_uninstall ;;
-    -h|--pomoc|--help) sed -n '3,10p' "$0" | sed 's/^# \{0,1\}//' ;;
+    -h|--pomoc|--help) sed -n '3,11p' "$0" | sed 's/^# \{0,1\}//' ;;
     "") menu ;;
     *) die "Nepoznata opcija: $1 (pogledajte --pomoc)" ;;
 esac

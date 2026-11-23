@@ -3,9 +3,18 @@
 # efekta), pa su potrebna administratorska prava; vazi za sve korisnike racunara.
 # (Leva navigacija NE zahteva HKLM: dovoljno je prekaciti stavke, to radi Postavi-ikonice.ps1.)
 # Originalne vrednosti se cuvaju i vracaju sa -Vrati.
-param([switch]$Vrati, [string]$Log)
+# -Stil Bordo | Porcelan; bez njega koristi se stil izabran za ostale ikonice (Postavi-ikonice.ps1).
+param([switch]$Vrati, [string]$Log, [ValidateSet('', 'Bordo', 'Porcelan')][string]$Stil = '')
 $ErrorActionPreference = 'Stop'
 . (Join-Path $PSScriptRoot 'Zajednicko.ps1')
+if (-not $Stil) {
+    $styleFile = Join-Path $InstallRoot 'ikonice-stil.txt'
+    $Stil = 'Bordo'
+    if ((Test-Path -LiteralPath $styleFile) -and ((Get-Content -LiteralPath $styleFile -Raw).Trim() -eq 'Porcelan')) { $Stil = 'Porcelan' }
+}
+# Razlicito ime fajla po stilu: nova putanja tera Windows da ne koristi staru ikonicu iz kesa.
+$StyleIconName = if ($Stil -eq 'Porcelan') { 'Folder-3-Porcelan.ico' } else { 'Folder-3.ico' }
+$StyleIconSrc  = if ($Stil -eq 'Porcelan') { 'Icons\Porcelan\ICO\Folder-3.ico' } else { 'Icons\ICO\Folder-3.ico' }
 
 $MachineDir    = Join-Path $env:ProgramData 'StudentiPobedili'
 $BackupFile    = Join-Path $MachineDir 'shell-icons-backup.json'
@@ -40,7 +49,7 @@ if (-not (Test-Admin)) {
     if (-not $Vrati) { Assert-Package }
     Write-Host 'Potrebna su administratorska prava: potvrdite Windows prozor (UAC).' -ForegroundColor Yellow
     $logFile = Join-Path ([IO.Path]::GetTempPath()) ('StudentiPobedili-admin-{0}.log' -f [guid]::NewGuid().ToString('N'))
-    $argList = @('-NoProfile', '-ExecutionPolicy', 'Bypass', '-File', ('"{0}"' -f $PSCommandPath), '-Log', ('"{0}"' -f $logFile))
+    $argList = @('-NoProfile', '-ExecutionPolicy', 'Bypass', '-File', ('"{0}"' -f $PSCommandPath), '-Log', ('"{0}"' -f $logFile), '-Stil', $Stil)
     if ($Vrati) { $argList += '-Vrati' }
     try {
         $p = Start-Process -FilePath powershell.exe -Verb RunAs -ArgumentList $argList -WindowStyle Hidden -Wait -PassThru
@@ -102,8 +111,8 @@ try {
     }
 
     New-Item -ItemType Directory -Path $MachineDir -Force | Out-Null
-    $folderIcon = Join-Path $MachineDir 'Folder-3.ico'
-    Copy-Item -LiteralPath (Join-Path $Package 'Icons\ICO\Folder-3.ico') -Destination $folderIcon -Force
+    $folderIcon = Join-Path $MachineDir $StyleIconName
+    Copy-Item -LiteralPath (Join-Path $Package $StyleIconSrc) -Destination $folderIcon -Force
 
     if (-not $backup) {
         $backup = [pscustomobject]@{
@@ -119,13 +128,16 @@ try {
             if ($rec) { Restore-Value (Join-Path $FolderDescKey $id) 'Icon' $rec }
         }
         $backup.PSObject.Properties.Remove('KnownFolders')
-        Get-ChildItem -LiteralPath $MachineDir -Filter 'Folder-*.ico' | Where-Object { $_.Name -ne 'Folder-3.ico' } | Remove-Item -Force
+        Get-ChildItem -LiteralPath $MachineDir -Filter 'Folder-*.ico' | Where-Object { $_.Name -notmatch '^Folder-3(-Porcelan)?\.ico$' } | Remove-Item -Force
     }
     $backup | ConvertTo-Json -Depth 4 | Set-Content -LiteralPath $BackupFile -Encoding UTF8
 
     if (-not (Test-Path -LiteralPath $ShellIconsKey)) { New-Item -Path $ShellIconsKey -Force | Out-Null }
     foreach ($n in '3', '4') { Set-ItemProperty -LiteralPath $ShellIconsKey -Name $n -Value "$folderIcon,0" }
-    Write-Log 'Crvena fascikla "3" je postavljena za sve fascikle.'
+    # Ikonica drugog stila vise nije u upotrebi (Explorer se restartuje odmah posle ovoga).
+    Get-ChildItem -LiteralPath $MachineDir -Filter 'Folder-3*.ico' | Where-Object { $_.Name -ne $StyleIconName } |
+        ForEach-Object { try { Remove-Item -LiteralPath $_.FullName -Force } catch {} }
+    Write-Log ('Fascikla "3" ({0}) je postavljena za sve fascikle.' -f $Stil)
     exit 0
 } catch {
     Write-Log ("GRESKA: {0}" -f $_.Exception.Message)

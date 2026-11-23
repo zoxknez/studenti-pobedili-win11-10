@@ -13,6 +13,8 @@ BRZI START
      [1] KOMPLETNO - Bordo  (tamna tema, sve ikonice, zaključani ekran)  ← preporuka
      [2] KOMPLETNO - Svetla
    Ostale opcije u meniju služe za pojedinačne delove i za vraćanje.
+3. Želite drugi stil ikonica? Izaberite [P] Porcelan (mat bele površine,
+   grafitni simboli, prigušena crvena). Nazad na bordo: opcija [5].
 
 Ako Windows prikaže „Windows protected your PC“: More info > Run anyway.
 Skripte ne instaliraju programe, ne koriste internet i menjaju samo
@@ -24,8 +26,8 @@ potvrdu (UAC). Ako je odbijete, sve ostalo radi normalno.
 DRUGI NAČIN: SAMO TEMA, DVOKLIKOM (bez skripti)
 -----------------------------------------------
 U fascikli Teme nalaze se pravi Windows paketi tema:
-  Studenti Pobedili Bordo.deskthemepack   - tamni režim, 4 pozadine
-  Studenti Pobedili Svetla.deskthemepack  - svetli režim, 2 pozadine
+  Studenti Pobedili Bordo.deskthemepack   - tamni režim, 3 pozadine
+  Studenti Pobedili Svetla.deskthemepack  - svetli režim, 1 pozadina
 Dvoklik instalira i aktivira temu kroz sam Windows. Ovako se dobijaju
 pozadine, bordo akcentna boja i tamni/svetli režim. Ikonice, zaključani
 ekran i zvuk postavlja samo INSTALIRAJ.cmd. Pre dvoklika zatvorite
@@ -62,9 +64,20 @@ IKONICE (opcija 5, bez admin prava)
 • Pre prve izmene čuva originalno stanje u
   %LOCALAPPDATA%\StudentiPobedili\IconBackup
   Bezbedno je pokrenuti više puta, jer se original ne pregazi.
-• Novi disk (npr. USB) dobija ikonicu kada ponovo pokrenete opciju 5.
+• Novi disk (npr. USB) dobija ikonicu kada ponovo pokrenete opciju 5 (ili P).
 
-CRVENA „3“ ZA SVE FASCIKLE (opcija 6, traži admin potvrdu)
+IKONICE PORCELAN (opcija P, bez admin prava)
+• Drugi stil istih 31 ikonica: mat bele površine, grafitni simboli i
+  prigušena crvena. Posebno lepo uz Svetlu temu, a čitljive su i u tamnom
+  režimu. Male ikonice za levu navigaciju su posebno nacrtane.
+• Postavlja se isto kao opcija 5 (ista mesta, isti original za vraćanje).
+  Između stilova možete prelaziti koliko god puta želite: 5 = Bordo,
+  P = Porcelan. Opcija 9 i deinstalacija vraćaju originalne Windows ikonice.
+• Pojedinačne ikonice: Icons\Porcelan\ICO i Icons\Porcelan\PNG.
+
+FASCIKLA „3“ ZA SVE FASCIKLE (opcija 6, traži admin potvrdu)
+• Koristi stil koji ste poslednji izabrali (5 ili P). Posle promene stila
+  pokrenite opciju 6 ponovo da bi i ova ikonica bila u novom stilu.
 • Windows ikonicu obične fascikle čita samo iz sistemskog dela registra,
   pa ova opcija važi za sve korisnike računara i kratko restartuje
   File Explorer. Original se čuva u C:\ProgramData\StudentiPobedili.
@@ -107,7 +120,8 @@ Wallpapers\               7 pozadina: 4 × 3840×2160, ultrawide 5120×2160,
                           2 za tablet 2880×2160
 LockScreen\               1 za PC (16:9) + 2 za telefon (9:16)
 Icons\ICO, Icons\PNG      31 ikonica (ICO: 16-256 px, uključujući 20 i 40 px
-                          za skaliranje 125% i 250%)
+                          za skaliranje 125% i 250%), stil Bordo
+Icons\Porcelan\           istih 31 ikonica u stilu Porcelan (ICO i PNG)
 Sounds\                   zvuk obaveštenja
 Preview\                  pregledi
 Install\                  skripte

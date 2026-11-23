@@ -6,7 +6,8 @@
 #   ./install.sh                 meni
 #   ./install.sh --bordo         tamna tema (pozadine, boje, ikonice, zakljucani ekran)
 #   ./install.sh --svetla        svetla tema
-#   ./install.sh --ikonice       samo tema ikonica
+#   ./install.sh --ikonice       samo tema ikonica (Bordo)
+#   ./install.sh --porcelan      samo tema ikonica Porcelan (drugi stil; moze i: --svetla --porcelan)
 #   ./install.sh --deinstaliraj  vraca prethodna podesavanja i brise fajlove paketa
 set -euo pipefail
 
@@ -15,8 +16,17 @@ DATA="${XDG_DATA_HOME:-$HOME/.local/share}"
 CONFIG="${XDG_CONFIG_HOME:-$HOME/.config}"
 STATE_DIR="$DATA/studenti-pobedili"
 STATE="$STATE_DIR/stanje.env"
-ICON_NAME="StudentiPobedili"
+ICON_BORDO="StudentiPobedili"
+ICON_PORCELAN="StudentiPobedili-Porcelan"
+ICON_NAME="$ICON_BORDO"
+ICON_LABEL="Studenti Pobedili"
 ICON_DST="$DATA/icons/$ICON_NAME"
+use_icons() {   # $1 = bordo | porcelan
+    if [ "$1" = porcelan ]; then ICON_NAME="$ICON_PORCELAN"; ICON_LABEL="Studenti Pobedili Porcelan"
+    else ICON_NAME="$ICON_BORDO"; ICON_LABEL="Studenti Pobedili"; fi
+    ICON_DST="$DATA/icons/$ICON_NAME"
+}
+is_our_icons() { [ "$1" = "$ICON_BORDO" ] || [ "$1" = "$ICON_PORCELAN" ]; }
 BG_DIR="$DATA/backgrounds/studenti-pobedili"
 GNOME_PROPS="$DATA/gnome-background-properties/studenti-pobedili.xml"
 KDE_WALL="$DATA/wallpapers/StudentiPobedili"
@@ -94,8 +104,8 @@ current_icon_theme() {
         *)   gnome_ok && t="$(gsettings get org.gnome.desktop.interface icon-theme 2>/dev/null | tr -d "'")" ;;
     esac
     # Ako je nasa tema vec aktivna (ponovna instalacija), nasledjuje se original iz sacuvanog stanja.
-    [ "$t" = "$ICON_NAME" ] && t="$(saved_icon_theme)"
-    [ "$t" = "$ICON_NAME" ] && t=""
+    if is_our_icons "$t"; then t="$(saved_icon_theme)"; fi
+    if is_our_icons "$t"; then t=""; fi
     printf '%s' "$t"
 }
 
@@ -247,7 +257,7 @@ do_theme() {   # $1 = bordo | svetla
         gnome) apply_gnome "$1" ;;
         kde)   apply_kde "$1" ;;
         *)     warn "Okruženje nije prepoznato kao GNOME ni KDE: fajlovi su instalirani, primenite ih ručno."
-               info "  Ikonice: tema „Studenti Pobedili“   Pozadine: $BG_DIR" ;;
+               info "  Ikonice: tema „$ICON_LABEL“   Pozadine: $BG_DIR" ;;
     esac
     echo; ok "${B}Tema je instalirana.${N} Ako se nešto ne osveži odmah, odjavite se i ponovo prijavite."
 }
@@ -258,9 +268,9 @@ do_icons() {
     case "$(desktop)" in
         gnome) gnome_ok && gsettings set org.gnome.desktop.interface icon-theme "$ICON_NAME" ;;
         kde)   kwrite --file kdeglobals --group Icons --key Theme "$ICON_NAME" || true; changeicons "$ICON_NAME" || true ;;
-        *)     info "Izaberite temu ikonica „Studenti Pobedili“ u podešavanjima izgleda." ;;
+        *)     info "Izaberite temu ikonica „$ICON_LABEL“ u podešavanjima izgleda." ;;
     esac
-    ok "Ikonice su postavljene."
+    ok "Ikonice su postavljene ($ICON_LABEL)."
 }
 
 do_uninstall() {
@@ -298,7 +308,7 @@ do_uninstall() {
             done
         fi
     fi
-    rm -rf "$ICON_DST" "$BG_DIR" "$KDE_WALL" "$GNOME_PROPS" "$KDE_SCHEMES/StudentiPobediliBordo.colors" "$KDE_SCHEMES/StudentiPobediliSvetla.colors" "$STATE_DIR"
+    rm -rf "$DATA/icons/$ICON_BORDO" "$DATA/icons/$ICON_PORCELAN" "$BG_DIR" "$KDE_WALL" "$GNOME_PROPS" "$KDE_SCHEMES/StudentiPobediliBordo.colors" "$KDE_SCHEMES/StudentiPobediliSvetla.colors" "$STATE_DIR"
     ok "Fajlovi paketa su uklonjeni."
 }
 
@@ -308,23 +318,26 @@ menu() {
     echo "  ─────────────────────────────────────────────"
     echo "   [1]  Bordo   (tamni režim, pozadine, boje, ikonice, zaključani ekran)"
     echo "   [2]  Svetla  (svetli režim)"
-    echo "   [3]  Samo ikonice"
-    echo "   [4]  Deinstaliraj i vrati prethodno"
+    echo "   [3]  Samo ikonice (Bordo)"
+    echo "   [4]  Samo ikonice Porcelan (drugi stil: mat bele, grafitni simboli)"
+    echo "   [5]  Deinstaliraj i vrati prethodno"
     echo "   [0]  Izlaz"
     echo
     read -r -p "  Izaberite opciju: " c
     case "$c" in
-        1) do_theme bordo ;; 2) do_theme svetla ;; 3) do_icons ;; 4) do_uninstall ;; *) exit 0 ;;
+        1) do_theme bordo ;; 2) do_theme svetla ;; 3) do_icons ;; 4) use_icons porcelan; do_icons ;; 5) do_uninstall ;; *) exit 0 ;;
     esac
 }
 
 [ "$(id -u)" -eq 0 ] && die "Ne pokrećite sa sudo: tema se instalira za vašeg korisnika."
 case "${1:-}" in
-    --bordo) do_theme bordo ;;
-    --svetla) do_theme svetla ;;
+    --bordo|--svetla)
+        if [ "${2:-}" = --porcelan ]; then use_icons porcelan; fi
+        do_theme "${1#--}" ;;
     --ikonice) do_icons ;;
+    --porcelan) use_icons porcelan; do_icons ;;
     --deinstaliraj|--uninstall) do_uninstall ;;
-    -h|--pomoc|--help) sed -n '3,10p' "$0" | sed 's/^# \{0,1\}//' ;;
+    -h|--pomoc|--help) sed -n '3,11p' "$0" | sed 's/^# \{0,1\}//' ;;
     "") menu ;;
     *) die "Nepoznata opcija: $1 (pogledajte --pomoc)" ;;
 esac

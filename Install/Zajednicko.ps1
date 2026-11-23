@@ -86,7 +86,7 @@ function New-ThemeText {
 }
 
 function Assert-Package {
-    foreach ($d in 'Wallpapers','LockScreen','Icons\ICO','Sounds') {
+    foreach ($d in 'Wallpapers','LockScreen','Icons\ICO','Icons\Porcelan\ICO','Sounds') {
         if (-not (Test-Path -LiteralPath (Join-Path $Package $d))) {
             throw "Nedostaje fascikla '$d'. Raspakujte CEO ZIP u novu fasciklu i pokrenite INSTALIRAJ.cmd odatle."
         }
