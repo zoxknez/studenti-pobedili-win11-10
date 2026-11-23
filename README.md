@@ -81,7 +81,7 @@ Bez admin lozinke. Postavlja Bordo ili Svetlu pozadinu, tamni ili svetli režim,
 
 ### Drugi stil ikonica: Porcelan
 
-Istih 31 ikonica u svetloj seriji: mat bele površine, grafitni simboli i prigušena crvena, sa posebno nacrtanim malim ikonicama za levu navigaciju. Posebno lepo uz Svetlu temu.
+Istih 31 ikonica u svetloj seriji: mat bele površine, grafitni simboli i prigušena crvena. **U verziji 2.6 male ikonice od 16 do 48 px imaju krupnije simbole, jasnije konture i manje praznih margina.** Velike 3D ikonice zadržavaju svoj izgled. Čitljive su na svetloj i tamnoj podlozi.
 
 | Sistem | Kako |
 |---|---|
@@ -92,6 +92,18 @@ Istih 31 ikonica u svetloj seriji: mat bele površine, grafitni simboli i prigu�
 Pojedinačne ikonice su u [`Icons/Porcelan`](Icons/Porcelan) (ICO i PNG).
 
 <div align="center"><img src="Preview/Pregled-Porcelan.png" width="860" alt="Pregled Porcelan ikonica"></div>
+
+<div align="center"><img src="Preview/Navigacija-Porcelan.png" width="860" alt="Stvarni Porcelan ICO okviri od 16, 20 i 24 piksela na tamnoj i svetloj podlozi"></div>
+
+Za fizički veće ikonice u levoj navigaciji izaberite **Settings › System › Display › Scale › 125% ili 150%**. To povećava i tekst i ostale elemente. Paket ne menja skaliranje. Na [sajtu](https://studenti-tema.vercel.app/#ikonice) možete menjati stil, podlogu i skaliranje pregleda.
+
+Obnova i provera ikonica (Python 3 + Pillow):
+
+```powershell
+python -I Install/Alati/Napravi-porcelan.py
+python -I Install/Alati/Napravi-pregled-ikonica.py
+python -I Install/Alati/Proveri-ikonice.py
+```
 
 ## Nova serija
 

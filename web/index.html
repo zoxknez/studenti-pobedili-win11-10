@@ -190,13 +190,13 @@ dialog .close{position:absolute;top:-46px;right:0}
 @media (max-width:600px){.icon-grid{grid-template-columns:repeat(3,1fr)}}
 .icon-grid img{width:100%;max-width:92px;margin:0 auto;filter:drop-shadow(0 10px 14px rgba(0,0,0,.45));transition:transform .25s}
 .icon-grid img:hover{transform:translateY(-4px) scale(1.06)}
-.explorer{background:#1c1c1c;border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;display:flex;flex-direction:column}
+.explorer{--nav-scale:1;--icon-size:16px;background:#1c1c1c;border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;display:flex;flex-direction:column}
 .explorer .bar{display:flex;align-items:center;gap:8px;padding:12px 16px;background:#2a2a2a;font-size:13px;font-weight:600;color:#ddd}
 .explorer .bar img{width:16px;height:16px}
 .explorer .bar i{margin-left:auto;display:flex;gap:14px;font-style:normal;color:#aaa}
 .explorer ul{list-style:none;padding:12px 10px;flex:1}
-.explorer li{display:flex;align-items:center;gap:12px;padding:7px 12px;border-radius:8px;font-size:15px;color:#f0f0f0;font-weight:500}
-.explorer li img{width:20px;height:20px}
+.explorer li{display:flex;align-items:center;gap:calc(10px * var(--nav-scale));padding:calc(6px * var(--nav-scale)) 12px;border-radius:8px;font-size:calc(13px * var(--nav-scale));color:#f0f0f0;font-weight:500;min-width:0}
+.explorer li img{width:var(--icon-size);height:var(--icon-size);flex-shrink:0}
 .explorer li.sel{background:#333}
 .explorer li.sep{height:1px;background:#3a3a3a;padding:0;margin:8px 8px}
 .explorer li .pin{margin-left:auto;opacity:.45;font-size:12px}
@@ -204,7 +204,7 @@ dialog .close{position:absolute;top:-46px;right:0}
 
 .style-switch{display:inline-flex;gap:4px;padding:5px;border-radius:14px;background:var(--surface);box-shadow:inset 0 0 0 1px var(--border);margin:-18px 0 14px}
 .style-switch button{display:flex;align-items:center;gap:8px;border:0;background:transparent;color:var(--muted);font:700 14px/1 Manrope,system-ui,sans-serif;padding:10px 16px;border-radius:10px;cursor:pointer}
-.style-switch button[aria-selected="true"]{background:var(--surface2);color:var(--text);box-shadow:inset 0 0 0 1px var(--border)}
+.style-switch button[aria-pressed="true"]{background:var(--surface2);color:var(--text);box-shadow:inset 0 0 0 1px var(--border)}
 .sw-dot{width:14px;height:14px;border-radius:50%;display:inline-block}
 .sw-dot.bordo{background:linear-gradient(135deg,#c23a55,#7e0c26)}
 .sw-dot.porcelan{background:linear-gradient(135deg,#ffffff,#d9d4d0);box-shadow:inset 0 0 0 1px rgba(0,0,0,.25),0 0 0 2px rgba(171,58,79,.0)}
@@ -213,13 +213,21 @@ dialog .close{position:absolute;top:-46px;right:0}
 .style-note code{font-size:13.5px}
 #ikonice.porcelan .icon-grid{background:linear-gradient(180deg,#f6f3f0,#ebe6e2)}
 #ikonice.porcelan .icon-grid img{filter:drop-shadow(0 8px 10px rgba(60,40,45,.18))}
-#ikonice.porcelan .explorer{background:#f9f8f7}
-#ikonice.porcelan .explorer .bar{background:#eeebe8;color:#2b2326}
-#ikonice.porcelan .explorer .bar i{color:#6d6266}
-#ikonice.porcelan .explorer li{color:#1f1a1c}
-#ikonice.porcelan .explorer li.sel{background:#e3dfdc}
-#ikonice.porcelan .explorer li.sep{background:#dcd7d3}
-#ikonice.porcelan .explorer .note{border-top-color:#e2ddda;color:#6d6266}
+.explorer[data-theme="light"]{background:#f9f8f7}
+.explorer[data-theme="light"] .bar{background:#eeebe8;color:#2b2326}
+.explorer[data-theme="light"] .bar i{color:#6d6266}
+.explorer[data-theme="light"] li{color:#1f1a1c}
+.explorer[data-theme="light"] li.sel{background:#e3dfdc}
+.explorer[data-theme="light"] li.sep{background:#dcd7d3}
+.explorer[data-theme="light"] .note{border-top-color:#e2ddda;color:#5d5157}
+.preview-controls{display:flex;flex-wrap:wrap;align-items:center;gap:14px 28px;margin:0 0 22px}
+.preview-control{display:flex;align-items:center;gap:5px;flex-wrap:wrap}
+.preview-control>span{color:var(--muted);font-size:13px;margin-right:5px}
+.preview-control button{border:1px solid var(--border);border-radius:9px;background:var(--surface);padding:9px 11px;font:600 13px/1.3 Manrope,system-ui,sans-serif;color:var(--muted);cursor:pointer;min-height:38px}
+.preview-control button[aria-pressed="true"]{color:var(--text);border-color:#d85874;background:#48202c}
+.icon-help{margin-top:20px;padding:18px 22px;border:1px solid var(--border);border-radius:14px;background:var(--surface);color:var(--muted);font-size:14px;line-height:1.8}
+.icon-help strong{color:var(--text)}
+.icon-help a{color:var(--rose);text-decoration:underline;text-underline-offset:3px}
 
 /* install */
 .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;counter-reset:s}
@@ -397,12 +405,12 @@ footer a{color:var(--muted)}
     <div class="news card reveal" id="novo">
       <div class="news-tag">Novo</div>
       <ul>
-        <li><b>Porcelan ikonice:</b> drugi stil, mat bele sa grafitnim simbolima, za Windows, Linux i macOS. <a href="#ikonice">Pogledajte ovde</a>.</li>
+        <li><b>Verzija 2.6 — čitljivije Porcelan ikonice:</b> krupniji simboli, jasnije konture i manje praznih margina u malim veličinama. <a href="#ikonice">Uporedite prikaz na 100%, 125% i 150%</a>.</li>
         <li><b>Nove pozadine sa srpskim zastavama.</b> Hvala vam na sugestijama: sve pozadine su redizajnirane i uvećane do 4K.</li>
         <li><b>Nova serija:</b> deset dodatnih ilustracija koje možete <a href="#nova">preuzeti ovde</a>.</li>
         <li><b>Ispravka:</b> deinstalacija više ne prijavljuje grešku „FileAttributes“ kada su fascikle u OneDrive-u. Ako ste je dobili, preuzmite paket ponovo i pokrenite opciju D.</li>
       </ul>
-      <p>Već imate temu? Samo je instalirajte ponovo i stare pozadine će se same zameniti novim.</p>
+      <p>Već imate temu? Preuzmite novi paket. Za nove Porcelan ikonice pokrenite <code>INSTALIRAJ.cmd</code> › <b>P</b>; za Bordo › <b>5</b>.</p>
     </div>
 
     <!-- VARIJANTE -->
@@ -507,14 +515,27 @@ footer a{color:var(--muted)}
     <section id="ikonice">
       <div class="head reveal">
         <div class="kicker">Ikonice</div>
-        <h2>Svaki piksel na svom mestu.</h2>
-        <p>Dva stila, po 31 ikonica. Velike ikonice su 3D fascikle sa brojem 3, a u levoj navigaciji svaka stavka dobija sopstvenu siluetu, pa se razlikuju i na 16 piksela.</p>
+        <h2>Jasne i kada su male.</h2>
+        <p>Dva stila, po 31 ikonica. Velike zadržavaju detalje, a male Porcelan ikonice imaju krupnije simbole i jasne konture. Pogledajte stvarne ICO crteže na tamnoj i svetloj podlozi.</p>
       </div>
-      <div class="style-switch reveal" role="tablist" aria-label="Stil ikonica">
-        <button type="button" role="tab" aria-selected="true" data-style="bordo"><i class="sw-dot bordo"></i>Bordo</button>
-        <button type="button" role="tab" aria-selected="false" data-style="porcelan"><i class="sw-dot porcelan"></i>Porcelan <span class="new-pill">Novo</span></button>
+      <div class="style-switch reveal" role="group" aria-label="Stil ikonica">
+        <button type="button" aria-pressed="true" data-style="bordo"><i class="sw-dot bordo" aria-hidden="true"></i>Bordo</button>
+        <button type="button" aria-pressed="false" data-style="porcelan"><i class="sw-dot porcelan" aria-hidden="true"></i>Porcelan <span class="new-pill">Novo u 2.6</span></button>
       </div>
       <p class="style-note reveal" id="style-note">Bordo: crvene 3D fascikle u bordo tonu. Postavlja ih <code>INSTALIRAJ.cmd</code> › opcija <b>1</b>, <b>2</b> ili <b>5</b>.</p>
+      <div class="preview-controls reveal" aria-label="Podešavanja pregleda navigacije">
+        <div class="preview-control" role="group" aria-label="Podloga navigacije">
+          <span>Podloga</span>
+          <button type="button" data-preview-theme="dark" aria-pressed="true">Tamna</button>
+          <button type="button" data-preview-theme="light" aria-pressed="false">Svetla</button>
+        </div>
+        <div class="preview-control" role="group" aria-label="Skaliranje pregleda navigacije">
+          <span>Skaliranje</span>
+          <button type="button" data-preview-scale="1" aria-pressed="true">100%</button>
+          <button type="button" data-preview-scale="1.25" aria-pressed="false">125%</button>
+          <button type="button" data-preview-scale="1.5" aria-pressed="false">150%</button>
+        </div>
+      </div>
       <div class="icons">
         <div class="card icon-grid reveal">
           <img src="assets/icons/Folder-3.webp" alt="Fascikla" loading="lazy" width="192" height="192">
@@ -536,7 +557,7 @@ footer a{color:var(--muted)}
           <img src="assets/icons/Folder-Education.webp" alt="Obrazovanje" loading="lazy" width="192" height="192">
           <img src="assets/icons/Folder-Favorites.webp" alt="Omiljeno" loading="lazy" width="192" height="192">
         </div>
-        <div class="explorer reveal" aria-label="Primer File Explorer leve navigacije sa temom">
+        <div class="explorer reveal" data-theme="dark" aria-label="Ilustracija File Explorer leve navigacije sa stvarnim ICO crtežima">
           <div class="bar"><img src="assets/nav/Folder-3.png" alt="" width="16" height="16">File Explorer<i aria-hidden="true">— ▢ ✕</i></div>
           <ul>
             <li><img src="assets/nav/Home.png" alt="" width="20" height="20">Home</li>
@@ -553,9 +574,10 @@ footer a{color:var(--muted)}
             <li><img src="assets/nav/ThisPC.png" alt="" width="20" height="20">This PC</li>
             <li><img src="assets/nav/Drive.png" alt="" width="20" height="20">System (C:)</li>
           </ul>
-          <div class="note">Isti redosled zakačenih fascikli. Skripta ih sama osveži.</div>
+          <div class="note" id="preview-status" aria-live="polite">Ilustracija navigacije · 100% · ikone 16 px. Veličinu u Windowsu određuje skaliranje ekrana.</div>
         </div>
       </div>
+      <p class="icon-help reveal"><strong>Želite još veće ikonice?</strong> Windows: <b>Settings › System › Display › Scale</b>, pa 125% ili 150%. To povećava i tekst i ostale elemente. Podešavanja ovog pregleda menjaju samo prikaz na sajtu. <a href="https://support.microsoft.com/en-us/windows/experience/change-the-size-of-text-in-windows" target="_blank" rel="noopener noreferrer">Microsoft uputstvo</a>.</p>
     </section>
 
     <!-- INSTALACIJA -->
@@ -829,17 +851,46 @@ footer a{color:var(--muted)}
     bordo: 'Bordo: crvene 3D fascikle u bordo tonu. Postavlja ih <code>INSTALIRAJ.cmd</code> › opcija <b>1</b>, <b>2</b> ili <b>5</b>.',
     porcelan: 'Porcelan: mat bele površine, grafitni simboli i prigušena crvena, posebno lep uz Svetlu temu. Windows: <code>INSTALIRAJ.cmd</code> › <b>P</b>; Linux: <code>./install.sh --porcelan</code>; macOS: <code>./install.command --porcelan</code>.'
   };
+  let previewScale = 1;
+  const explorer = ik.querySelector('.explorer');
+  const updatePreview = () => {
+    const size = Math.round(16 * previewScale);
+    const folder = ik.classList.contains('porcelan') ? 'nav-porcelan' : 'nav';
+    explorer.style.setProperty('--nav-scale', previewScale);
+    explorer.style.setProperty('--icon-size', size + 'px');
+    explorer.querySelectorAll('img').forEach(img => {
+      const name = img.dataset.icon || img.getAttribute('src').split('/').pop().replace(/\.png$/, '').replace(/-(16|20|24|32|40|48)$/, '');
+      img.dataset.icon = name;
+      const s = img.closest('.bar') ? 16 : size;
+      img.src = `assets/${folder}/${name}-${s}.png`;
+      img.srcset = `assets/${folder}/${name}-${s}.png 1x, assets/${folder}/${name}-${s * 2}.png 2x`;
+      img.width = s;
+      img.height = s;
+    });
+    document.getElementById('preview-status').textContent = `Ilustracija navigacije · ${Math.round(previewScale * 100)}% · ikone ${size} px. Veličinu u Windowsu određuje skaliranje ekrana.`;
+  };
   ik.querySelectorAll('.style-switch button').forEach(btn => btn.addEventListener('click', () => {
     const st = btn.dataset.style, p = st === 'porcelan';
-    ik.querySelectorAll('.style-switch button').forEach(b => b.setAttribute('aria-selected', String(b === btn)));
+    ik.querySelectorAll('.style-switch button').forEach(b => b.setAttribute('aria-pressed', String(b === btn)));
     ik.classList.toggle('porcelan', p);
-    ik.querySelectorAll('.icon-grid img, .explorer img').forEach(img => {
+    ik.querySelectorAll('.icon-grid img').forEach(img => {
       const src = img.getAttribute('src');
       img.setAttribute('src', p ? src.replace('assets/icons/', 'assets/icons-porcelan/').replace('assets/nav/', 'assets/nav-porcelan/')
                                 : src.replace('assets/icons-porcelan/', 'assets/icons/').replace('assets/nav-porcelan/', 'assets/nav/'));
     });
     document.getElementById('style-note').innerHTML = notes[st];
+    updatePreview();
   }));
+  ik.querySelectorAll('[data-preview-theme]').forEach(btn => btn.addEventListener('click', () => {
+    explorer.dataset.theme = btn.dataset.previewTheme;
+    ik.querySelectorAll('[data-preview-theme]').forEach(b => b.setAttribute('aria-pressed', String(b === btn)));
+  }));
+  ik.querySelectorAll('[data-preview-scale]').forEach(btn => btn.addEventListener('click', () => {
+    previewScale = Number(btn.dataset.previewScale);
+    ik.querySelectorAll('[data-preview-scale]').forEach(b => b.setAttribute('aria-pressed', String(b === btn)));
+    updatePreview();
+  }));
+  updatePreview();
   const els = document.querySelectorAll('.reveal');
   if (!('IntersectionObserver' in window) || matchMedia('(prefers-reduced-motion: reduce)').matches) { els.forEach(e => e.classList.add('in')); return; }
   const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -8% 0px' });

@@ -13,10 +13,29 @@ try {
     Assert-Package
     if (-not $Stil) { $Stil = Get-SavedIconStyle }
     $IcoDir = Get-IcoDirForStyle $Stil
+    $sourceIcoDir = if ($Stil -eq 'Porcelan') { Join-Path $Package 'Icons\Porcelan\ICO' } else { Join-Path $Package 'Icons\ICO' }
+    $iconAssetsChanged = Test-IconAssetsChanged $sourceIcoDir $IcoDir
     New-Item -ItemType Directory -Path $IconsDir -Force | Out-Null
     New-Item -ItemType Directory -Path $IconBackup -Force | Out-Null
     Copy-Item -Path (Join-Path $Package 'Icons\*') -Destination $IconsDir -Recurse -Force
     Write-Host ("Stil ikonica: {0}" -f $Stil)
+    # Ako je korisnik ranije izabrao opciju 6 u istom stilu, osvezimo i tu kopiju.
+    # Ne menjamo HKLM ni izbor stila svih fascikli i ne pravimo novu sistemsku kopiju.
+    $machineIconChanged = $false
+    $machineIconName = if ($Stil -eq 'Porcelan') { 'Folder-3-Porcelan.ico' } else { 'Folder-3.ico' }
+    $machineIconPath = Join-Path $env:ProgramData ('StudentiPobedili\' + $machineIconName)
+    if (Test-Path -LiteralPath $machineIconPath -PathType Leaf) {
+        $sourceFolderIcon = Join-Path $IcoDir 'Folder-3.ico'
+        if ((Get-FileHash -LiteralPath $machineIconPath -Algorithm SHA256).Hash -ne
+            (Get-FileHash -LiteralPath $sourceFolderIcon -Algorithm SHA256).Hash) {
+            try {
+                Copy-Item -LiteralPath $sourceFolderIcon -Destination $machineIconPath -Force
+                $machineIconChanged = $true
+            } catch {
+                Write-Warning 'Za azuriranje ikonice svih fascikli ponovite opciju 6 (administratorska potvrda).'
+            }
+        }
+    }
 
     # ---------- Registry ----------
     $manifest = @(Read-KeyManifest)
@@ -86,15 +105,16 @@ try {
     try { & "$env:SystemRoot\System32\ie4uinit.exe" -show } catch {}
     Update-QuickAccessPins $touched.ToArray()
     # File Explorer na traci zadataka i u Start meniju; traka ga ucitava tek posle restarta Explorer-a.
-    if ((Set-ExplorerShortcutIcons) -gt 0) {
-        Write-Host 'Restartujem File Explorer da bi traka zadataka prikazala novu ikonicu...'
+    $shortcutsChanged = Set-ExplorerShortcutIcons
+    if ($shortcutsChanged -gt 0 -or $iconAssetsChanged -or $machineIconChanged) {
+        Write-Host 'Restartujem File Explorer da bi ucitao nove ikonice...'
         Restart-ExplorerShell
     }
     Set-Content -LiteralPath $IconStyleFile -Value $Stil -Encoding ASCII
     Write-Host ("Prilagodjene ikonice ({0}) su postavljene za trenutnog Windows korisnika." -f $Stil) -ForegroundColor Green
     Write-Host 'Ako neka ikonica ostane stara, ponovo pokrenite File Explorer ili se odjavite i prijavite.'
     $machineIcon = Join-Path $env:ProgramData 'StudentiPobedili\shell-icons-backup.json'
-    if (Test-Path -LiteralPath $machineIcon) {
+    if ((Test-Path -LiteralPath $machineIcon) -and -not (Test-Path -LiteralPath $machineIconPath)) {
         Write-Host 'Ikonica svih ostalih fascikli je postavljena ranije: da bi i ona bila u ovom stilu, izaberite opciju 6.' -ForegroundColor Yellow
     }
     exit 0

@@ -56,6 +56,7 @@ IKONICE (opcija 5, bez admin prava)
   svi lokalni i USB diskovi i File Explorer na traci zadataka i u Start meniju.
 • Traka zadataka učitava ikonicu tek posle restarta File Explorer-a, pa ga
   skripta kratko restartuje (otvoreni Explorer prozori se zatvaraju).
+  Isto radi kada novo izdanje promeni sadržaj ICO fajla na istoj putanji.
 • Leva navigacija Explorer-a: svaka stavka ima svoju bordo siluetu
   (kućica, slike, ekran, strelica, list, pejzaž, nota, kamera), pa se
   razlikuju i na 16 px. Od 40 px naviše su to 3D fascikle sa „3“ i znakom.
@@ -70,6 +71,14 @@ IKONICE PORCELAN (opcija P, bez admin prava)
 • Drugi stil istih 31 ikonica: mat bele površine, grafitni simboli i
   prigušena crvena. Posebno lepo uz Svetlu temu, a čitljive su i u tamnom
   režimu. Male ikonice za levu navigaciju su posebno nacrtane.
+• Od verzije 2.6 crteži od 16 do 48 px koriste gotovo ceo okvir: veći
+  simboli, jasnije konture i manje praznih margina. Velike 3D ikonice
+  zadržavaju svoj izgled. Stvarne male okvire možete videti u
+  Preview\Navigacija-Porcelan.png, na svetloj i tamnoj podlozi.
+• Za fizički veće ikonice u levoj navigaciji: Settings › System › Display
+  › Scale › 125% ili 150%. To povećava i tekst i ostale elemente.
+  Paket ne menja skaliranje ekrana. Veća ICO slika sama ne povećava
+  okvir ikone koji određuje Windows.
 • Postavlja se isto kao opcija 5 (ista mesta, isti original za vraćanje).
   Između stilova možete prelaziti koliko god puta želite: 5 = Bordo,
   P = Porcelan. Opcija 9 i deinstalacija vraćaju originalne Windows ikonice.
@@ -81,6 +90,9 @@ FASCIKLA „3“ ZA SVE FASCIKLE (opcija 6, traži admin potvrdu)
 • Windows ikonicu obične fascikle čita samo iz sistemskog dela registra,
   pa ova opcija važi za sve korisnike računara i kratko restartuje
   File Explorer. Original se čuva u C:\ProgramData\StudentiPobedili.
+• Pri nadogradnji opcija P ili 5 osvežava i postojeću sistemsku kopiju
+  istog stila ako Windows dozvoli upis. Ako prijavi da je potrebna
+  administratorska potvrda, ponovite opciju 6.
 
 VRAĆANJE IKONICA (opcija 9)
 • Vraća originalne Windows ikonice (i ikonicu svih fascikli, ako je bila

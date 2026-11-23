@@ -17,6 +17,18 @@ function Get-IcoDirForStyle([string]$Stil) {
     if ($Stil -eq 'Porcelan') { return (Join-Path $IconsDir 'Porcelan\ICO') }
     return (Join-Path $IconsDir 'ICO')
 }
+
+# Ista putanja nije dokaz da je ista i slika: nova izdanja menjaju ICO okvire.
+# Poredimo pre kopiranja, da bi Explorer pri nadogradnji ponovo ucitao slike.
+function Test-IconAssetsChanged([string]$SourceDirectory, [string]$DestinationDirectory) {
+    foreach ($source in Get-ChildItem -LiteralPath $SourceDirectory -Filter '*.ico' -File) {
+        $destination = Join-Path $DestinationDirectory $source.Name
+        if (-not (Test-Path -LiteralPath $destination -PathType Leaf)) { return $true }
+        if ((Get-FileHash -LiteralPath $source.FullName -Algorithm SHA256).Hash -ne
+            (Get-FileHash -LiteralPath $destination -Algorithm SHA256).Hash) { return $true }
+    }
+    return $false
+}
 $KeyManifestPath    = Join-Path $IconBackup 'manifest.json'
 $FolderManifestPath = Join-Path $IconBackup 'folder-icons.json'
 

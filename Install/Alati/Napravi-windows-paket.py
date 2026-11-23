@@ -21,7 +21,7 @@ def files():
         for f in sorted(os.listdir(os.path.join(ROOT, sub))):
             if os.path.isfile(os.path.join(ROOT, sub, f)):
                 yield f'{sub}/{f}'
-    for f in ('Brand.png', 'Linux-Dolphin.png', 'Pregled-Ikonica.png', 'Pregled-Porcelan.png', 'Pregled-Pozadina.png', 'Telefon.jpg'):
+    for f in ('Brand.png', 'Linux-Dolphin.png', 'Pregled-Ikonica.png', 'Pregled-Porcelan.png', 'Pregled-Pozadina.png', 'Telefon.jpg', 'Navigacija-Bordo.png', 'Navigacija-Porcelan.png'):
         yield f'Preview/{f}'
     for f in sorted(os.listdir(os.path.join(ROOT, 'Install'))):
         if f.endswith('.ps1'):
@@ -41,7 +41,7 @@ def main():
             data = open(path, 'rb').read()
             if rel.endswith(CRLF):
                 data = data.replace(b'\r\n', b'\n').replace(b'\n', b'\r\n')
-            info = zipfile.ZipInfo(f'{TOP}/{rel}', date_time=(2026, 11, 22, 12, 0, 0))
+            info = zipfile.ZipInfo(f'{TOP}/{rel}', date_time=(2026, 11, 23, 12, 0, 0))
             info.compress_type = zipfile.ZIP_DEFLATED
             info.external_attr = 0o644 << 16
             z.writestr(info, data)
