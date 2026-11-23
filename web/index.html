@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="sr">
+<html lang="sr-Latn">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,6 +7,9 @@
 <meta name="description" content="Besplatna bordo tema za Windows 11, 10, Linux, macOS, Android i iPhone: nove pozadine u 4K sa srpskim zastavama, ikonice u dva stila, zaključani ekran i zvuk. Instalacija jednim klikom, bez admin prava, potpuna deinstalacija.">
 <meta name="theme-color" content="#0b0406">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://studenti-tema.vercel.app/">
+<meta property="og:locale" content="sr_RS">
+<link rel="canonical" href="https://studenti-tema.vercel.app/">
 <meta property="og:title" content="Studenti pobedili - tema za Windows, Linux, macOS i telefon">
 <meta property="og:description" content="Pozadine u 4K sa srpskim zastavama, ikonice u dva stila (Bordo i Porcelan), zaključani ekran i zvuk. Besplatno, instalacija jednim klikom.">
 <meta property="og:image" content="https://raw.githubusercontent.com/zoxknez/studenti-pobedili-win11-10/main/web/assets/og.jpg">
@@ -29,7 +32,7 @@
   --shadow:0 30px 80px -30px rgba(0,0,0,.8), 0 0 0 1px var(--border);
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
 body{font-family:Manrope,system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 img{display:block;max-width:100%;height:auto}
@@ -48,7 +51,22 @@ header{position:sticky;top:0;z-index:50;backdrop-filter:saturate(140%) blur(14px
 .nav ul{display:flex;gap:26px;list-style:none;margin-left:auto}
 .nav ul a{text-decoration:none;color:var(--muted);font-weight:600;font-size:15px}
 .nav ul a:hover{color:var(--text)}
-@media (max-width:1040px){.nav ul{display:none}.nav .btn-ghost{margin-left:auto}}
+.menu-btn{display:none;width:44px;height:44px;border-radius:12px;border:0;background:var(--surface2);box-shadow:inset 0 0 0 1px var(--border);color:var(--text);cursor:pointer;place-items:center;flex:none}
+.menu-btn svg{width:22px;height:22px}
+.menu-btn path{transition:transform .25s,opacity .2s;transform-origin:12px 12px}
+header.open .menu-btn .l1{transform:translateY(5px) rotate(45deg)}
+header.open .menu-btn .l2{opacity:0}
+header.open .menu-btn .l3{transform:translateY(-5px) rotate(-45deg)}
+@media (max-width:1040px){
+  .nav{gap:12px;position:relative}
+  .nav .btn-ghost{margin-left:auto}
+  .menu-btn{display:grid}
+  .nav ul{display:none;position:absolute;top:calc(100% + 8px);left:12px;right:12px;flex-direction:column;gap:2px;padding:10px;margin:0;border-radius:18px;background:rgba(18,6,10,.97);box-shadow:var(--shadow);backdrop-filter:blur(14px)}
+  header.open .nav ul{display:flex}
+  .nav ul a{display:block;padding:13px 14px;border-radius:12px;font-size:16px;color:var(--text)}
+  .nav ul a:hover,.nav ul a:focus-visible{background:var(--surface2)}
+}
+@media (max-width:420px){.gh-label{display:none}.nav .btn-ghost{padding:10px 12px}}
 
 /* buttons */
 .btn{display:inline-flex;align-items:center;gap:10px;padding:14px 22px;border-radius:14px;font-weight:700;font-size:16px;text-decoration:none;border:0;cursor:pointer;transition:transform .2s,box-shadow .2s,background .2s}
@@ -145,7 +163,7 @@ h2{font-size:clamp(32px,4vw,48px);line-height:1.08;font-weight:800;letter-spacin
 .shot span{position:absolute;left:10px;bottom:10px;font-size:12.5px;font-weight:700;padding:5px 10px;border-radius:999px;background:rgba(11,4,6,.72);backdrop-filter:blur(8px)}
 .shot.wide{grid-column:span 2;grid-row:span 2}
 .shot.half{grid-column:span 2}
-.shot.half.left img{object-position:left center}
+.shot.ultra img{object-position:left center}
 @media (max-width:900px){.shot.wide{grid-column:span 2;grid-row:auto}}
 dialog{border:0;padding:0;background:transparent;max-width:min(1200px,94vw);margin:auto;color:var(--text)}
 dialog::backdrop{background:rgba(5,1,3,.86);backdrop-filter:blur(6px)}
@@ -311,7 +329,7 @@ footer a{color:var(--muted)}
       <svg viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="lg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c23a55"/><stop offset="1" stop-color="#7e0c26"/></linearGradient></defs><circle cx="32" cy="32" r="30" fill="url(#lg)"/><text x="32" y="45" text-anchor="middle" font-family="Manrope,Segoe UI,sans-serif" font-weight="800" font-size="38" fill="#fff4f1">3</text></svg>
       Studenti pobedili
     </a>
-    <ul>
+    <ul id="nav-links">
       <li><a href="#varijante">Varijante</a></li>
       <li><a href="#pozadine">Pozadine</a></li>
       <li><a href="#ikonice">Ikonice</a></li>
@@ -323,8 +341,11 @@ footer a{color:var(--muted)}
     </ul>
     <a class="btn btn-ghost btn-sm" href="https://github.com/zoxknez/studenti-pobedili-win11-10" target="_blank" rel="noopener">
       <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
-      GitHub
+      <span class="gh-label">GitHub</span>
     </a>
+    <button class="menu-btn" type="button" aria-controls="nav-links" aria-expanded="false" aria-label="Otvori meni">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path class="l1" d="M4 7h16"/><path class="l2" d="M4 12h16"/><path class="l3" d="M4 17h16"/></svg>
+    </button>
   </nav>
 </header>
 
@@ -338,7 +359,7 @@ footer a{color:var(--muted)}
         <div class="cta">
           <a class="btn btn-primary" data-dl="zip" href="https://github.com/zoxknez/studenti-pobedili-win11-10/releases/latest/download/StudentiPobedili-Windows-v2.zip">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0l-5-5m5 5l5-5M4 21h16"/></svg>
-            Preuzmite besplatno <small>ZIP · 25 MB</small>
+            Preuzmite besplatno <small>ZIP · 28 MB</small>
           </a>
           <a class="btn btn-ghost" href="#instalacija">Kako se instalira</a>
         </div>
@@ -393,13 +414,13 @@ footer a{color:var(--muted)}
       </div>
       <div class="variants">
         <article class="card variant reveal">
-          <img src="assets/wall/03.webp" width="1280" height="720" alt="Bordo varijanta: tamna pozadina sa studentima i zastavama" loading="lazy">
+          <img src="assets/wall/01.webp" width="1280" height="720" alt="Bordo varijanta: studenti sa srpskim zastavama ispred Univerziteta" loading="lazy">
           <div class="body">
             <h3>Bordo <span class="pill">tamni režim</span></h3>
             <ul>
               <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Tamni režim sistema i aplikacija</li>
               <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Bordo Start meni, traka zadataka i naslovne trake</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Četiri pozadine koje se smenjuju na 30 minuta</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Tri pozadine sa srpskim zastavama, smenjuju se na 30 minuta</li>
             </ul>
             <div class="row">
               <a class="btn btn-primary btn-sm" href="https://github.com/zoxknez/studenti-pobedili-win11-10/releases/latest/download/Studenti-Pobedili-Bordo.deskthemepack">Samo tema (.deskthemepack)</a>
@@ -412,8 +433,8 @@ footer a{color:var(--muted)}
             <h3>Svetla <span class="pill light">svetli režim</span></h3>
             <ul>
               <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Svetli režim, bordo akcenti i naslovne trake</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Minimalističke krem pozadine</li>
-              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Tekst nikad ispod desktop ikonica</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Minimalistička krem pozadina sa bordo „3“</li>
+              <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Najlepša uz Porcelan ikonice (opcija P)</li>
             </ul>
             <div class="row">
               <a class="btn btn-ghost btn-sm" href="https://github.com/zoxknez/studenti-pobedili-win11-10/releases/latest/download/Studenti-Pobedili-Svetla.deskthemepack">Samo tema (.deskthemepack)</a>
@@ -451,8 +472,8 @@ footer a{color:var(--muted)}
         <button class="shot" data-file="02-Pobeda-Minimal-Light-4K.jpg" data-src="assets/wall/02.webp" data-size="3840×2160"><img src="assets/wall/02.webp" width="1280" height="720" alt="Pozadina 02, Minimal Light" loading="lazy"><span>02 · Minimal Light</span></button>
         <button class="shot" data-file="03-Pobeda-Bordo-Talasi-4K.jpg" data-src="assets/wall/03.webp" data-size="3840×2160"><img src="assets/wall/03.webp" width="1280" height="720" alt="Pozadina 03, Bordo talasi" loading="lazy"><span>03 · Bordo talasi</span></button>
         <button class="shot" data-file="04-Beograd-4K.jpg" data-src="assets/wall/04.webp" data-size="3840×2160"><img src="assets/wall/04.webp" width="1280" height="720" alt="Pozadina 04, Beograd, Skupština" loading="lazy"><span>04 · Beograd</span></button>
-        <button class="shot" data-file="06-Univerzitet-Tablet-2880x2160.jpg" data-src="assets/wall/06.webp" data-size="2880×2160"><img src="assets/wall/06.webp" width="1280" height="720" alt="Pozadina 06, Univerzitet za tablet" loading="lazy"><span>06 · Tablet 4:3</span></button>
-        <button class="shot half left" data-file="05-Beograd-Ultrawide-5120x2160.jpg" data-src="assets/wall/05.webp" data-size="5120×2160"><img src="assets/wall/05.webp" width="1280" height="720" alt="Pozadina 05, Beograd za ultrawide monitor" loading="lazy"><span>05 · Ultrawide 21:9</span></button>
+        <button class="shot ultra" data-file="05-Beograd-Ultrawide-5120x2160.jpg" data-src="assets/wall/05.webp" data-size="5120×2160"><img src="assets/wall/05.webp" width="1280" height="720" alt="Pozadina 05, Beograd za ultrawide monitor" loading="lazy"><span>05 · Ultrawide 21:9</span></button>
+        <button class="shot half" data-file="06-Univerzitet-Tablet-2880x2160.jpg" data-src="assets/wall/06.webp" data-size="2880×2160"><img src="assets/wall/06.webp" width="1280" height="720" alt="Pozadina 06, Univerzitet za tablet" loading="lazy"><span>06 · Tablet 4:3</span></button>
         <button class="shot half" data-file="07-Minimal-Light-Tablet-2880x2160.jpg" data-src="assets/wall/07.webp" data-size="2880×2160"><img src="assets/wall/07.webp" width="1280" height="720" alt="Pozadina 07, Minimal Light za tablet" loading="lazy"><span>07 · Tablet svetla</span></button>
       </div>
       <div class="nova" id="nova">
@@ -546,7 +567,7 @@ footer a{color:var(--muted)}
       <div class="steps">
         <div class="card step reveal"><h3>Preuzmite i raspakujte</h3><p>Preuzmite ZIP, pa desni klik › <b>Extract All</b>. Ne pokrećite ništa direktno iz ZIP-a.</p></div>
         <div class="card step reveal"><h3>Pokrenite INSTALIRAJ.cmd</h3><p>Ako Windows prikaže upozorenje: <b>More info › Run anyway</b>. Skripte su otvorenog koda na GitHub-u.</p></div>
-        <div class="card step reveal"><h3>Izaberite opciju 1</h3><p>Kompletna Bordo instalacija: tema, ikonice i zaključani ekran. Settings će se sam otvoriti i zatvoriti.</p></div>
+        <div class="card step reveal"><h3>Izaberite opciju 1</h3><p>Kompletna Bordo instalacija: tema, ikonice i zaključani ekran. Settings će se sam otvoriti i zatvoriti. Za Porcelan ikonice posle toga izaberite <b>P</b>.</p></div>
       </div>
       <div class="term reveal" aria-label="Izgled menija INSTALIRAJ.cmd">
         <div class="bar"><i></i><i></i><i></i>&nbsp;INSTALIRAJ.cmd</div>
@@ -558,7 +579,8 @@ footer a{color:var(--muted)}
   [2]  KOMPLETNO - Svetla  (svetla tema, sve ikonice, zakljucani ekran)
 
   [3]  Samo tema Bordo  (tamna)        [4]  Samo tema Svetla
-  [5]  Ikonice                         [6]  Crvena "3" za SVE fascikle *
+  [5]  Ikonice BORDO                   [P]  Ikonice PORCELAN
+  [6]  Fascikla "3" za SVE fascikle, u izabranom stilu *
   [7]  Zakljucani ekran                [8]  Zvuk obavestenja "Pobeda"
 
   [9]  Vrati originalne Windows ikonice
@@ -570,18 +592,18 @@ footer a{color:var(--muted)}
     <section id="linux">
       <div class="linux">
         <div class="reveal">
-          <div class="kicker">Novo · Linux</div>
+          <div class="kicker">Linux</div>
           <h2>I za Linux. GNOME i KDE Plasma.</h2>
-          <p class="lead">Ista bordo tema za Ubuntu, Fedoru, Debian, Mint i ostale: pozadine koje prate tamni i svetli režim, bordo šema boja za KDE, crveni akcenat za GNOME i kompletna tema ikonica.</p>
+          <p class="lead">Ista bordo tema za Ubuntu, Fedoru, Debian, Mint i ostale: pozadine koje prate tamni i svetli režim, bordo šema boja za KDE, crveni akcenat za GNOME i tema ikonica u dva stila, Bordo i Porcelan.</p>
           <ul class="linux-list">
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Bez sudo i bez dodatnih paketa, samo za vašeg korisnika</li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Ikonice za Files, Dolphin i levo okno, ostalo ostaje kao pre</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Ikonice za Files, Dolphin i levo okno, ostalo ostaje kao pre. Porcelan: <code>./install.sh --porcelan</code></li>
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Deinstalacija vraća tačno vaša prethodna podešavanja</li>
           </ul>
           <div class="cta">
             <a class="btn btn-primary" href="https://github.com/zoxknez/studenti-pobedili-win11-10/releases/latest/download/StudentiPobedili-Linux.tar.gz">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0l-5-5m5 5l5-5M4 21h16"/></svg>
-              Preuzmite za Linux <small>tar.gz · 11 MB</small>
+              Preuzmite za Linux <small>tar.gz · 12 MB</small>
             </a>
           </div>
           <div class="term small" aria-label="Instalacija na Linux-u">
@@ -637,9 +659,9 @@ footer a{color:var(--muted)}
     <section id="macos">
       <div class="linux mac">
         <div class="reveal">
-          <div class="kicker">Novo · Mac <span class="beta">Beta</span></div>
+          <div class="kicker">Mac <span class="beta">Beta</span></div>
           <h2>I za Mac.</h2>
-          <p class="lead">Bordo ili svetla pozadina, tamni ili svetli režim, crveni akcenat i nove ikonice za Desktop, Documents, Downloads, Pictures, Music i Movies. Bilo koja fascikla može da dobije crvenu „3“.</p>
+          <p class="lead">Bordo ili svetla pozadina, tamni ili svetli režim, crveni akcenat i nove ikonice za Desktop, Documents, Downloads, Pictures, Music i Movies, u stilu Bordo ili Porcelan (<code>--porcelan</code>). Bilo koja fascikla može da dobije „3“.</p>
           <ul class="linux-list">
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Bez admin lozinke, samo za vašeg korisnika</li>
             <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Crvena je najbliža bordo u Apple paleti akcentnih boja</li>
@@ -648,7 +670,7 @@ footer a{color:var(--muted)}
           <div class="cta">
             <a class="btn btn-primary" href="https://github.com/zoxknez/studenti-pobedili-win11-10/releases/latest/download/StudentiPobedili-macOS.zip">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0l-5-5m5 5l5-5M4 21h16"/></svg>
-              Preuzmite za macOS <small>ZIP · 9,5 MB</small>
+              Preuzmite za macOS <small>ZIP · 10 MB</small>
             </a>
           </div>
           <div class="term small" aria-label="Instalacija na macOS-u">
@@ -672,7 +694,7 @@ footer a{color:var(--muted)}
     <!-- TELEFON -->
     <section id="telefon">
       <div class="head reveal">
-        <div class="kicker">Novo · Telefon</div>
+        <div class="kicker">Android i iPhone</div>
         <h2>I za telefon.</h2>
         <p>Četiri pozadine sa srpskim zastavama, napravljene za uspravni ekran, bordo boje sistema i zvuk „Pobeda“ za poruke. Za Android i iPhone, bez ijedne aplikacije.</p>
       </div>
@@ -687,11 +709,11 @@ footer a{color:var(--muted)}
           </a>
           <a class="phone light" href="assets/mob/3-Svetla.jpg" target="_blank" rel="noopener" aria-label="Svetla, puna veličina 1440×2560">
             <img src="assets/mob/3-Svetla.webp" width="600" height="1067" alt="Pozadina za telefon Svetla" loading="lazy">
-            <span class="cap">Noćna</span>
+            <span class="cap">Svetla</span>
           </a>
           <a class="phone" href="assets/mob/4-Nocna.jpg" target="_blank" rel="noopener" aria-label="Noćna, puna veličina 1440×2560">
             <img src="assets/mob/4-Nocna.webp" width="600" height="1067" alt="Pozadina za telefon Noćna" loading="lazy">
-            <span class="cap">Svetla</span>
+            <span class="cap">Noćna</span>
           </a>
       </div>
       <p class="phones-hint reveal">Otvorite ovu stranicu na telefonu i dodirnite pozadinu: otvoriće se u punoj veličini (1440×2560). Zatim je dugo pritisnite i sačuvajte.</p>
@@ -735,8 +757,10 @@ footer a{color:var(--muted)}
       </div>
       <div class="faq reveal">
         <details><summary>Da li je bezbedno?</summary><p>Da. Skripte ne instaliraju programe, ne koriste internet i menjaju samo podešavanja trenutnog korisnika. Pre svake izmene čuvaju original, a ceo kod je javan na GitHub-u, pa možete da proverite svaki red.</p></details>
-        <details><summary>Da li su potrebna administratorska prava?</summary><p>Nisu. Jedini izuzetak je opciona crvena „3“ za <i>sve</i> obične fascikle: Windows tu ikonicu čuva sistemski, pa traži potvrdu (UAC). Ako je odbijete, sve ostalo radi normalno.</p></details>
+        <details><summary>Da li su potrebna administratorska prava?</summary><p>Nisu. Jedini izuzetak je opciona fascikla „3“ za <i>sve</i> obične fascikle: Windows tu ikonicu čuva sistemski, pa traži potvrdu (UAC). Ako je odbijete, sve ostalo radi normalno.</p></details>
         <details><summary>Kako da vratim sve kako je bilo?</summary><p>Pokrenite <code>INSTALIRAJ.cmd</code> i izaberite <b>D</b>. Vraća se tema koja je bila aktivna pre instalacije, kao i boje, ikonice i zvuk, a fajlovi paketa se brišu. Jedino zaključani ekran menjate sami, jer Windows ne pamti prethodnu sliku.</p></details>
+        <details><summary>Mogu li da izaberem drugi stil ikonica?</summary><p>Možete. Pored bordo stila postoji i Porcelan: mat bele površine, grafitni simboli i prigušena crvena. Na Windows-u izaberite <b>P</b> u meniju <code>INSTALIRAJ.cmd</code> (nazad na bordo: <b>5</b>), na Linux-u <code>./install.sh --porcelan</code>, a na Mac-u <code>./install.command --porcelan</code>. Stilove možete menjati koliko god puta želite, a deinstalacija i dalje vraća originalne ikonice. <a href="#ikonice">Uporedite ih ovde</a>.</p></details>
+        <details><summary>Šta je Nova serija?</summary><p>Deset dodatnih ilustracija pobede u punoj rezoluciji: transparenti, strip, risograf, kolaž i dokumentarne scene. Nisu deo slideshow-a teme, pa ih birate sami: preuzmite <code>StudentiPobedili-Nova-serija.zip</code> ili pojedinačno iz <a href="#nova">galerije</a>.</p></details>
         <details><summary>Šta je .deskthemepack?</summary><p>Pravi Windows paket teme: dvoklik instalira pozadine, akcentnu boju i tamni ili svetli režim, bez skripti. Ikonice, zaključani ekran i zvuk postavlja samo <code>INSTALIRAJ.cmd</code>. Pre dvoklika zatvorite Settings.</p></details>
         <details><summary>Radi li na Mac-u?</summary><p>Da, kao beta verzija. Preuzmite <code>StudentiPobedili-macOS.zip</code>, raspakujte ga i u Terminalu pokrenite <code>./install.command</code>. macOS će tražiti dozvolu da Terminal upravlja aplikacijom System Events i pristupa fasciklama; obe odobrite. Akcentna boja je crvena jer Apple ne dozvoljava proizvoljnu boju, a ikonice u Dock-u i sidebar-u sistem ne dozvoljava da se menjaju.</p></details>
         <details><summary>Radi li na Linux-u?</summary><p>Da, na GNOME-u (Ubuntu, Fedora, Debian…) i KDE Plasma 5.24+ i 6. Preuzmite <code>StudentiPobedili-Linux.tar.gz</code>, raspakujte ga i pokrenite <code>./install.sh</code>, bez sudo. Za Ubuntu Unity 7 postoji <a href="#unity">verzija iz zajednice</a>. Na ostalim okruženjima (Cinnamon, XFCE) instaliraju se ikonice i pozadine, a birate ih ručno.</p></details>
@@ -751,7 +775,7 @@ footer a{color:var(--muted)}
       <div class="cta">
         <a class="btn btn-primary" data-dl="zip" href="https://github.com/zoxknez/studenti-pobedili-win11-10/releases/latest/download/StudentiPobedili-Windows-v2.zip">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0l-5-5m5 5l5-5M4 21h16"/></svg>
-          Preuzmite paket <small>ZIP · 25 MB</small>
+          Preuzmite paket <small>ZIP · 28 MB</small>
         </a>
         <a class="btn btn-ghost" href="https://github.com/zoxknez/studenti-pobedili-win11-10" target="_blank" rel="noopener">
           <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
@@ -792,6 +816,13 @@ footer a{color:var(--muted)}
     lb.showModal();
   }));
   lb.addEventListener('click', e => { if (e.target === lb) lb.close(); });
+  // Meni na uskim ekranima
+  const hdr = document.querySelector('header'), mb = document.querySelector('.menu-btn');
+  const setMenu = open => { hdr.classList.toggle('open', open); mb.setAttribute('aria-expanded', String(open)); mb.setAttribute('aria-label', open ? 'Zatvori meni' : 'Otvori meni'); };
+  mb.addEventListener('click', () => setMenu(!hdr.classList.contains('open')));
+  document.querySelectorAll('#nav-links a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') setMenu(false); });
+  document.addEventListener('click', e => { if (hdr.classList.contains('open') && !hdr.contains(e.target)) setMenu(false); });
   // Prekidac stila ikonica (Bordo / Porcelan)
   const ik = document.getElementById('ikonice');
   const notes = {
