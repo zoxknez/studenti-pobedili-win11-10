@@ -1,4 +1,6 @@
-# Crvena fascikla "3" kao ikonica SVIH fascikli -> HKLM "Shell Icons" 3 i 4.
+# Crvena fascikla "3" kao podrazumevana ikonica fascikli -> HKLM "Shell Icons" 3 i 4.
+# Ovo ne menja zuti okvir slicice sadrzaja koju veliki prikaz pravi posebno.
+# Za isti izgled popunjenih fascikli u svim velicinama: Postavi-ikonice-fascikli.ps1 (opcija F).
 # Provereno uzivo (Windows 11 26220): Windows ovu ikonicu cita samo iz HKLM (HKCU varijanta nema
 # efekta), pa su potrebna administratorska prava; vazi za sve korisnike racunara.
 # (Leva navigacija NE zahteva HKLM: dovoljno je prekaciti stavke, to radi Postavi-ikonice.ps1.)
@@ -137,7 +139,8 @@ try {
     # Ikonica drugog stila vise nije u upotrebi (Explorer se restartuje odmah posle ovoga).
     Get-ChildItem -LiteralPath $MachineDir -Filter 'Folder-3*.ico' | Where-Object { $_.Name -ne $StyleIconName } |
         ForEach-Object { try { Remove-Item -LiteralPath $_.FullName -Force } catch {} }
-    Write-Log ('Fascikla "3" ({0}) je postavljena za sve fascikle.' -f $Stil)
+    Write-Log ('Podrazumevana ikonica fascikle "3" ({0}) je postavljena.' -f $Stil)
+    Write-Log 'Za popunjene fascikle koje u velikom prikazu ostanu zute koristite opciju F (izbor lokacije).'
     exit 0
 } catch {
     Write-Log ("GRESKA: {0}" -f $_.Exception.Message)

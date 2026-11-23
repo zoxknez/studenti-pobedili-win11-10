@@ -74,7 +74,9 @@ try {
     Send-ShellRefresh $touched.ToArray()
     Update-QuickAccessPins $touched.ToArray()
     try { & "$env:SystemRoot\System32\ie4uinit.exe" -show } catch {}
-    if ($shortcutsRestored -gt 0) {
+    if (@($folderManifest | Where-Object { $_.Kind -eq 'Ordinary' }).Count -gt 0) {
+        Restart-ExplorerWithFreshThumbnails
+    } elseif ($shortcutsRestored -gt 0) {
         Write-Host 'Restartujem File Explorer da bi traka zadataka prikazala originalnu ikonicu...'
         Restart-ExplorerShell
     }

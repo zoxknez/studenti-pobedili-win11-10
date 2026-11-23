@@ -275,6 +275,45 @@ function Clear-FileAttributes([string]$Path) {
     if (Test-Path -LiteralPath $Path -PathType Leaf) { Set-FileAttributesSafe $Path 0 }
 }
 
+function Get-DesktopIniIcon([string]$Path) {
+    if (-not (Test-Path -LiteralPath $Path -PathType Leaf)) { return $null }
+    $inSection = $false
+    foreach ($line in @(Read-IniLines $Path)) {
+        if ($line -match '^\s*\[([^\]]+)\]\s*$') { $inSection = ($Matches[1] -ieq '.ShellClassInfo'); continue }
+        if ($inSection -and $line -match '^\s*(?:IconResource|IconFile)\s*=\s*(.+)$') { return $Matches[1].Trim() }
+    }
+    return $null
+}
+
+# Shell Icons menja samo ikonu. Veliki prikaz prvo cita stari thumbcache, cak i posle
+# promene desktop.ini. Premestamo iskljucivo te regenerisive DB fajlove u nasu rezervnu
+# kopiju. Ne iskljucujemo IconsOnly: fotografije i video i dalje imaju svoj pregled.
+function Restart-ExplorerWithFreshThumbnails {
+    $cache = [IO.Path]::GetFullPath((Join-Path $env:LOCALAPPDATA 'Microsoft\Windows\Explorer'))
+    $backup = [IO.Path]::GetFullPath((Join-Path $InstallRoot 'ThumbnailCacheBackup'))
+    if (-not $backup.StartsWith(([IO.Path]::GetFullPath($InstallRoot).TrimEnd('\') + '\'), [StringComparison]::OrdinalIgnoreCase)) {
+        throw 'Neocekivana putanja rezervne kopije kesa.'
+    }
+    New-Item -ItemType Directory -Path $backup -Force | Out-Null
+    $files = @(Get-ChildItem -LiteralPath $cache -Filter 'thumbcache_*.db' -File -Force)
+    Write-Host 'Osvezavam slicice fascikli i restartujem File Explorer (otvoreni prozori se zatvaraju)...'
+    $locked = 0
+    Get-Process -Name explorer -ErrorAction SilentlyContinue | Stop-Process -Force
+    try {
+        foreach ($file in $files) {
+            $destination = Join-Path $backup $file.Name
+            # Obe apsolutne putanje moraju ostati u namenjenim lokacijama; nema obilaska podstabala.
+            if ((Split-Path -Parent $file.FullName) -ine $cache -or (Split-Path -Parent $destination) -ine $backup) { throw 'Neocekivana putanja kesa.' }
+            try { Move-Item -LiteralPath $file.FullName -Destination $destination -Force -ErrorAction Stop }
+            catch { $locked++ }
+        }
+    } finally {
+        if (-not (Get-Process -Name explorer -ErrorAction SilentlyContinue)) { Start-Process explorer.exe }
+    }
+    if ($locked -gt 0) { Write-Warning ('Windows drzi zakljucano {0} fajlova kesa. Ako ostane stara slicica, odjavite se i prijavite.' -f $locked) }
+    try { & "$env:SystemRoot\System32\ie4uinit.exe" -show } catch {}
+}
+
 # Postavlja (ili sa $IconValue = $null uklanja) ikonicu u [.ShellClassInfo] sekciji.
 function Set-DesktopIniIcon([string]$Path, [string]$IconValue) {
     $lines = New-Object 'System.Collections.Generic.List[string]'

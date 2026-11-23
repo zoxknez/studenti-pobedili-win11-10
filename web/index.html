@@ -405,6 +405,7 @@ footer a{color:var(--muted)}
     <div class="news card reveal" id="novo">
       <div class="news-tag">Novo</div>
       <ul>
+        <li><b>Verzija 2.6.1 — fascikle i u velikom prikazu:</b> ako Small prikazuje novu ikonicu, a uvećanje vrati žutu fasciklu, izaberite <b>F</b> u instalacionom meniju i unesite lokaciju, npr. <code>D:\</code>. <a href="#velike-fascikle">Kako radi</a>.</li>
         <li><b>Verzija 2.6 — čitljivije Porcelan ikonice:</b> krupniji simboli, jasnije konture i manje praznih margina u malim veličinama. <a href="#ikonice">Uporedite prikaz na 100%, 125% i 150%</a>.</li>
         <li><b>Nove pozadine sa srpskim zastavama.</b> Hvala vam na sugestijama: sve pozadine su redizajnirane i uvećane do 4K.</li>
         <li><b>Nova serija:</b> deset dodatnih ilustracija koje možete <a href="#nova">preuzeti ovde</a>.</li>
@@ -578,6 +579,7 @@ footer a{color:var(--muted)}
         </div>
       </div>
       <p class="icon-help reveal"><strong>Želite još veće ikonice?</strong> Windows: <b>Settings › System › Display › Scale</b>, pa 125% ili 150%. To povećava i tekst i ostale elemente. Podešavanja ovog pregleda menjaju samo prikaz na sajtu. <a href="https://support.microsoft.com/en-us/windows/experience/change-the-size-of-text-in-windows" target="_blank" rel="noopener noreferrer">Microsoft uputstvo</a>.</p>
+      <p class="icon-help reveal" id="velike-fascikle"><strong>Uvećanje vraća žute fascikle?</strong> Windows pravi zasebne sličice sadržaja popunjenih fascikli. Opcija <b>6</b> menja podrazumevanu ikonicu; nova opcija <b>F</b> postavlja zasebnu ikonicu neposrednim potfasciklama lokacije koju unesete i osvežava keš. Koristi izabrani stil (<b>P</b> ili <b>5</b>), uz rezervnu kopiju za vraćanje preko <b>9</b>. Za samu fasciklu prikazuje se ikonica umesto sadržaja; pregledi fotografija i videa ostaju uključeni. Sistemske i skrivene fascikle, veze i tuđe ikonice se preskaču. Za nove fascikle ponovite <b>F</b>.</p>
     </section>
 
     <!-- INSTALACIJA -->
@@ -597,12 +599,13 @@ footer a{color:var(--muted)}
   STUDENTI POBEDILI  |  tema za Windows 10 / 11
 <span class="dim">=========================================================</span>
 
-  <span class="hl">[1]  KOMPLETNO - Bordo   (tamna tema, sve ikonice, zakljucani ekran)</span>
-  [2]  KOMPLETNO - Svetla  (svetla tema, sve ikonice, zakljucani ekran)
+  <span class="hl">[1]  KOMPLETNO - Bordo   (tamna tema, ikonice, zakljucani ekran)</span>
+  [2]  KOMPLETNO - Svetla  (svetla tema, ikonice, zakljucani ekran)
 
   [3]  Samo tema Bordo  (tamna)        [4]  Samo tema Svetla
   [5]  Ikonice BORDO                   [P]  Ikonice PORCELAN
-  [6]  Fascikla "3" za SVE fascikle, u izabranom stilu *
+  [6]  Podrazumevana ikonica fascikle "3", u izabranom stilu *
+  [F]  Fascikle u SVIM velicinama - izaberite lokaciju
   [7]  Zakljucani ekran                [8]  Zvuk obavestenja "Pobeda"
 
   [9]  Vrati originalne Windows ikonice
@@ -778,8 +781,9 @@ footer a{color:var(--muted)}
         <h2>Pre nego što preuzmete.</h2>
       </div>
       <div class="faq reveal">
-        <details><summary>Da li je bezbedno?</summary><p>Da. Skripte ne instaliraju programe, ne koriste internet i menjaju samo podešavanja trenutnog korisnika. Pre svake izmene čuvaju original, a ceo kod je javan na GitHub-u, pa možete da proverite svaki red.</p></details>
-        <details><summary>Da li su potrebna administratorska prava?</summary><p>Nisu. Jedini izuzetak je opciona fascikla „3“ za <i>sve</i> obične fascikle: Windows tu ikonicu čuva sistemski, pa traži potvrdu (UAC). Ako je odbijete, sve ostalo radi normalno.</p></details>
+        <details><summary>Da li je bezbedno?</summary><p>Skripte ne instaliraju programe i ne koriste internet. Tema i standardne ikonice koriste podešavanja trenutnog korisnika; opcija <b>6</b> menja sistemsku podrazumevanu ikonicu, a <b>F</b> dodaje desktop.ini u odabrane fascikle. Čuvaju se originalni fajlovi i podešavanja za vraćanje. Ceo kod je javan na GitHub-u.</p></details>
+        <details><summary>Da li su potrebna administratorska prava?</summary><p>Opcija <b>6</b> menja sistemsku podrazumevanu ikonicu fascikle i traži UAC potvrdu. Ostale opcije rade bez nje; za <b>F</b> morate imati pravo upisa u odabrane fascikle.</p></details>
+        <details><summary>Zašto Small radi, a veće ikonice postanu žute?</summary><p>U većem prikazu Explorer može da koristi sličicu sadržaja fascikle, nezavisno od podrazumevane ikonice. Preuzmite izdanje 2.6.1, izaberite <b>P</b> ili <b>5</b>, zatim <b>F</b> i unesite lokaciju. Menjaju se njene neposredne potfascikle uz rezervnu kopiju. Fotografije i video-fajlovi zadržavaju preglede, a same fascikle prikazuju novu ikonicu u svim veličinama.</p></details>
         <details><summary>Kako da vratim sve kako je bilo?</summary><p>Pokrenite <code>INSTALIRAJ.cmd</code> i izaberite <b>D</b>. Vraća se tema koja je bila aktivna pre instalacije, kao i boje, ikonice i zvuk, a fajlovi paketa se brišu. Jedino zaključani ekran menjate sami, jer Windows ne pamti prethodnu sliku.</p></details>
         <details><summary>Mogu li da izaberem drugi stil ikonica?</summary><p>Možete. Pored bordo stila postoji i Porcelan: mat bele površine, grafitni simboli i prigušena crvena. Na Windows-u izaberite <b>P</b> u meniju <code>INSTALIRAJ.cmd</code> (nazad na bordo: <b>5</b>), na Linux-u <code>./install.sh --porcelan</code>, a na Mac-u <code>./install.command --porcelan</code>. Stilove možete menjati koliko god puta želite, a deinstalacija i dalje vraća originalne ikonice. <a href="#ikonice">Uporedite ih ovde</a>.</p></details>
         <details><summary>Šta je Nova serija?</summary><p>Deset dodatnih ilustracija pobede u punoj rezoluciji: transparenti, strip, risograf, kolaž i dokumentarne scene. Nisu deo slideshow-a teme, pa ih birate sami: preuzmite <code>StudentiPobedili-Nova-serija.zip</code> ili pojedinačno iz <a href="#nova">galerije</a>.</p></details>

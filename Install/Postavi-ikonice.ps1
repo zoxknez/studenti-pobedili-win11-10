@@ -101,12 +101,32 @@ try {
         $touched.Add($folderPath)
     }
 
+    # Fascikle obuhvacene opcijom F zadrzavaju poseban zapis za sve velicine.
+    # Promena P <-> 5 azurira i njih, uz istu prvobitnu rezervnu kopiju.
+    $ordinaryChanged = $false
+    foreach ($item in @($folderManifest | Where-Object { $_.Kind -eq 'Ordinary' })) {
+        if (-not (Test-Path -LiteralPath $item.FolderPath -PathType Container)) { continue }
+        $fa = [int][IO.File]::GetAttributes($item.FolderPath)
+        if (($fa -band 0x400) -ne 0) { continue }
+        $currentIcon = Get-DesktopIniIcon $item.DesktopIniPath
+        if ($currentIcon -and $currentIcon -notmatch '(?i)[\\/]StudentiPobedili[\\/]Icons[\\/]') { continue }
+        $newIcon = '{0},0' -f (Join-Path $IcoDir 'Folder-3.ico')
+        if ($currentIcon -ine $newIcon -or ($fa -band 1) -eq 0) {
+            Set-DesktopIniIcon $item.DesktopIniPath $newIcon
+            Set-FileAttributesSafe $item.FolderPath ($fa -bor 1)
+            $touched.Add($item.FolderPath)
+            $ordinaryChanged = $true
+        }
+    }
+
     Send-ShellRefresh $touched.ToArray()
     try { & "$env:SystemRoot\System32\ie4uinit.exe" -show } catch {}
     Update-QuickAccessPins $touched.ToArray()
     # File Explorer na traci zadataka i u Start meniju; traka ga ucitava tek posle restarta Explorer-a.
     $shortcutsChanged = Set-ExplorerShortcutIcons
-    if ($shortcutsChanged -gt 0 -or $iconAssetsChanged -or $machineIconChanged) {
+    if ($ordinaryChanged) {
+        Restart-ExplorerWithFreshThumbnails
+    } elseif ($shortcutsChanged -gt 0 -or $iconAssetsChanged -or $machineIconChanged) {
         Write-Host 'Restartujem File Explorer da bi ucitao nove ikonice...'
         Restart-ExplorerShell
     }

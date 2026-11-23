@@ -1,4 +1,4 @@
-﻿STUDENTI POBEDILI - TEMA ZA WINDOWS 10 / 11  (verzija 2)
+﻿STUDENTI POBEDILI - TEMA ZA WINDOWS 10 / 11  (verzija 2.6.1)
 =========================================================
 
 Nezvanična fan-made personalizacija. Nije zvanični Windows paket niti
@@ -17,10 +17,11 @@ BRZI START
    grafitni simboli, prigušena crvena). Nazad na bordo: opcija [5].
 
 Ako Windows prikaže „Windows protected your PC“: More info > Run anyway.
-Skripte ne instaliraju programe, ne koriste internet i menjaju samo
-podešavanja trenutnog korisnika. Izuzetak je opcija 6 (crvena „3“ za
-sve fascikle): Windows tu ikonicu čuva sistemski, pa traži admin
-potvrdu (UAC). Ako je odbijete, sve ostalo radi normalno.
+Skripte ne instaliraju programe i ne koriste internet. Tema i standardne
+ikonice koriste podešavanja trenutnog korisnika. Opcija 6 menja sistemsku
+podrazumevanu ikonicu fascikle i traži admin potvrdu (UAC). Opcija F
+dodaje desktop.ini u odabrane fascikle uz rezervnu kopiju. Za F morate
+imati pravo upisa; zapis u fascikli pokazuje na ikonicu u vašem profilu.
 
 
 DRUGI NAČIN: SAMO TEMA, DVOKLIKOM (bez skripti)
@@ -84,7 +85,7 @@ IKONICE PORCELAN (opcija P, bez admin prava)
   P = Porcelan. Opcija 9 i deinstalacija vraćaju originalne Windows ikonice.
 • Pojedinačne ikonice: Icons\Porcelan\ICO i Icons\Porcelan\PNG.
 
-FASCIKLA „3“ ZA SVE FASCIKLE (opcija 6, traži admin potvrdu)
+PODRAZUMEVANA IKONICA FASCIKLE „3“ (opcija 6, traži admin potvrdu)
 • Koristi stil koji ste poslednji izabrali (5 ili P). Posle promene stila
   pokrenite opciju 6 ponovo da bi i ova ikonica bila u novom stilu.
 • Windows ikonicu obične fascikle čita samo iz sistemskog dela registra,
@@ -93,6 +94,27 @@ FASCIKLA „3“ ZA SVE FASCIKLE (opcija 6, traži admin potvrdu)
 • Pri nadogradnji opcija P ili 5 osvežava i postojeću sistemsku kopiju
   istog stila ako Windows dozvoli upis. Ako prijavi da je potrebna
   administratorska potvrda, ponovite opciju 6.
+• Ovo menja ikonicu, ali Windows u većim prikazima često koristi zasebnu
+  žutu sličicu sadržaja popunjene fascikle. Za te fascikle koristite F.
+
+ISTI IZGLED FASCIKLE U SVIM VELIČINAMA (opcija F, od verzije 2.6.1)
+• Izaberite P (Porcelan) ili 5 (Bordo), zatim F i unesite lokaciju,
+  npr. D:\. Menja neposredne potfascikle te lokacije, bez obilaska stabla.
+• Dodaje zasebnu ikonicu kroz desktop.ini i osvežava keš sličica. Tako
+  Porcelan/Bordo ostaje i na Medium, Large i Extra large prikazu.
+• Za samu fasciklu prikazuje se ikonica umesto pregleda njenog sadržaja.
+  Pregledi fotografija i video-fajlova ostaju uključeni.
+• Preskače sistemske i skrivene fascikle, veze, razvojne fascikle sa
+  tačkom i postojeće tuđe ikonice. Ne zahteva UAC, ali morate imati
+  pravo upisa. Putanja do ikonice u vašem profilu čuva se u samoj fascikli.
+• Prethodni desktop.ini i atributi čuvaju se u IconBackup. Opcija 9 i
+  deinstalacija ih vraćaju. Promena P / 5 menja i ove ikonice.
+• File Explorer se restartuje. Prethodni keš se premešta u
+  %LOCALAPPDATA%\StudentiPobedili\ThumbnailCacheBackup; Windows sam
+  pravi nove sličice. Ako je neki keš zaključan, odjavite se i prijavite.
+• Nove fascikle obuhvatite ponovnim pokretanjem F. Za jednu fasciklu:
+  powershell -NoProfile -ExecutionPolicy Bypass -File
+    Install\Postavi-ikonice-fascikli.ps1 -Putanja "D:\Moja fascikla"
 
 VRAĆANJE IKONICA (opcija 9)
 • Vraća originalne Windows ikonice (i ikonicu svih fascikli, ako je bila
@@ -149,6 +171,9 @@ REŠAVANJE PROBLEMA
   skripta zatvara.
 • Neka ikonica je ostala stara: restartujte File Explorer (Task Manager >
   Windows Explorer > Restart) ili se odjavite i ponovo prijavite.
+• Small radi, ali Medium/Large/Extra large vrati žutu fasciklu:
+  INSTALIRAJ.cmd > F > lokacija čije potfascikle želite da promenite.
+  Opcija 6 sama ne zamenjuje sličice sadržaja popunjenih fascikli.
 • Zakačena fascikla u levoj navigaciji ima staru ikonicu: otkačite je i
   ponovo zakačite (desni klik > Unpin / Pin to Quick access).
 • Traka zadataka nije bordo: radi samo u tamnom režimu. Settings >

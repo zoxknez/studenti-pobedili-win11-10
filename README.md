@@ -24,6 +24,10 @@ Instalacija jednim klikom, bez admin prava, potpuna deinstalacija.
 2. Pokrenite **`INSTALIRAJ.cmd`**. Ako Windows prikaže upozorenje: *More info › Run anyway*.
 3. Izaberite **[1] KOMPLETNO - Bordo** (ili [2] za svetlu varijantu).
 
+**Uvećate prikaz, a fascikle ponovo postanu žute?** U verziji **2.6.1** izaberite **[F]**, pa unesite lokaciju, npr. `D:\`. Opcija postavlja zasebnu ikonicu neposrednim potfasciklama i osvežava keš sličica, tako da ostaju u izabranom stilu i na Medium, Large i Extra large prikazu. Koristi poslednji stil (**P** = Porcelan, **5** = Bordo). Pregledi fotografija i video-fajlova ostaju uključeni; umesto pregleda sadržaja same fascikle vidi se njena ikonica.
+
+Opcija **6** menja podrazumevanu ikonicu, ali Windows za popunjene fascikle može da napravi zasebnu žutu sličicu sadržaja. Zato je za njihov ujednačen izgled potreban **F**. Ne obilazi ceo disk: obrađuje samo jedan nivo odabrane lokacije, preskače sistemske i skrivene fascikle, veze i tuđe prilagođene ikonice. Za nove fascikle pokrenite **F** ponovo. Originalni `desktop.ini` i atributi se čuvaju; **9** i deinstalacija ih vraćaju.
+
 Samo tema, bez skripti: preuzmite
 [`Studenti-Pobedili-Bordo.deskthemepack`](https://github.com/zoxknez/studenti-pobedili-win11-10/releases/latest/download/Studenti-Pobedili-Bordo.deskthemepack)
 ili
@@ -125,9 +129,9 @@ Naslov i „3“ su u sredini, pa ostaju ceo i na dužim ekranima, gde telefon m
 
 ## Bezbednost
 
-- Menja samo podešavanja **trenutnog korisnika** (HKCU), bez programa i interneta.
+- Standardne ikonice i tema koriste podešavanja **trenutnog korisnika** (HKCU), bez programa i interneta. Opcija **F** dodaje `desktop.ini` u odabrane obične fascikle uz rezervnu kopiju; zapis u samoj fascikli pokazuje na ikonicu instaliranu u vašem profilu.
 - Pre svake izmene čuva original (`%LOCALAPPDATA%\StudentiPobedili`).
-- Izuzetak je opciona crvena „3“ za *sve* obične fascikle: Windows tu ikonicu čita samo iz HKLM, pa traži UAC potvrdu.
+- Opcija **6** menja sistemsku podrazumevanu ikonicu (HKLM), pa traži UAC potvrdu. Sličice sadržaja popunjenih fascikli obrađuje zasebno opcija **F**.
 
 ## Struktura
 
