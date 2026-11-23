@@ -44,9 +44,10 @@ try {
     $knownByPath = @{}
     foreach ($kf in $KnownFolders) { $p = Get-KnownFolderPath $kf.RegistryValue; if ($p) { $knownByPath[$p.ToLowerInvariant()] = $kf } }
     $touched = New-Object 'System.Collections.Generic.List[string]'
+    $unavailable = New-Object 'System.Collections.Generic.List[string]'
     foreach ($item in $folderManifest) {
         $folder = [string]$item.FolderPath
-        if (-not (Test-Path -LiteralPath $folder -PathType Container)) { continue }
+        if (-not (Test-Path -LiteralPath $folder -PathType Container)) { $unavailable.Add($folder); continue }
         $ini = [string]$item.DesktopIniPath
         $kf = $knownByPath[$folder.ToLowerInvariant()]
         if ($item.Existed -and $item.BackupFile -and (Test-Path -LiteralPath $item.BackupFile)) {
@@ -68,18 +69,26 @@ try {
     # Precice File Explorer-a (traka zadataka, Start meni) - vraca se originalni .lnk fajl
     $shortcutsRestored = Restore-ExplorerShortcutIcons
 
-    # Originalno stanje je vraceno; brisemo stare rezervne kopije da sledece postavljanje napravi ciste.
-    if (Test-Path -LiteralPath $IconBackup) { Remove-Item -LiteralPath $IconBackup -Recurse -Force }
-
     Send-ShellRefresh $touched.ToArray()
     Update-QuickAccessPins $touched.ToArray()
     try { & "$env:SystemRoot\System32\ie4uinit.exe" -show } catch {}
+    $lockedCache = 0
     if (@($folderManifest | Where-Object { $_.Kind -eq 'Ordinary' }).Count -gt 0) {
-        Restart-ExplorerWithFreshThumbnails
+        Restart-ExplorerWithFreshThumbnails -RetryOption '9' -LockedCount ([ref]$lockedCache)
     } elseif ($shortcutsRestored -gt 0) {
         Write-Host 'Restartujem File Explorer da bi traka zadataka prikazala originalnu ikonicu...'
         Restart-ExplorerShell
     }
+    if ($unavailable.Count -gt 0 -or $lockedCache -gt 0) {
+        Write-Host 'Vracanje nije zavrseno. Rezervne kopije i ikonice ostaju sacuvane; deinstalacija se prekida.' -ForegroundColor Yellow
+        if ($unavailable.Count -gt 0) {
+            Write-Host 'Povezite disk/mreznu lokaciju ili vratite premestene fascikle na prethodne putanje, pa ponovite 9 ili D:'
+            $unavailable | ForEach-Object { Write-Host ('  ' + $_) }
+        }
+        exit 1
+    }
+    # Tek kada je sve vraceno smemo da uklonimo kopije; deinstalacija potom uklanja ICO fajlove.
+    if (Test-Path -LiteralPath $IconBackup) { Remove-Item -LiteralPath $IconBackup -Recurse -Force }
     Write-Host 'Originalne Windows ikonice su vracene.' -ForegroundColor Green
     Write-Host 'Ako neka ikonica ostane stara, ponovo pokrenite File Explorer ili se odjavite i prijavite.'
     exit 0

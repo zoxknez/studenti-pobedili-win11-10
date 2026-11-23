@@ -288,7 +288,7 @@ function Get-DesktopIniIcon([string]$Path) {
 # Shell Icons menja samo ikonu. Veliki prikaz prvo cita stari thumbcache, cak i posle
 # promene desktop.ini. Premestamo iskljucivo te regenerisive DB fajlove u nasu rezervnu
 # kopiju. Ne iskljucujemo IconsOnly: fotografije i video i dalje imaju svoj pregled.
-function Restart-ExplorerWithFreshThumbnails {
+function Restart-ExplorerWithFreshThumbnails([string]$RetryOption = 'F', [ref]$LockedCount = $null) {
     $cache = [IO.Path]::GetFullPath((Join-Path $env:LOCALAPPDATA 'Microsoft\Windows\Explorer'))
     $backup = [IO.Path]::GetFullPath((Join-Path $InstallRoot 'ThumbnailCacheBackup'))
     if (-not $backup.StartsWith(([IO.Path]::GetFullPath($InstallRoot).TrimEnd('\') + '\'), [StringComparison]::OrdinalIgnoreCase)) {
@@ -310,7 +310,8 @@ function Restart-ExplorerWithFreshThumbnails {
     } finally {
         if (-not (Get-Process -Name explorer -ErrorAction SilentlyContinue)) { Start-Process explorer.exe }
     }
-    if ($locked -gt 0) { Write-Warning ('Windows drzi zakljucano {0} fajlova kesa. Ako ostane stara slicica, odjavite se i prijavite.' -f $locked) }
+    if ($null -ne $LockedCount) { $LockedCount.Value = $locked }
+    if ($locked -gt 0) { Write-Warning ('Windows drzi zakljucano {0} fajlova kesa. Odjavite se, prijavite i ponovite opciju {1}.' -f $locked,$RetryOption) }
     try { & "$env:SystemRoot\System32\ie4uinit.exe" -show } catch {}
 }
 

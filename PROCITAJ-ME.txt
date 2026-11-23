@@ -104,21 +104,24 @@ ISTI IZGLED FASCIKLE U SVIM VELIČINAMA (opcija F, od verzije 2.6.1)
   Porcelan/Bordo ostaje i na Medium, Large i Extra large prikazu.
 • Za samu fasciklu prikazuje se ikonica umesto pregleda njenog sadržaja.
   Pregledi fotografija i video-fajlova ostaju uključeni.
-• Preskače sistemske i skrivene fascikle, veze, razvojne fascikle sa
-  tačkom i postojeće tuđe ikonice. Ne zahteva UAC, ali morate imati
+• Preskače sistemske i skrivene fascikle, veze, metapodatke .git/.hg/.svn
+  i postojeće tuđe ikonice. Ne zahteva UAC, ali morate imati
   pravo upisa. Putanja do ikonice u vašem profilu čuva se u samoj fascikli.
 • Prethodni desktop.ini i atributi čuvaju se u IconBackup. Opcija 9 i
   deinstalacija ih vraćaju. Promena P / 5 menja i ove ikonice.
 • File Explorer se restartuje. Prethodni keš se premešta u
   %LOCALAPPDATA%\StudentiPobedili\ThumbnailCacheBackup; Windows sam
-  pravi nove sličice. Ako je neki keš zaključan, odjavite se i prijavite.
+  pravi nove sličice. Ako je neki keš zaključan, odjavite se, prijavite
+  i ponovite F (ili 9 ako vraćate ikonice).
 • Nove fascikle obuhvatite ponovnim pokretanjem F. Za jednu fasciklu:
-  powershell -NoProfile -ExecutionPolicy Bypass -File
-    Install\Postavi-ikonice-fascikli.ps1 -Putanja "D:\Moja fascikla"
+  powershell -NoProfile -ExecutionPolicy Bypass -File Install\Postavi-ikonice-fascikli.ps1 -Putanja "D:\Moja fascikla"
 
 VRAĆANJE IKONICA (opcija 9)
 • Vraća originalne Windows ikonice (i ikonicu svih fascikli, ako je bila
   postavljena). Radi i sa rezervnim kopijama iz prve verzije paketa.
+• Ako je disk isključen ili je neka obuhvaćena fascikla premeštena,
+  kopije ostaju sačuvane i deinstalacija staje. Povežite disk ili vratite
+  fasciklu na ispisanu prethodnu putanju, pa ponovite 9 ili D.
 • Pojedinačne ikonice: Icons\ICO (za Windows) i Icons\PNG.
   Ručno: desni klik na fasciklu > Properties > Customize > Change Icon.
 

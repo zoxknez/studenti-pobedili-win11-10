@@ -78,6 +78,11 @@ try {
         if (-not $folderPath) { continue }
         $iniPath = Join-Path $folderPath 'desktop.ini'
         $record = $folderManifest | Where-Object { $_.DesktopIniPath -ieq $iniPath } | Select-Object -First 1
+        # Stariji F zapis ne sme kasnije prepisati simbol poznate korisnicke fascikle.
+        if ($record -and $record.Kind -eq 'Ordinary') {
+            $record.Kind = 'Known'
+            Save-FolderManifest $folderManifest
+        }
         if ($null -eq $record) {
             $iniExisted = Test-Path -LiteralPath $iniPath -PathType Leaf
             $backupFile = ''

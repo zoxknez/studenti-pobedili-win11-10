@@ -35,15 +35,16 @@ try {
     $source = Join-Path (Join-Path $Package $(if ($Stil -eq 'Porcelan') { 'Icons\Porcelan\ICO' } else { 'Icons\ICO' })) 'Folder-3.ico'
     Copy-Item -LiteralPath $source -Destination $icon -Force
     $targets = if ($Potfascikle) { @(Get-ChildItem -LiteralPath $path -Directory -Force) } else { @($location) }
+    $knownPaths = @($KnownFolders | ForEach-Object { Get-KnownFolderPath $_.RegistryValue } | Where-Object { $_ })
     $records = @(Read-FolderManifest)
     $touched = New-Object 'System.Collections.Generic.List[string]'
     $skipped = 0
     $failed = 0
     foreach ($folder in $targets) {
-        # Bez sistemskih, skrivenih i povezanih fascikli, razvojnih kesova i Windows stabala.
+        # Bez sistemskih, skrivenih i povezanih fascikli, VCS metapodataka i Windows stabala.
         $protected = @($env:SystemRoot, $env:ProgramFiles, ${env:ProgramFiles(x86)}, $env:ProgramData, $env:LOCALAPPDATA, $env:APPDATA) |
             Where-Object { $_ -and ($folder.FullName -ieq $_ -or $folder.FullName.StartsWith($_.TrimEnd('\') + '\', [StringComparison]::OrdinalIgnoreCase)) }
-        if ($protected -or $folder.FullName -ieq (Join-Path $env:SystemDrive 'Users') -or ($folder.Attributes -band 0x406) -ne 0 -or $folder.Name.StartsWith('.')) { $skipped++; continue }
+        if ($protected -or $knownPaths -icontains $folder.FullName -or $folder.FullName -ieq (Join-Path $env:SystemDrive 'Users') -or ($folder.Attributes -band 0x406) -ne 0 -or $folder.Name -in @('.git','.hg','.svn')) { $skipped++; continue }
         try {
             $ini = Join-Path $folder.FullName 'desktop.ini'
             $record = $records | Where-Object { $_.DesktopIniPath -ieq $ini } | Select-Object -First 1
@@ -82,7 +83,12 @@ try {
     }
     if ($touched.Count -gt 0) {
         Send-ShellRefresh $touched.ToArray()
-        Restart-ExplorerWithFreshThumbnails
+        $lockedCache = 0
+        Restart-ExplorerWithFreshThumbnails -LockedCount ([ref]$lockedCache)
+        if ($lockedCache -gt 0) {
+            Write-Host ('Ikonice su sacuvane za {0} fascikli; osvezavanje kesa nije zavrseno. Ponovite F posle odjave i prijave.' -f $touched.Count) -ForegroundColor Yellow
+            exit 1
+        }
     }
     Write-Host ('Postavljeno: {0}; preskoceno: {1}; neuspesno: {2}. Stil: {3}.' -f $touched.Count,$skipped,$failed,$Stil)
     Write-Host 'Opcija 9 ili deinstalacija vraca prethodne ikonice. Nove potfascikle obuhvatite ponovnim pokretanjem opcije F.'
